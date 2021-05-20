@@ -6,7 +6,7 @@
 
 <h1>Gestoion des styles de tatouages</h1>
 
-<a class="btn btn-primary" href="{{ path("admin_styles_ajout") }}">Ajouter un style</a> {#{{ path("admin_styles_ajout") }}#}
+<a class="btn btn-primary" href="{{ path("admin_styles_add") }}">Ajouter un style</a>
 
 <table class="table">
     <thead>
@@ -21,7 +21,9 @@
         <tr>
             <td>{{style.id}}</td>
             <td>{{style.name}}</td>
-            <td class="text-center"><button>Modifier</button> <button>Supprimer</button>
+            <td class="text-center">
+            <a href="{{ path('admin_styles_style_update', {id: style.id}) }}" class="btn btn-warning">Modifier</a> 
+            <a href="{{ path('admin_styles_style_tampon', {id: style.id}) }}" class="btn btn-danger">supprimer</a>
             </td>
         </tr>
         {% endfor %}
