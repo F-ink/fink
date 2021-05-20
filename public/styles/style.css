@@ -7,7 +7,9 @@
     --marronClair: #C9C4C4;
     --fond : #f1f1f1;
 }
-
+body{
+    background-color: var(--fond);
+}
 h1{
     font-family: proxima-nova, sans-serif;
     font-size: 45px;

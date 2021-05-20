@@ -1,43 +1,58 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-		<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
 
-{% block title %}FINK | Find your INK artist ! {% endblock %}
+{% block title %}FINK | Find your INK artist !
+{% endblock %}
 
 
 {% block body %}
+
 {# ici le header user connected or not #}
 {% block header %}
-{% include 'main/header.html.twig' %}
+	{% include 'main/header.html.twig' %}
 {% endblock header %}
 
 {# Container principale #}
 <div class="container">
-{# intro #}
-    <div id="intro">
-    <h1>FINK</h1>
-    <h2>FIND YOUR <span> INK </span> ARTIST</h2>
-    </div>
+	{# intro #}
+    <div id="home-header">
+        <div id="intro" class="mt-3 d-flex justify-content-center">
+            <div>
+                <h1>FINK</h1>
+                <h2>FIND YOUR <span> INK </span> ARTIST</h2>
+            </div>
+        </div>
 
     {# barre de recherche #}
-    <div id="search">
+    <div id="search" class="d-flex justify-content-center">
+        <form action="" methode="">
+            <input type="text">
+            <input type="text">
+            <button for="submit">FINK!</button>
+        </form>
     </div>
 
-    {# ils nous ont rejoins #}
-    <div>
-    </div>
+</div>
+	
 
+	{# ils nous ont rejoins #}
+	<div id="meet">
+        <div>
+            <h2 class="text-center"> ILS VIENNENT DE NOUS REJOINDRE</h2>
+        </div>
+        <div>
+
+        </div>
+    </div>
 
 
 </div>
 
 
-
 {# ici le footer #}
 {# {% block footer %}
 		{% include 'main/footer.html.twig' %}
-{% endblock footer %} #}
-
-{% endblock %}
+{% endblock footer %} #}{% endblock %}
