@@ -29,9 +29,9 @@ class StylesController extends AbstractController
     }
 
     /**
-     * @Route("/ajout", name="ajout")
+     * @Route("/add", name="add")
      */
-    public function ajout(Request $request): Response
+    public function add(Request $request): Response
     {
         $style = new Style();
         
@@ -49,9 +49,61 @@ class StylesController extends AbstractController
             
         }
             
-        return $this->render('admin/styles/ajout.html.twig', [
+        return $this->render('admin/styles/add.html.twig', [
                 'form' => $form->createView(),
         ]);
+    }
+
+
+    /**
+     * @Route("/update/{id}", name="style_update")
+     */
+    public function update(Style $style): Response
+    {
+        if (!empty($_POST)) {
+
+            if (strlen($_POST['name']) > 5) {
+
+                $entityManager = $this->getDoctrine()->getManager();
+
+                $style->setName($_POST['name']); 
+                
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin_styles_home_styles');
+            
+            }
+            
+        }
+        return $this->render('admin/styles/update.html.twig', [
+            'style' => $style,
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/tampon/{id}", name="style_tampon")
+     */
+    public function tampon(Style $style): Response
+    {
+        return $this->render('admin/styles/delete.html.twig', [
+            'style' => $style,
+        ]);
+    }
+
+
+     /**
+     * @Route("/delete/{id}", name="style_delete")
+     */
+    public function delete(Style $style): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->remove($style);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_styles_home_styles');
     }
 }
 
