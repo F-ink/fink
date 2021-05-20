@@ -1,0 +1,6 @@
+@import url(style.css);
+
+
+body{
+    background-color: var(--fond);
+}
