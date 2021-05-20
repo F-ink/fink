@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+		<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
 
 {% block title %}FINK | Find your INK artist ! {% endblock %}
@@ -8,17 +10,27 @@
 {% block body %}
 {# ici le header user connected or not #}
 {% block header %}
-		{% include 'main/header.html.twig' %}
+{% include 'main/header.html.twig' %}
 {% endblock header %}
 
-<div class="example-wrapper container-fluid">
-    <h2>Hello {{ controller_name }}! ✅</h2>
+{# Container principale #}
+<div class="container">
+{# intro #}
+    <div id="intro">
+    <h1>FINK</h1>
+    <h2>FIND YOUR <span> INK </span> ARTIST</h2>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/fink/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/fink/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+    {# barre de recherche #}
+    <div id="search">
+    </div>
+
+    {# ils nous ont rejoins #}
+    <div>
+    </div>
+
+
+
 </div>
 
 
