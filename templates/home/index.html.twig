@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block title %}Hello HomeController!{% endblock %}
 
 
 {% block body %}
 {% block header %}
 		{% include 'main/header.html.twig' %}
-	{% endblock header %}
+{% endblock header %}
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2>Hello {{ controller_name }}! ✅</h2>
 
     This friendly message is coming from:
     <ul>
@@ -21,6 +23,8 @@
 
 
 
-
+{# {% block footer %}
+		{% include 'main/footer.html.twig' %}
+{% endblock footer %} #}
 
 {% endblock %}
