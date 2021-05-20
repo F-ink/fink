@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des styles de tatouages{% endblock %}
+
+{% block body %}
+
+<h1>Gestoion des styles de tatouages</h1>
+
+<a class="btn btn-primary" href="{{ path("admin_styles_ajout") }}">Ajouter un style</a> {#{{ path("admin_styles_ajout") }}#}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for style in styles %}
+        <tr>
+            <td>{{style.id}}</td>
+            <td>{{style.name}}</td>
+            <td class="text-center"><button>Modifier</button> <button>Supprimer</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

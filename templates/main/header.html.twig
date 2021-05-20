@@ -2,21 +2,110 @@
 {% block stylesheets %}
     <link href="{{ asset('styles/header.style.css') }}" type="text/css" rel="stylesheet">
     {% endblock %}
-
+{% block javascripts %}
+			<script src="{{ asset('js/script.header.js') }}" defer></script>
+		{% endblock %}
     {% block header %}
 
         <nav>
             {# NAV FOR AUTH TATOO #}
-
+            {% if app.user and is_granted('ROLE_ARTIST') %}{% endif %}
             {# LOGO & BASIC NAV #}
-                <div>
+            <div>
+                <img src={{ asset ('img/logo.png') }} alt="Le logo Fink" />
+            </div>
 
-            <img src={{ asset ('img/logo.png') }} alt="Le logo Fink" /> </div>
+            <div>
+                <ul>
+                    <li>
+                        <button>
+                            GALLERIE
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            HOME
+                        </button>
 
-            <div></div>
+                    </li>
+                    {% if is_granted('ROLE_ARTIST') == false %}
+                        <li>
+                            <button class="btn bouton">
+                                JE SUIS TATOUEUR/SE  
+                            </button>
+
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+ {# <-- ESPACE CONNEXION --> #}
+
+        <div class="modal">
+
+            <div class="modal-content">
+
+                <span class="close">&times;</span>
+
+                <form action="registerLogin.php" method="POST">
+                    <h1>CONNEXION</h1>
+                    <div>
+                        <input type="email" name="logEmail" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <input type="password" name="logPassword" placeholder="Mot de passe" required>
+                    </div>
+                    <div>
+                        <label for="robot">Je ne suis pas un robot </label>
+                        <input type="checkbox" name="robot" required>
+                    </div>
+                    <div>
+                        <button type="submit">Connexion</button>
+                    </div>
+                </form>
+                <p class="btn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
+            </div>
+
+        </div>
+
+        {# <-- ESPACE INSCRIPTION --> #}
+        <div class="modal">
+
+            <div class="modal-content">
+
+                <span class="close">&times;</span>
+
+                <form action="inscriptiontraitement.php" method="POST">
+                    <h1>INSCRIPTION</h1>
+                    <div>
+                        <input type="text" name="pseudo" placeholder="Pseudo" required>
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password" placeholder="Mot de passe" required>
+                    </div>
+                    <div>
+                        <input type="password" name="passwordRetype" placeholder="Re-tapez le mot de passe" required
+                            autocomplete="off">
+                    </div>
+                    <div>
+                        <input type="text" name="firstName" placeholder="Prénom" required>
+                    </div>
+                    <div>
+                        <input type="text" name="lastName" placeholder="Nom" required>
+                    </div>
+                    <div>
+                        <button type="submit">S'inscrire</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
 
         </nav>
-
 
     {% endblock header %}
     
