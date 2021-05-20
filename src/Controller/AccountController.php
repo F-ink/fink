@@ -202,10 +202,14 @@ class AccountController extends AbstractController
     //Affichage du Profil
 
     /**
-     * @Route("/profil", name="account_profil")
+     * @Route("/profil/{id}", name="account_profil")
      */
-    public function show(Artist $artist): Response
+    public function show(int $id): Response
     {  
+        $em = $this->getDoctrine()->getManager(); // Connexion
+        $artist = $em->getRepository(Artist::class)->find($id);
+
+
         return $this->render('account/profile.html.twig', [
             'artist' => $artist
         ]);
