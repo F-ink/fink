@@ -5,7 +5,7 @@
 {% block body %}
 
 <div>
-<a href="#" class="btn btn-warning"> Modifier mon profil </a>
+<a href="{{ path('account_update', {id: artist.id}) }}" class="btn btn-warning"> Modifier mon profil </a>
 </div>
 
 <h1>Bonjour a toi {{artist.pseudo}}</h1>
