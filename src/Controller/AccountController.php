@@ -54,7 +54,7 @@ class AccountController extends AbstractController
             $size = $_FILES['profile_picture']['size'];
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             $extensions = array('png', 'gif', 'jpg', 'jpeg');
-            $tmp_name = $_FILES["recipe_image"]["tmp_name"];
+            $tmp_name = $_FILES["profile_picture"]["tmp_name"];
 
             // verification de l'extension du fichier à uploader
             if (!in_array($imageFileType, $extensions)){
@@ -70,7 +70,7 @@ class AccountController extends AbstractController
             if(count($errors) == 0)
             {
                 // Génère un identifiant unique
-                $fichier =  uniqid() . $imageFileType ;
+                $fichier =  uniqid() .'.'. $imageFileType ;
 
                 // On va copier le fichier dans le dossier upload
                 $newfile = $target_dir . $fichier;
@@ -151,7 +151,7 @@ class AccountController extends AbstractController
             $size = $_FILES['profile_picture']['size'];
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             $extensions = array('png', 'gif', 'jpg', 'jpeg');
-            $tmp_name = $_FILES["recipe_image"]["tmp_name"];
+            $tmp_name = $_FILES["profile_picture"]["tmp_name"];
 
             // verification de l'extension du fichier à uploader
             if (!in_array($imageFileType, $extensions)){
@@ -167,7 +167,7 @@ class AccountController extends AbstractController
             if(count($errors) == 0)
             {
                 // Génère un identifiant unique
-                $fichier =  uniqid() . $imageFileType ;
+                $fichier =  uniqid() .'.'. $imageFileType ;
 
                 // On va copier le fichier dans le dossier upload
                 $newfile = $target_dir . $fichier;
