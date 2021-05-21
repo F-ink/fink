@@ -12,6 +12,15 @@
     width: 350px;
     justify-content: space-around;
 }
+/* Bordure */
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+input{
+    font-family: open-sans, sans-serif;
+    color: #404F57;
+}
+
 
 /* BUTTON "FINK" */
 .button-search {
@@ -37,8 +46,8 @@
     color: #fff;
     box-shadow: 0px 0px 5px #404f579f;
     transition: 0.5s;
-    background: rgb(12, 35, 62);
-    background: linear-gradient(159deg, rgba(12, 35, 62, 1) 30%, rgba(188, 205, 215, 1) 100%);
+    background: rgb(12,35,62);
+    background: linear-gradient(159deg, rgba(12,35,62,0.7343137938769257) 30%, rgba(188,205,215,1) 100%); 
 }
 
 
@@ -47,5 +56,10 @@
     font-size: 20px;
     opacity: 0.3;
 }
+
+
+.multiselect-container>li>a>label {
+    padding: 4px 20px 3px 20px;
+  }
 
 /* FIN BARRE DE RECHERCHE */

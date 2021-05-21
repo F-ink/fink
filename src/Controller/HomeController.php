@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Artist;
+use App\Entity\Style;
+
 
 
 class HomeController extends AbstractController
@@ -22,6 +24,8 @@ class HomeController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        $entityManager = $this->getDoctrine()->getManager();
+        $styles = $entityManager->getRepository(Style::class)->findAll();
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -31,9 +35,10 @@ class HomeController extends AbstractController
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($user);
             $entityManager->flush();
+
 
             // // generate a signed url and email it to the user
             // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -48,8 +53,12 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('_profiler_home');
         }
 
+
+dump($styles);
+
         return $this->render('home/index.html.twig', [
             'registrationForm' => $form->createView(),
+            'styles' => $styles
         ]);
     }
 }
