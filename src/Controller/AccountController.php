@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Artist;
+use App\Entity\Style;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,12 +14,13 @@ class AccountController extends AbstractController
     /**
      * @Route("/account/create/{id}", name="account_create")
      */
-    public function create(int $id): Response
+    public function create(int $id, Style $styles): Response
     {
         $errors = [];
        
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
+        $styles = $em->getRepository(Style::class)->findAll();
 
 
         if(!empty($_POST)){ // Mon formulaire n'est pas vide
@@ -43,6 +45,10 @@ class AccountController extends AbstractController
             }
             if(strlen($safe['description']) < 15){
                 $errors[] = 'La description doit comporter au moins 15 caractères';
+            }
+            if(empty($safe['style']) || count([$safe['style']]) > 4 ){
+                $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
+
             }
 
             // je verifie mon $_files avec mes differentes contraintes, format, taille 
@@ -91,6 +97,9 @@ class AccountController extends AbstractController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
+                foreach($styles as $style){
+                    $artist->addStyle($style);
+                }
                 $artist->setCreatedAt(new \DateTime('now')); // La date & heure de l'instant T
     
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
@@ -98,7 +107,8 @@ class AccountController extends AbstractController
         }
 
         return $this->render('account/index.html.twig', [
-            'artist' => $artist
+            'artist' => $artist,
+            'styles'  => $styles
         ]);
     }
     
@@ -107,13 +117,14 @@ class AccountController extends AbstractController
     /**
      * @Route("/account/update/{id}", name="account_update")
      */
-    public function update(int $id): Response
+    public function update(int $id, Style $style) : Response
     {
         $errors = [];
        
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
-
+        $style = $em->getRepository(Style::class)->find($id);
+        $styles = $em->getRepository(Style::class)->findAll();
 
         if(!empty($_POST)){ // Mon formulaire n'est pas vide
             $safe = array_map('trim', array_map('strip_tags', $_POST));
@@ -140,6 +151,9 @@ class AccountController extends AbstractController
             }
             if(strlen($safe['description']) < 15){
                 $errors[] = 'La description doit comporter au moins 15 caractères';
+            }
+            if(empty($safe['style']) || count($safe['style']) > 4 ){
+                $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
             }
 
             // je verifie mon $_files avec mes differentes contraintes, format, taille 
@@ -189,13 +203,18 @@ class AccountController extends AbstractController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
+                foreach($styles as $style){
+                    $artist->addStyle($style);
+                } 
                 
+
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
             }
         }
 
         return $this->render('account/update.html.twig', [
-            'artist' => $artist
+            'artist' => $artist,
+            'style'  => $style
         ]);
     }
     

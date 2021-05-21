@@ -13,9 +13,7 @@ class InfoController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('info/index.html.twig', [
-            'information' => 'InfoController',
-        ]);
+        return $this->render('info/index.html.twig');
     }
 
     /**
