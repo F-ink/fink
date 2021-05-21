@@ -16,6 +16,7 @@
             <th>Nom du salon</th>
             <th>Ville</th>
             <th>Date d'inscription</th>
+            <th>Compte Activé</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -28,6 +29,12 @@
             <td>{{artist.tattooShop}}</td>
             <td>{{artist.city}}</td>
             <td>{{artist.createdAt|date('d/m/Y')}}</td>
+            <td>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="active" {{ (artist.isVerified) ? 'checked' : ''}} data-id="{{artist.id}}">
+                    <label class="form-check-label" for="active" name="active">Actif</label>
+                </div>
+            </td>
             <td class="text-center">
              <a href="{{ path('admin_details', {id: artist.id}) }}" class="btn btn-primary">Détails</a>
             <a href="{{ path('artist_update', {id: artist.id}) }}" class="btn btn-warning">Modifier</a> 
@@ -37,4 +44,19 @@
         {% endfor %}
     </tbody>
 </table>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        window.onload = () =>{
+            let active = document.querySelectorAll("[type=checkbox]")
+            for (let bouton of active){
+                bouton.addEventListener("click", function(){
+                    let xmlhttp = new XMLHttpRequest;
+
+                    xmlhttp.open("get", `/admin/active/${this.dataset.id}`)
+                    xmlhttp.send()
+                })
+            }
+        }
+    </script>
 {% endblock %}

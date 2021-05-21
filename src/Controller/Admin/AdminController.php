@@ -67,7 +67,7 @@ class AdminController extends AbstractController
 
 
     /**
-     * @Route("update/{id}", name="artist_update")
+     * @Route("/admin/update/{id}", name="artist_update")
      */
     public function update(Artist $artist): Response
     {
@@ -99,6 +99,21 @@ class AdminController extends AbstractController
         return $this->render('admin/update.html.twig', [
             'artist' => $artist,
         ]);
+    }
+
+
+    /**
+     * @Route("/admin/active/{id}", name="artist_active")
+     */
+    public function active(Artist $artist)
+    {
+       $artist->setIsVerified(($artist->IsVerified()) ? false:true);
+
+       $em = $this->getDoctrine()->getManager();
+       $em->persist($artist);
+       $em->flush();
+
+       return new Response ('true');
     }
 
 
