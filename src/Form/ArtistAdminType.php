@@ -10,6 +10,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 use PhpParser\Parser\Multiple;
 use App\Entity\Style;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
 class ArtistAdminType extends AbstractType
@@ -18,7 +20,6 @@ class ArtistAdminType extends AbstractType
     {
         $builder
             ->add('email')
-            // ->add('roles')
             ->add('password')
             ->add('lastname')
             ->add('firstname')
@@ -35,7 +36,9 @@ class ArtistAdminType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_label' => 'name'
-            ]);
+            ])
+            ->add('created_at', DateType::class)
+            ->add('Valider', SubmitType::class);
 
     }
 

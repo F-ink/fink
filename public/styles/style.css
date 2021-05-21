@@ -3,7 +3,7 @@
     --blueGris: #404F57;
     --blue: #0C233E;
     --black: #1E2022;
-    --bueGris2: #9BA7B3;
+    --blueGris2: #9BA7B3;
     --marronClair: #C9C4C4;
     --fond : #f1f1f1;
 }
@@ -22,8 +22,8 @@ h2{
     color: var(--blue);
 }
 h2 span{
-    color: var(--blueGris);
-    font-weight: bold;
+    color: var(--blueGris2);
+    font-weight: 400;
 }
 
 p{

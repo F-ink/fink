@@ -66,13 +66,44 @@ class AdminController extends AbstractController
     }
 
 
+    /**
+     * @Route("update/{id}", name="artist_update")
+     */
+    public function update(Artist $artist): Response
+    {
+        if (!empty($_POST)) {
 
+            if (strlen($_POST['lastname']) > 1 && strlen($_POST['firstname']) > 1 ) {
 
+                $entityManager = $this->getDoctrine()->getManager();
 
+                $artist->setEmail($_POST['email']); 
+                $artist->setLastname($_POST['lastname']); 
+                $artist->setFirstname($_POST['firstname']); 
+                $artist->setPseudo($_POST['pseudo']); 
+                $artist->setTattooShop($_POST['tattooshop']); 
+                $artist->setAddress($_POST['address']); 
+                $artist->setProfilePicture($_POST['profilePicture']); 
+                $artist->setDescription($_POST['description']); 
+                $artist->setInstagram($_POST['instagram']); 
+                $artist->setSiret($_POST['siret']); 
+                // $artist->addStyle($_POST['style']); 
+                
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin_');
+            
+            }
+            
+        }
+        return $this->render('admin/update.html.twig', [
+            'artist' => $artist,
+        ]);
+    }
 
 
     /**
-     * @Route("/tampon/{id}", name="admin_tampon")
+     * @Route("/tampon/{id}", name="artist_tampon")
      */
     public function tampon(Artist $artist): Response
     {
@@ -83,7 +114,7 @@ class AdminController extends AbstractController
 
 
      /**
-     * @Route("/delete/{id}", name="style_delete")
+     * @Route("/delete/{id}", name="artist_delete")
      */
     public function delete(Artist $artist): Response
     {
