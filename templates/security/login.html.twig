@@ -1,4 +1,13 @@
 {% block body %}
+
+<h1 class="titleconnect">SE CONNECTER</h1>
+
+<button type="submit">
+			Se connecter avec Instagram
+			<i class="lab la-instagram"></i>
+
+
+			
 	<form method="post">
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -12,11 +21,8 @@
 			</div>
 		{% endif %}
 
-		<h1 class="titleconnect">SE CONNECTER</h1>
+		
 
-		<button type="submit">
-			Se connecter avec Instagram
-			<i class="lab la-instagram"></i>
 
 		</button>
 		<div>
