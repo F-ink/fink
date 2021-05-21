@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un tatoueur{% endblock %}
+{% block body %}
+<h1>Modification du tatoueur</h1>
+<form action="" method="POST">
+
+    <div>
+        <input type="text" name="email" value="{{ artist.email }}">
+    </div>
+    <div>
+        <input type="text" name="lastname" value="{{ artist.lastname }}">
+    </div>
+    <div>
+        <input type="text" name="firstname" value="{{ artist.firstname }}">
+    </div>
+    <div>
+        <input type="text" name="pseudo" value="{{ artist.pseudo }}">
+    </div>
+    <div>
+        <input type="text" name="tattooshop" value="{{ artist.tattooShop }}">
+    </div>
+    <div>
+        <input type="text" name="address" value="{{ artist.address }}">
+    </div>
+    <div>
+        <input type="text" name="profilePicture" value="{{ artist.profilePicture }}">
+    </div>
+    <div>
+        <input type="text" name="description" value="{{ artist.description }}">
+    </div>
+    <div>
+        <input type="text" name="instagram" value="{{ artist.instagram }}">
+    </div>
+    <div>
+        <input type="text" name="siret" value="{{ artist.siret }}">
+    </div>
+
+    {# <div>
+        {% for artist in artist %}
+        <select class="form-select" name="artist" id="artist">
+            <option value="{{ artist.artist }}">1 personne</option>
+            <option value="2">2 personnes</option>
+            <option value="3">3 personnes</option>
+            <option value="4">4 personnes</option>
+            <option value="5">5 personnes</option>
+            <option value="6">6 personnes</option>
+        </select>
+        {% endfor %}
+    </div #}
+
+    <div>
+    <button type="submit" name="submit" >Valider</button>
+    </div>
+
+</form
+
+{% endblock %}
