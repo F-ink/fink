@@ -8,7 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
-// use App\Entity\Style;
+use PhpParser\Parser\Multiple;
+use App\Entity\Style;
 
 
 class ArtistAdminType extends AbstractType
@@ -29,13 +30,13 @@ class ArtistAdminType extends AbstractType
             ->add('description')
             ->add('instagram')
             ->add('siret')
-            ->add('styles', EntityType::class,['class' => Style::class,
-             'choice_label' => 'Votre style',
-              'query_builder' => function (EntityRepository $er) {
-                return $er->createQueryBuilder('s');
-                
-            }])
-        ;
+            ->add('styles', EntityType::class, [
+                'class' => Style::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name'
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
