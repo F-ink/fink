@@ -1,56 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create your account!{% endblock %}
+{% block title %}Create your account!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div>
-    
-     <h1>Formulaire de creation de compte</h1>
-     <form method="POST" enctype="multipart/form-data">
-        <div>
-         <label for="lastname">Votre nom: </label>
-         <input type="text" name="lastname" placeholder="Entrez votre nom ici" required>
-        </div>
-        <div>
-          <label for="firstname">Votre prenom : </label>
-          <input type="text" name="firstname" placeholder="Entrez votre prenom" required>
-        </div>
-        <div>
-          <label for="profile_picture">Choisissez une photo pour votre profil</label>
-          <input type="file" name="profile_picture" placeholder="Choississez une photo de profil" required>
-        </div>
-        <div>
-          <label for="tattoo_shop">Nom de votre salon : </label>
-          <input type="text" name="tattoo_shop" placeholder="Votre salon" required>
-        </div>
-        <div>
-          <label for="city">Ou peut-on vous trouver? </label>
-          <input type="text" name="city" placeholder="Entrez votre ville" required>
-        </div>
-        <div>
-           <label for="address">Votre adresse : </label>
-           <input type="text" name="address" placeholder="Votre adresse" required>
-        </div>
-        <div>
-           <label for="description">Description</label>
-            <textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required></textarea>
-        </div>
-        <div>
-          <label for="siret">Votre Siret : </label>
-          <input type="text" name="siret" placeholder="Entrez votre siret" required>
-        </div>
-        <div>
-          <label for="instagram">Avez-vous Instagram?</label>
-          <input type="text"  name="instagram" placeholder="Entrez votre pseudo :) ">
-        </div>
-        <div>
-          <input type="submit" name="submit" value="Creer mon compte">
-        </div>  
-</form>
-</div>
-{% endblock %}
+	<div>
+
+		<h1>Formulaire de creation de compte</h1>
+		<form method="POST" enctype="multipart/form-data">
+			<div>
+				<label for="lastname">Votre nom:
+				</label>
+				<input type="text" name="lastname" placeholder="Entrez votre nom ici" required>
+			</div>
+			<div>
+				<label for="firstname">Votre prenom :
+				</label>
+				<input type="text" name="firstname" placeholder="Entrez votre prenom" required>
+			</div>
+			<div>
+				<label for="profile_picture">Choisissez une photo pour votre profil</label>
+				<input type="file" name="profile_picture" placeholder="Choississez une photo de profil" required>
+			</div>
+			<div>
+				<label for="tattoo_shop">Nom de votre salon :
+				</label>
+				<input type="text" name="tattoo_shop" placeholder="Votre salon" required>
+			</div>
+			<div>
+				<label for="city">Ou peut-on vous trouver?
+				</label>
+				<input type="text" name="city" placeholder="Entrez votre ville" required>
+			</div>
+			<div>
+				<label for="address">Votre adresse :
+				</label>
+				<input type="text" name="address" placeholder="Votre adresse" required>
+			</div>
+			<div>
+				<label for="description">Description</label>
+				<textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required></textarea>
+			</div>
+			<div>
+
+
+        {% for style in styles %}
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" name="style" id="style" value="{{style.id}}" >
+					<label class="form-check-label" for="style">
+						{{style.name}}
+					</label>
+				</div>
+          {% endfor %}
+				<div>
+					<label for="siret">Votre Siret :
+					</label>
+					<input type="text" name="siret" placeholder="Entrez votre siret" required>
+				</div>
+				<div>
+					<label for="instagram">Avez-vous Instagram?</label>
+					<input type="text" name="instagram" placeholder="Entrez votre pseudo :) ">
+				</div>
+				<div>
+					<input type="submit" name="submit" value="Creer mon compte">
+				</div>
+			</form>
+		</div>
+	{% endblock %}
