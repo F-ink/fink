@@ -1,0 +1,19 @@
+footer{
+ 
+    background-color: var(--blueGris) ;
+    /* background: linear-gradient ,(white, #404F57) ; */
+    background: linear-gradient( #f1f1f1,#9ba7b3);
+  
+    font-family: open-sans, sans-serif;
+    padding-bottom: 4rem;
+
+
+}
+
+
+
+section :first-child{
+   text-decoration: underline;
+   color:black;
+
+}
