@@ -45,23 +45,22 @@ class AdminController extends AbstractController
     public function add(Request $request): Response
     {
         $artist = new Artist();
-        
+
         $form = $this->createForm(ArtistAdminType::class, $artist);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($artist);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($artist);
+            $em->flush();
 
-                return $this->redirectToRoute('admin_');
-            
+            return $this->redirectToRoute('admin_');
         }
-            
+
         return $this->render('admin/add.html.twig', [
-                'form' => $form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
@@ -73,28 +72,26 @@ class AdminController extends AbstractController
     {
         if (!empty($_POST)) {
 
-            if (strlen($_POST['lastname']) > 1 && strlen($_POST['firstname']) > 1 ) {
+            if (strlen($_POST['lastname']) > 1 && strlen($_POST['firstname']) > 1) {
 
                 $entityManager = $this->getDoctrine()->getManager();
 
-                $artist->setEmail($_POST['email']); 
-                $artist->setLastname($_POST['lastname']); 
-                $artist->setFirstname($_POST['firstname']); 
-                $artist->setPseudo($_POST['pseudo']); 
-                $artist->setTattooShop($_POST['tattooshop']); 
-                $artist->setAddress($_POST['address']); 
-                $artist->setProfilePicture($_POST['profilePicture']); 
-                $artist->setDescription($_POST['description']); 
-                $artist->setInstagram($_POST['instagram']); 
-                $artist->setSiret($_POST['siret']); 
+                $artist->setEmail($_POST['email']);
+                $artist->setLastname($_POST['lastname']);
+                $artist->setFirstname($_POST['firstname']);
+                $artist->setPseudo($_POST['pseudo']);
+                $artist->setTattooShop($_POST['tattooshop']);
+                $artist->setAddress($_POST['address']);
+                $artist->setProfilePicture($_POST['profilePicture']);
+                $artist->setDescription($_POST['description']);
+                $artist->setInstagram($_POST['instagram']);
+                $artist->setSiret($_POST['siret']);
                 // $artist->addStyle($_POST['style']); 
-                
+
                 $entityManager->flush();
 
                 return $this->redirectToRoute('admin_');
-            
             }
-            
         }
         return $this->render('admin/update.html.twig', [
             'artist' => $artist,
@@ -107,13 +104,13 @@ class AdminController extends AbstractController
      */
     public function active(Artist $artist)
     {
-       $artist->setIsVerified(($artist->IsVerified()) ? false:true);
+        $artist->setIsVerified(($artist->IsVerified()) ? false : true);
 
-       $em = $this->getDoctrine()->getManager();
-       $em->persist($artist);
-       $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($artist);
+        $em->flush();
 
-       return new Response ('true');
+        return new Response('true');
     }
 
 
@@ -128,7 +125,7 @@ class AdminController extends AbstractController
     }
 
 
-     /**
+    /**
      * @Route("/delete/{id}", name="artist_delete")
      */
     public function delete(Artist $artist): Response
@@ -140,5 +137,4 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_');
     }
-
 }
