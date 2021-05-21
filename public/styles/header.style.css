@@ -13,7 +13,9 @@ li{
     list-style-type: none;
 }
 
-
+div img{
+    width: 200px;
+}
 
 .userbar{
     background: rgb(188,205,215);
@@ -90,7 +92,8 @@ background: linear-gradient(90deg, rgba(188,205,215,1) 0%, rgba(106,141,176,1) 1
 
 
     /* The Modal (background) */
-.modal {
+.my-modal {
+    
     text-align: center;
     visibility: hidden; /* Hidden by default */
     /* opacity:0; */
@@ -108,7 +111,8 @@ background: linear-gradient(90deg, rgba(188,205,215,1) 0%, rgba(106,141,176,1) 1
 
 
 /* Modal Content */
-.modal-content {
+.my-modal-content {
+    border-radius: 15px;
     position: absolute;
     top: 400px;
     left: 50%;
