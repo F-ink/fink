@@ -5,7 +5,7 @@
 {% block body %}
 <h1>Gestion des artistes</h1>
 
-{# <a class="btn btn-primary" href="{{ path("admin_artists_add") }}">Ajouter un artiste</a> #}
+<a class="btn btn-primary" href="{{ path("artist_add") }}">Ajouter un artiste</a>
 
 <table class="table">
     <thead>
@@ -30,8 +30,8 @@
             <td>{{artist.createdAt|date('d/m/Y')}}</td>
             <td class="text-center">
              <a href="{{ path('admin_details', {id: artist.id}) }}" class="btn btn-primary">Détails</a>
-            <a href="" class="btn btn-warning">Modifier</a> 
-            <a href="{{ path('admin_tampon', {id: artist.id}) }}" class="btn btn-danger">supprimer</a> 
+            <a href="{{ path('artist_update', {id: artist.id}) }}" class="btn btn-warning">Modifier</a> 
+            <a href="{{ path('artist_tampon', {id: artist.id}) }}" class="btn btn-danger">supprimer</a> 
             </td>
         </tr>
         {% endfor %}

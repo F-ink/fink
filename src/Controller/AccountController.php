@@ -123,8 +123,8 @@ class AccountController extends AbstractController
        
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
-        $style = $em->getRepository(Style::class)->find($id);
         $styles = $em->getRepository(Style::class)->findAll();
+        $artist_style= $artist->getStyles();
 
         if(!empty($_POST)){ // Mon formulaire n'est pas vide
             $safe = array_map('trim', array_map('strip_tags', $_POST));
@@ -214,7 +214,8 @@ class AccountController extends AbstractController
 
         return $this->render('account/update.html.twig', [
             'artist' => $artist,
-            'style'  => $style
+            'styles' => $styles,
+            'artist_style' => $artist_style
         ]);
     }
     
