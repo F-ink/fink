@@ -76,70 +76,29 @@
 
 		{# <-- ESPACE CONNEXION --> #}
 
-		<div class="modal">
+		<div class="my-modal">
 
-			<div class="modal-content">
+			<div class="my-modal-content">
 
 				<span class="close">&times;</span>
 
-<<<<<<< HEAD
-				{% include "security/login.html.twig" %}
+				{{render(controller('App\\Controller\\SecurityController::login'))}}
 
-=======
-				<form action="registerLogin.php" method="POST">
-					<h1>CONNEXION</h1>
-					<div>
-						<input type="email" name="logEmail" placeholder="Email" required>
-					</div>
-					<div>
-						<input type="password" name="logPassword" placeholder="Mot de passe" required>
-					</div>
-					<div>
-						<label for="robot">Je ne suis pas un robot
-						</label>
-						<input type="checkbox" name="robot" required>
-					</div>
-					<div>
-						<button type="submit">Connexion</button>
-					</div>
-				</form>
->>>>>>> parent of cd53cdd (login update)
+
 				<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
 			</div>
 
 		</div>
 
 		{# <-- ESPACE INSCRIPTION --> #}
-		<div class="modal">
+		<div class="my-modal">
 
-			<div class="modal-content">
+			<div class="my-modal-content">
 
 				<span class="close">&times;</span>
 
-				<form action="inscriptiontraitement.php" method="POST">
-					<h1>INSCRIPTION</h1>
-					<div>
-						<input type="text" name="pseudo" placeholder="Pseudo" required>
-					</div>
-					<div>
-						<input type="email" name="email" placeholder="Email" required>
-					</div>
-					<div>
-						<input type="password" name="password" placeholder="Mot de passe" required>
-					</div>
-					<div>
-						<input type="password" name="passwordRetype" placeholder="Re-tapez le mot de passe" required autocomplete="off">
-					</div>
-					<div>
-						<input type="text" name="firstName" placeholder="Prénom" required>
-					</div>
-					<div>
-						<input type="text" name="lastName" placeholder="Nom" required>
-					</div>
-					<div>
-						<button type="submit">S'inscrire</button>
-					</div>
-				</form>
+				{{render(controller('App\\Controller\\RegistrationController::register'))}}
+
 			</div>
 
 		</div>

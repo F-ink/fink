@@ -1,6 +1,6 @@
 window.onload = () => {
     // Get the modal
-    var modal = document.getElementsByClassName('modal');
+    var modal = document.getElementsByClassName('my-modal');
     
     // Get the button that opens the modal
     var btn = document.getElementsByClassName("myBtn");
