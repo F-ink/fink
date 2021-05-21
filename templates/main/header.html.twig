@@ -7,32 +7,36 @@
 {% block header %}
 
 
+	{# --------------- NAV FOR AUTH TATOO --------------- #}
 
 
-
-
-		{# NAV FOR AUTH TATOO #}
-		{# {% if app.user and is_granted('ROLE_ARTIST') %} #}
-		<div class="userbar"> <div>
-			<p>
+	{# {% if app.user and is_granted('ROLE_ARTIST') %} #}
+		<div class="userbar"> 
+			<div>
+				<p>
 				Bonjour
 				{#{{ app.user.username }}#}
 				! Bonne visite :)
-			</p>
-		</div>
-		<div>
-			<p>PASSER PREMIUM</p>
-		</div>
+				</p>
+			</div>
+			<div>
+				<a href=""> <p>PASSER PREMIUM</p></a>
+			</div>
 
-		<div>
-			<span class="material-icons">account_circle</span>
-			<span class="material-icons">logout</span>
-		</div>
+			<div class="usericons">
+				<a href="">
+					<span class="material-icons">account_circle</span>
+				</a>
+				<a href="">
+					<span class="material-icons">logout</span>
+				</a>
+					<span class="material-icons">face</span>
 
-	</div>
-
+				</div>
+				
+			</div>
 	{# {% endif %} #}
-
+			
 
 
 	<nav>
@@ -78,7 +82,7 @@
 
 				<span class="close">&times;</span>
 
-{% include "security/login.html.twig" %}
+				{% include "security/login.html.twig" %}
 
 				<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
 			</div>
