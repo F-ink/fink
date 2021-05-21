@@ -7,6 +7,8 @@
     --marronClair: #C9C4C4;
     --fond : #f1f1f1;
 }
+
+/* FONTs DE BASE */
 body{
     background-color: var(--fond);
 }
@@ -25,14 +27,15 @@ h2 span{
     color: var(--blueGris2);
     font-weight: 400;
 }
-
+h3
+h3 span
+h4
+h5
 p{
     font-family: open-sans, sans-serif;
     font-size: 20px;
 }
+p span
 
-
-
-
-
+/* END FONTS SETTINGS */
 

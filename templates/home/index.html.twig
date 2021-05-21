@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+	<script src="{{asset('js/search.js')}}"></script>
 
 	<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
@@ -13,52 +17,64 @@
 
 {% block body %}
 
-{# ici le header user connected or not #}
-{% block header %}
-	{% include 'main/header.html.twig' %}
-{% endblock header %}
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
 
-{# Container principale #}
-<div
-	class="container">
-	{# intro #}
-	<div id="home-header" class="d-flex">
-		<div class="align-self-center w-100">
-			<div id="intro" class=" d-flex justify-right">
-				<div>
-					<h1>FINK</h1>
-					<h2>FIND YOUR
-						<span>
-							INK
-						</span>
-						ARTIST</h2>
+	{# Container principale #}
+	<div
+		class="container">
+		{# intro #}
+		<div id="home-header" class="d-flex">
+			<div class="centre align-items-center">
+				<div id="intro" class="">
+					<div>
+						<h1>FINK</h1>
+						<h2>FIND YOUR
+							<span>
+								INK
+							</span>
+							ARTIST</h2>
+					</div>
+				</div>
+
+				{# barre de recherche #}
+				<div id="search" class="d-flex justify-content-between">
+					<form action="" methode="" class="d-flex">
+
+                        {# Style(s) #}
+						<select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+							{% for style in styles %}
+								<option value="{{style.id}}">{{style.name}}</option>
+							{% endfor %}
+						</select>
+
+                        {# localisation #}
+						<input type="text" class="button" placeholder=" Localisation">
+                        
+						<button for="submit" class="button-search align-self-center">FINK!</button>
+					</form>
 				</div>
 			</div>
-			{# barre de recherche #}
-			<div id="search" class="d-flex justify-content-between">
-				<form action="" methode="" class="d-flex w-75 justify-content-between">
-					<input type="text" class="button" style="font-family: FontAwesome;" placeholder='  &#xf002   Styles...'>
-					<input type="text" class="button" style="font-family: 'Font Awesome 5 Brands';" placeholder=" &#xf3c5   Localisation">
-					<button for="submit" class="button-search align-self-center">FINK!</button>
-				</form>
+		</div>
+
+
+		{# ils nous ont rejoins #}
+		<div id="meet">
+			<div>
+				<h3 class="text-center">
+					ILS VIENNENT DE NOUS REJOINDRE</h3>
 			</div>
+			<div></div>
 		</div>
-	</div>
 
-	{# ils nous ont rejoins #}
-	<div id="meet">
-		<div>
-			<h3 class="text-center">
-				ILS VIENNENT DE NOUS REJOINDRE</h3>
-		</div>
-		<div></div>
+
 	</div>
 
 
-</div>
-
-
-{# ici le footer #}
-{% block footer %}
+	{# ici le footer #}
+	{% block footer %}
 		{% include 'main/footer.html.twig' %}
-{% endblock footer %}{% endblock %}
+	{% endblock footer %}
+{% endblock %}

@@ -54,7 +54,6 @@ class HomeController extends AbstractController
         }
 
 
-dump($styles);
 
         return $this->render('home/index.html.twig', [
             'registrationForm' => $form->createView(),

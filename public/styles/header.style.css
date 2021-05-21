@@ -1,19 +1,15 @@
-body{
-    background-color: var(--fond);
-}
-
-nav {
+#nav {
     display: flex;
     justify-content: space-between;
 }
-ul{
+#nav ul{
     display: flex;
 }
-li{
+#nav li{
     list-style-type: none;
 }
 
-div img{
+#nav div img{
     width: 200px;
 }
 
@@ -39,9 +35,6 @@ background: linear-gradient(2deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%)
     font-size: 35px;
 }
 
-input{
-/* width: 300px; */
-}
 
 .titleconnect{
     font-size: 40px;
@@ -50,15 +43,7 @@ input{
 
 
 
-
-
-
-
-
-
-
-
-button{
+#nav button{
     color: #0C233E;
     border-style: none;
     border-radius: 50px;
@@ -66,12 +51,12 @@ button{
     padding: 10px 30px;
     margin: 10px 10px;
 }
-button:hover{
+#nav button:hover{
     box-shadow: 0px 0px 5px #404f579f;
     transition: 0.5s;
 }
 
-input{
+#nav input{
     border-style: none;
     border-radius: 50px;
     padding: 10px;
