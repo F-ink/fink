@@ -23,7 +23,7 @@ h2{
 }
 h2 span{
     color: var(--blueGris);
-    font-weight: bold;
+    font-weight: 400;
 }
 
 p{
