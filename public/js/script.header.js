@@ -30,8 +30,11 @@ window.onload = () => {
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "hidden";
+        if (event.target !== modal) {
+            modal[0].style.display = "hidden";
+            modal[0].style.display = "inline";
+            modal[1].style.display = "hidden";
+            modal[1].style.display = "inline";
         }
     }
     
