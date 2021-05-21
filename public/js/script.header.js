@@ -3,7 +3,7 @@ window.onload = () => {
     var modal = document.getElementsByClassName('modal');
     
     // Get the button that opens the modal
-    var btn = document.getElementsByClassName("btn");
+    var btn = document.getElementsByClassName("myBtn");
     
     
     // Get the <span> element that closes the modal

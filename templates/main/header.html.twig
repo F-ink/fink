@@ -6,9 +6,37 @@
 {% endblock %}
 {% block header %}
 
-	<nav>
+
+
+
+
+
 		{# NAV FOR AUTH TATOO #}
-		{% if app.user and is_granted('ROLE_ARTIST') %}{% endif %}
+		{# {% if app.user and is_granted('ROLE_ARTIST') %} #}
+		<div class="userbar"> <div>
+			<p>
+				Bonjour
+				{#{{ app.user.username }}#}
+				! Bonne visite :)
+			</p>
+		</div>
+		<div>
+			<p>PASSER PREMIUM</p>
+		</div>
+
+		<div>
+			<span class="material-icons">account_circle</span>
+			<span class="material-icons">logout</span>
+		</div>
+
+	</div>
+
+	{# {% endif %} #}
+
+
+
+	<nav>
+
 		{# LOGO & BASIC NAV #}
 		<div>
 			<img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/>
@@ -19,18 +47,22 @@
 				<li>
 					<button>
 						GALLERIE
+
+						<span class="material-icons">search</span>
 					</button>
 				</li>
 				<li>
 					<button>
 						HOME
+						<span class="material-icons">home</span>
 					</button>
 
 				</li>
 				{% if is_granted('ROLE_ARTIST') == false %}
 					<li>
-						<button class="btn bouton">
+						<button class="myBtn bouton">
 							JE SUIS TATOUEUR/SE
+							<span class="material-icons">brush</span>
 						</button>
 
 					</li>
@@ -63,7 +95,7 @@
 						<button type="submit">Connexion</button>
 					</div>
 				</form>
-				<p class="btn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
+				<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
 			</div>
 
 		</div>

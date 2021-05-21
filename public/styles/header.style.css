@@ -15,48 +15,50 @@ li{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-main button{
-    
-    border-style: none;
-    border-radius: 0.5rem;
-    background-color: #dadada;
-    padding: 10px 30px;
-    margin: 10px 0;
+.userbar{
+    background-color: rgba(108, 108, 207, 0.411);
+    display: flex;
+    justify-content: space-between;
 }
-main button:hover{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+button{
+    color: #0C233E;
+    border-style: none;
+    border-radius: 50px;
+    background-color: white;
+    padding: 10px 30px;
+    margin: 10px 10px;
+}
+button:hover{
+    box-shadow: 0px 0px 5px #404f579f;
     transition: 0.5s;
-    background-color: #a4d128;   
 }
 
 input{
     border-style: none;
-    border-radius: 0.5rem;
+    border-radius: 50px;
     padding: 10px;
     margin: 10px 0;
 }
-.bouton{
-    margin: 15px;
-padding: 10px 30px;
-border-style: none;
-background-color: white;
-border-radius: 0.5rem;
 
+.bouton{
+    color: white;
+    background: rgb(188,205,215);
+    background: linear-gradient(90deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%);
 }
 
 .cursor{
@@ -68,12 +70,7 @@ border-radius: 0.5rem;
     transition: 0.3s;
     color: #a4d128;
 }
-nav{
-    display:flex;
-    justify-content: space-between;
-    background-color: #a4d128;
-    
-}
+
 
 
     /* The Modal (background) */
@@ -118,4 +115,4 @@ nav{
     color: #000;
     text-decoration: none;
     cursor: pointer;
-} */
+}
