@@ -16,7 +16,8 @@ li{
 
 
 .userbar{
-    background-color: rgba(108, 108, 207, 0.411);
+    background: rgb(188,205,215);
+    background: linear-gradient(135deg, rgba(188,205,215,1) 0%, rgba(106,141,176,1) 100%);
     display: flex;
     justify-content: space-between;
 }
@@ -58,7 +59,7 @@ input{
 .bouton{
     color: white;
     background: rgb(188,205,215);
-    background: linear-gradient(90deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%);
+background: linear-gradient(90deg, rgba(188,205,215,1) 0%, rgba(106,141,176,1) 100%);
 }
 
 .cursor{
