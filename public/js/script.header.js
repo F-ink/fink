@@ -1,4 +1,5 @@
 window.onload = () => {
+
     // Get the modal
     var modal = document.getElementsByClassName('modal');
     
@@ -12,13 +13,11 @@ window.onload = () => {
     // When the user clicks the button, open the modal 
     btn[0].onclick = function() {
         modal[0].style.visibility = "visible";
-        modal[0].style.display = "block";
     
     }
     
     btn[1].onclick = function() {
         modal[1].style.visibility = "visible";
-        modal[1].style.display = "block";
     }
     // When the user clicks on <span> (x), close the modal
     span[0].onclick = function() {
