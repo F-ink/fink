@@ -7,8 +7,30 @@
 <div>
 <a href="{{ path('account_update', {id: artist.id}) }}" class="btn btn-warning"> Modifier mon profil </a>
 </div>
+<div class="container">
+<div class="col-12">
+<h2>{{artist.pseudo}}</h2>
+</div>
+<div class="row">
+<div class="col-9">
+<p>{{artist.description}}</p>
+<p>{{artist.city}}</p>
+<div >
+et ici des pictures en grid
+</div>
+<div class="col-12 d-flex justify-content-end">
+<a href="#" class="btn btn-primary ">Contacter</a>
 
-<h1>Bonjour a toi {{artist.pseudo}}</h1>
+</div>
+<div class="card" style="width: 18rem; border: none;">
+  <img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" class="card-img-top rounded-circle" alt="photo de profile">
+</div>
+</div>
+
+
+
+
+</div>
 
 
 
