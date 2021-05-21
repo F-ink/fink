@@ -12,13 +12,13 @@ body{
 }
 h1{
     font-family: proxima-nova, sans-serif;
-    font-size: 45px;
+    font-size: 75px;
     font-weight: 800;
     color: var(--black);
 }
 h2{
     font-family: proxima-nova, sans-serif;
-    font-size: 25px;
+    font-size: 55px;
     color: var(--blue);
 }
 h2 span{
@@ -28,14 +28,11 @@ h2 span{
 
 p{
     font-family: open-sans, sans-serif;
+    font-size: 20px;
 }
 
 
-/* #button{
 
-} */
-/* .button-blue{
 
-} */
 
 
