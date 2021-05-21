@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Style;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Form\StylesType;
+use App\Form\StylesAdminType;
 
 /**
      * @Route("/admin/styles", name="admin_styles_")
@@ -35,7 +35,7 @@ class StylesController extends AbstractController
     {
         $style = new Style();
         
-        $form = $this->createForm(StylesType::class, $style);
+        $form = $this->createForm(StylesAdminType::class, $style);
 
         $form->handleRequest($request);
 

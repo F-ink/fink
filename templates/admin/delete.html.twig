@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+<link href="{{ asset('admin/delete.css') }}" type="text/css" rel="stylesheet">
+
+{% endblock %}
+
+{% block title %}FINK !{% endblock %}
+
+{% block body %}
+
+<h2>Supprimer le style</h2>
+<div class="d-flex" id="contenant">
+<div class="card">
+<h3>Etes vous sur de vouloir supprimer ?</h3>
+<div id="boutons">
+<a href="{{ path('admin_', {id: style.id}) }}" class="btn btn-danger">Supprimer </a>
+
+<a href="{{ path('admin_')}}" class="btn btn-dark
+">Annuler</a>
+</div>
+</div>
+</div>
+{% endblock %}
