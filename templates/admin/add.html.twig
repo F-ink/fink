@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un style{% endblock %}
+{% block title %}Ajouter un artiste{% endblock %}
 {% block body %}
-<h1>Nouveau style</h1>
+<h1>Nouvel artiste</h1>
 <form action="" method="POST" enctype="multipart/form-data">
-{{form(form)}}
+{{ form_start(form) }}
+
+{{ form_end(form) }}
 
 </form
 

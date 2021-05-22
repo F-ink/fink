@@ -8,6 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class AdminController extends AbstractController
 {
@@ -52,17 +55,32 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($artist);
-            $em->flush();
+            // $profilePicture = $form->get('profilePicture')->getData();
 
-            return $this->redirectToRoute('admin_');
+            // if ($profilePicture) {
+            //     $file = pathinfo($profilePicture->getPseudo(), PATHINFO_FILENAME);
+            //     $safeFile = $slugger->slug($file);
+            //     $newFile = $safeFile . '-' . uniqid() . '.' . $profilePicture->guessExtension();
+
+            //     try {
+            //         $profilePicture->move(
+            //             $this->getParameter('profilePicture_directory'),
+            //             $newFile
+            //         );
+            //     } catch (FileException $e) {
+            //     }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($artist);
+                $em->flush();
+
+                return $this->redirectToRoute('admin_');
+            }
+
+            return $this->render('admin/add.html.twig', [
+                'form' => $form->createView(),
+            ]);
         }
-
-        return $this->render('admin/add.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
 
 
     /**
