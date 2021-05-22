@@ -27,8 +27,17 @@ h2 span{
     color: var(--blueGris2);
     font-weight: 400;
 }
-h3
-h3 span
+h3{
+    font-family: proxima-nova, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: var(--blue);
+}
+h3 span{
+    color: var(--blueGris2);
+    font-weight: 600;
+}
+
 h4
 h5
 p{
