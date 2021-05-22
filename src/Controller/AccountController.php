@@ -4,14 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Artist;
 use App\Entity\Style;
+use App\Entity\Picture;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AccountController extends AbstractController
 {
 
-    //Creation de son profil
+    //Creation de son profil et uploads de 0 a 6 
     /**
      * @Route("/account/create/{id}", name="account_create")
      */
@@ -237,11 +239,9 @@ class AccountController extends AbstractController
         ]);
     }
     /**
-     * @Route("/profil/{id}", name="account_profil")
+     * @Route("/picture/{id}", name="account_picture")
      */
-    public function addPictures(): Response
-    {
-       
-        
+    public function addPictures(int $id, Request $request): Response
+    {  
     }
 }
