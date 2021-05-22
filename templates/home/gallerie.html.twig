@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+	<script src="{{asset('js/search.js')}}"></script>
+
+	<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
+
+{% block title %}FINK | Find your INK artist !
+{% endblock %}
+
+
+{% block body %}
+
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
+
+	{# Container principale #}
+	<div class="container">
+		<div id="meet">
+			<div>
+				<h3 class="text-center mt-5">
+					Découvrir tous les <span>artistes</span>
+				</h3>
+			</div>
+			<div class="Cartes d-flex flex-wrap justify-content-around">
+				<!-- FAIRE BOUCLE ICI POUR AFFICHAGE ARTISTE -->
+				<!-- CARTE APERCU ARTISTE -->
+					<a href=""> <div class="carte-artiste card m-4">
+						<div class="info-artiste">
+							<div class="profil-picture">
+								<img src="" alt="...">
+							</div>
+							<div class="name d-flex justify-content-between">
+								<p>NOM de l'artiste</p>
+								<p>| Localisation</p>
+							</div>
+							<div class="styles d-flex justify-content-between">
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<!-- FIN CARTE APERCU ARTISTE -->
+				<!-- FIN DE BOUCLE ARTISTE APERCU -->
+
+				<!-- TEST REPETITION POUR AFFICHAGE -->
+					<a href=""> <div class="carte-artiste card m-4">
+						<div class="info-artiste">
+							<div class="profil-picture">
+								<img src="" alt="...">
+							</div>
+							<div class="name d-flex justify-content-between">
+								<p>NOM de l'artiste</p>
+								<p>| Localisation</p>
+							</div>
+							<div class="styles d-flex justify-content-between">
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a href=""> <div class="carte-artiste card m-4">
+						<div class="info-artiste">
+							<div class="profil-picture">
+								<img src="" alt="...">
+							</div>
+							<div class="name d-flex justify-content-between">
+								<p>NOM de l'artiste</p>
+								<p>| Localisation</p>
+							</div>
+							<div class="styles d-flex justify-content-between">
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a href=""> <div class="carte-artiste card m-4">
+						<div class="info-artiste">
+							<div class="profil-picture">
+								<img src="" alt="...">
+							</div>
+							<div class="name d-flex justify-content-between">
+								<p>NOM de l'artiste</p>
+								<p>| Localisation</p>
+							</div>
+							<div class="styles d-flex justify-content-between">
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+								<p>exemple</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<!-- FIN TEST REPETITION  -->
+
+
+				
+			</div>
+		</div>
+
+
+	</div>
+
+
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
+{% endblock %}
