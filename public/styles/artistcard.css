@@ -1,0 +1,78 @@
+
+/* CARD ARTISTE */
+.cartes a {
+    font-style: none;
+    text-decoration: none;
+    list-style: none;
+    color: none;
+}
+
+.carte-artiste {
+    height: 200px;
+    width: 400px;
+    position: relative;
+    /* image pour test */
+    background-image: url(../img/logo.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 10% 0 5%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #404f5798;
+
+}
+
+.carte-artiste .profil-picture {
+    border: 2px solid black;
+    height: 60px;
+    width: 60px;
+    z-index: 99;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 0;
+    left: -30px;
+    background-color: red;
+
+}
+
+.carte-artiste .name {
+    position: absolute;
+    bottom: -30px;
+    height: 65px;
+    width: 90%;
+    background-color: white;
+    left: 0;
+    border-radius: 5px;
+    z-index: 10;
+    padding: 2% 40px;
+    box-shadow: 3px 3px 5px #404f5798;
+}
+
+.carte-artiste .name p {
+    font-weight: 600;
+    color: #0C233E;
+}
+
+.carte-artiste .name p:first-child {
+    text-transform: uppercase;
+}
+
+.carte-artiste .styles {
+    position: absolute;
+    width: 70%;
+    justify-content: space-between;
+    z-index: 90;
+    bottom: -40px;
+    left: 40px;
+}
+
+.carte-artiste .styles p {
+    background-color: #9BA7B3;
+    color: white;
+    border-radius: 55px;
+    padding: 1px 10px;
+    font-size: 12px;
+    text-align: justify;
+}
+
+/* END CARD ARTISTE */

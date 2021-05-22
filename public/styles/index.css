@@ -1,11 +1,13 @@
 /* A MODIFIER SELON LA TAILLE DU HEADER faire soustraction */
 #home-header {
-    height: 60vh;
+    height: 85vh;
     padding-left: 15%;
 }
+
 .centre {
     width: 90%;
 }
+
 /* BARRE DE RECHERCHE */
 /* Emplacement de recherches */
 #search-city {
@@ -28,7 +30,8 @@
     outline: none;
 }
 
-#search input, select {
+#search input,
+select {
     font-family: open-sans, sans-serif;
     color: #404F57;
 }
@@ -47,14 +50,17 @@
     border-radius: 30px 30px;
     border: none;
 }
-.search-bar{
+
+.search-bar {
     width: 250px;
     height: 40px;
 }
-.select2{
+
+.select2 {
     margin-right: 15px;
     margin-bottom: 15px;
 }
+
 /* dropdown menu */
 
 /* placeholder */
@@ -106,10 +112,15 @@
     background: rgb(12, 35, 62);
     background: linear-gradient(159deg, rgba(12, 35, 62, 0.7343137938769257) 30%, rgba(188, 205, 215, 1) 100%);
 }
+
 /* FIN BUTTON FUNK */
-
-@media screen {
-    
-}
-
 /* FIN BARRE DE RECHERCHE */
+
+
+
+/* CARD ARTISTE */
+/* VOIR FICHIER styles/artistcard.css */
+.Cartes{
+    margin-bottom: 70px;
+}
+/* END CARD ARTISTE */
