@@ -95,6 +95,8 @@
     transition: all 0.3s;
     background-color: #9BA7B3;
     margin-bottom: 15px;
+    align-self: center;
+
 }
 
 .button-search:hover {
