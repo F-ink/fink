@@ -1,19 +1,43 @@
-footer{
- 
-    background-color: var(--blueGris) ;
+#footer {
+
+    background-color: var(--blueGris);
+    color: black !important;
+    
+    text-decoration:none !important;
     /* background: linear-gradient ,(white, #404F57) ; */
-    background: linear-gradient( #f1f1f1,#9ba7b3);
-  
+    background: linear-gradient(#f1f1f1, #9ba7b3);
+
     font-family: open-sans, sans-serif;
     padding-bottom: 4rem;
-
-
+    /* background-image: url(../img/BG.svg);
+    background-repeat: no-repeat; */
+  
 }
 
 
 
-section :first-child{
-   text-decoration: underline;
-   color:black;
+#footer section {
+    
+    color: black;
+    text-decoration:none ;
 
+}
+
+/* #footer .container{
+    display: inline;
+} */
+
+#footer u {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+#footer a {
+    text-decoration: none !important;
+    font-style: none;
+    color: black;
+}
+.mentions{
+text-decoration: underline;
 }
