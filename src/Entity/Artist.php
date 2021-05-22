@@ -99,7 +99,7 @@ class Artist implements UserInterface
     private $hide;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="artist")
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="artist", orphanRemoval=true, cascade={"persist"})
      */
     private $pictures;
 

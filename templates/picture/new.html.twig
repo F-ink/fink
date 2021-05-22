@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout des photos du catalogue
+{% endblock %}
+{% block body%}
+	<h2>Ajouter vos photos Darlings
+	</h2>
+
+	{{ form_start(form)}}
+	{{ form_widget(form)}}
+	<input type="submit" name="submit" value="envoyer"/>
+  
+     {{ form_end(form) }}
+	{% endblock %}

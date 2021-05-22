@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Artist;
 use App\Entity\Style;
 use App\Entity\Picture;
+use App\Form\AccountType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -243,5 +244,44 @@ class AccountController extends AbstractController
      */
     public function addPictures(int $id, Request $request): Response
     {  
+        $entityManager = $this->getDoctrine()->getManager();
+        $artist= $entityManager->getRepository(Artist::class)->find($id);
+        $form = $this->createForm(AccountType::class, $artist);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // On récupère les images transmises
+            $images = $form->get('pictures')->getData();
+
+            // On boucle sur les images
+            foreach($images as $image){
+                // On génère un nouveau nom de fichier
+                $fichier = md5(uniqid()) . '.' . $image->guessExtension();
+
+                // On copie le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('pictures_directory'),
+                    $fichier
+                );
+
+                // On stocke l'image dans la base de données (son nom)
+                $picture = new Picture();
+                $picture->setName($fichier);
+                $picture->setDate(new \DateTime('now'));
+                $artist->addPicture($picture);
+            }
+
+            
+            $entityManager->persist($artist);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('picture/new.html.twig', [
+            'artist' => $artist,
+            'form' => $form->createView(),
+        ]);
+
     }
 }
