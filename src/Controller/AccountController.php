@@ -27,7 +27,8 @@ class AccountController extends AbstractController
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
-            // Je vérifie mes différents champs            
+            // Je vérifie mes différents champs
+            //J'utilise des regex pour raccourcir le code            
             if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['lastname']) || strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
                 $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
             }
@@ -235,5 +236,12 @@ class AccountController extends AbstractController
             'artist' => $artist
         ]);
     }
-   
+    /**
+     * @Route("/profil/{id}", name="account_profil")
+     */
+    public function addPictures(): Response
+    {
+       
+        
+    }
 }
