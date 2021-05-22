@@ -1,36 +1,42 @@
 /* A MODIFIER SELON LA TAILLE DU HEADER faire soustraction */
 #home-header {
-    height: 90vh;
-    width: 100%;
+    height: 60vh;
     padding-left: 15%;
 }
-
+.centre {
+    width: 90%;
+}
 /* BARRE DE RECHERCHE */
 /* Emplacement de recherches */
-#search .button {
+#search-city {
     border-radius: 50px;
-    justify-content: space-around;
-    position: absolute;
-    right: 35%;
+    width: 250px;
     height: 35px;
     border: none;
+    display: flex;
+    align-self: center;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
+
+
 /* Desactivation Bordure automatique*/
-input:focus,
-textarea:focus,
-select:focus {
+#search input:focus,
+#search textarea:focus,
+#search select:focus {
     outline: none;
 }
 
-input {
+#search input, select {
     font-family: open-sans, sans-serif;
     color: #404F57;
 }
 
-.centre {
-    padding-top: 15%;
-    width: 90%;
+#search input::placeholder {
+    color: rgb(12, 35, 62);
+    font-size: 15px;
+    opacity: 0.3;
 }
 
 /* CSS PERSONALISE SELECT2 */
@@ -39,16 +45,26 @@ input {
 /* input select */
 #search .select2-container--default .select2-selection--multiple {
     border-radius: 30px 30px;
-    width: 450px;
     border: none;
 }
+.search-bar{
+    width: 250px;
+    height: 40px;
+}
+.select2{
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+/* dropdown menu */
 
 /* placeholder */
 #search .select2-container .select2-search--inline .select2-search__field {
     height: 25px;
     margin-left: 15px;
     font-family: open-sans, sans-serif;
-    color: #404F57;
+    color: rgb(12, 35, 62);
+    font-size: 15px;
+    opacity: 0.7;
 }
 
 /* hover selection*/
@@ -62,28 +78,25 @@ input {
     color: white;
     border-radius: 50px;
     padding-right: 5px;
-
 }
 
 /* END SELECT2 */
 
 /* BUTTON "FINK" */
 .button-search {
-    display: inline-block;
     font-size: 15px;
     padding: 0.50rem 0.10rem;
     border-radius: 50px;
     color: #fff;
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 35px;
     text-transform: uppercase;
     letter-spacing: 0.15rem;
     transition: all 0.3s;
-    position: absolute;
-    right: 27%;
-    overflow: hidden;
-    z-index: 1;
     background-color: #9BA7B3;
+    margin-bottom: 15px;
+    align-self: center;
+
 }
 
 .button-search:hover {
@@ -93,13 +106,10 @@ input {
     background: rgb(12, 35, 62);
     background: linear-gradient(159deg, rgba(12, 35, 62, 0.7343137938769257) 30%, rgba(188, 205, 215, 1) 100%);
 }
-
-#search input::placeholder {
-    color: rgb(12, 35, 62);
-    font-size: 20px;
-    opacity: 0.3;
-}
-
 /* FIN BUTTON FUNK */
+
+@media screen {
+    
+}
 
 /* FIN BARRE DE RECHERCHE */
