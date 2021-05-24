@@ -8,8 +8,8 @@
 }
 
 .carte-artiste {
-    height: 200px;
-    width: 400px;
+    height: 230px;
+    width: 460px;
     position: relative;
     /* image pour test */
     background-image: url(../img/logo.png);
