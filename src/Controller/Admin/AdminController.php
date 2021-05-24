@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Artist;
 use App\Form\ArtistAdminType;
+use App\Repository\StyleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -151,4 +152,12 @@ class AdminController extends AbstractController
 
         return $this->redirectToRoute('admin_');
     }
+
+
+    // public function style(StyleRepository $stylesRepository): Response
+    // {
+    //     return $this->render('admin/update.html.twig', [
+    //         'styles' => $stylesRepository->findAll()
+    //     ]);
+    // }
 }

@@ -6,27 +6,26 @@
 {% block body %}
 	<h1>Détails de {{artist.pseudo}}</h1>
 
-	<div class="card" style="width: 18rem;">
+	<div class="card position-absolute top-50 start-50 translate-middle w-25 p-3 text-center h-50 d-inline-block" style="width: 18rem;">
 		<img
-		src="{{ asset('/asset/uploads/' ~ artist.profilePicture) }}" class="card-img-top" alt="Image de l'artiste">
+		src="{{ asset('/asset/uploads/' ~ artist.coverPicture) }}" class="card-img-top" alt="Image de l'artiste">
 		<div class="card-body">
-			<h5 class="card-title">{{artist.pseudo}}</h5>
-			<p class="card-text">{{artist.description}}</p>
+			<h5 class="card-title fs-2">{{artist.pseudo}}</h5>
 		</div>
 		<ul class="list-group list-group-flush">
-			<li class="list-group-item">Localisation:
+			<li class="list-group-item fs-4" >Localisation:
 				{{artist.tattooShop}}
 				{{artist.city}}</li>
-			<li class="list-group-item">Email:
+			<li class="list-group-item fs-">Email:
 				{{artist.email}}</li>
-			<li class="list-group-item">Description:
+			<li class="list-group-item fs-4">Description:
 				{{artist.description}}</li>
-			<li class="list-group-item">Numéro de Siret:
+			<li class="list-group-item fs-5">Numéro de Siret:
 				{{artist.siret}}</li>
-			{# <li class="list-group-item">{{artist.styles|join('|')}}</li> #}
+			{# <li class="list-group-item">{{artist.styles|join()}}</li> #}
 		</ul>
 		<div class="card-body">
-			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning">Modifier</a>
+			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning m-5">Modifier</a>
 			<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger">Supprimer</a>
 		</div>
 	</div>

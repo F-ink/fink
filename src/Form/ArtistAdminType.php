@@ -35,7 +35,7 @@ class ArtistAdminType extends AbstractType
                 'expanded' => true,
                 'choice_label' => 'name'
             ])
-            ->add('profilePicture', FileType::class, [
+            ->add('coverPicture', FileType::class, [
                 'label' => false,
                 'multiple' => false,
                 'mapped' =>false,
