@@ -42,7 +42,11 @@
 .copyright {
     padding-top: 4rem;
 }
-.mentions, .presentation, .contact{
-text-decoration: underline;
 
+section:first-of-type a {
+    padding-bottom: 5px;
+    border-bottom: black 1px solid;
+}
+.contact{
+    margin-top: 30px;
 }
