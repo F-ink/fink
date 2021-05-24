@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Artist;
+use App\Entity\Style;
+
 use App\Form\ArtistAdminType;
 use App\Repository\StyleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -35,10 +37,13 @@ class AdminController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $artist = $em->getRepository(Artist::class)->find($id);
+        $artist_style = $artist->getStyles();
 
 
         return $this->render('admin/details.html.twig', [
-            'artist' => $artist
+            'artist' => $artist,
+            'artist_style' => $artist_style
+
         ]);
     }
 
@@ -83,8 +88,13 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/update/{id}", name="artist_update")
      */
-    public function update(Artist $artist): Response
+    public function update(Artist $artist, int $id): Response
     {
+
+        $em = $this->getDoctrine()->getManager();
+        $artist = $em->getRepository(Artist::class)->find($id);
+        $artist_style = $artist->getStyles();
+
         if (!empty($_POST)) {
 
             if (strlen($_POST['lastname']) > 1 && strlen($_POST['firstname']) > 1) {
@@ -110,6 +120,8 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/update.html.twig', [
             'artist' => $artist,
+            'artist_style' => $artist_style
+
         ]);
     }
 
