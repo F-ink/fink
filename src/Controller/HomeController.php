@@ -29,7 +29,7 @@ class HomeController extends AbstractController
         $artistes = $entityManager->getRepository(Artist::class)->findAll();
 
         // $artist_style = $artist->getStyles();
-
+       
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
