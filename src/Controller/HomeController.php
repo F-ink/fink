@@ -10,8 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Artist;
 use App\Entity\Style;
-
-
+use Doctrine\ORM\Mapping\Id;
 
 class HomeController extends AbstractController
 {
@@ -24,9 +23,13 @@ class HomeController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
         $artistes = $entityManager->getRepository(Artist::class)->findAll();
+
+        // $artist_style = $artist->getStyles();
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -61,12 +64,13 @@ class HomeController extends AbstractController
             'registrationForm' => $form->createView(),
             'styles' => $styles,
             'artistes' => $artistes
+            // 'artist_style' =>$artist_style
         ]);
     }
 
 
     /**
-     * L'affichage de la page artiste 
+     * L'affichage de la page artiste en détail
      * @Route("/decouvrir/{id}", name="artist_view")
      */
     public function view(int $id): Response
@@ -82,6 +86,7 @@ class HomeController extends AbstractController
 
 
     /**
+     * *Affichage de tous les artistes de la bdd dont le profil est validé par l'admin et publié sur le site, dans l'ordre de création (recent->old)
      * @Route("/gallerie", name="gallerie")
      */
     public function gallerie(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
@@ -92,6 +97,12 @@ class HomeController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
+        //j'affiche les artistes  - de la date de création la plus récent vers la plus vieille avec l'id en AI, same result
+        $artistes = $entityManager->getRepository(Artist::class)->findBy(
+            array(),
+            array('id' => 'DESC')
+        );
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -122,7 +133,9 @@ class HomeController extends AbstractController
 
         return $this->render('home/gallerie.html.twig', [
             'registrationForm' => $form->createView(),
-            'styles' => $styles
+            'styles' => $styles,
+            'artistes' => $artistes
+            
         ]);
     }
 }

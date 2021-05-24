@@ -27,21 +27,23 @@
 	<div class="container">
 		<div id="meet">
 			<div>
-				<h3 class="text-center mt-5">
+				<h2 class="text-center mt-5 mb-5">
 					Découvrir tous les <span>artistes</span>
-				</h3>
+				</h2>
 			</div>
 			<div class="Cartes d-flex flex-wrap justify-content-around">
 				<!-- FAIRE BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 				<!-- CARTE APERCU ARTISTE -->
-					<a href=""> <div class="carte-artiste card m-4">
+			{% for artiste in artistes %}
+				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
+					<div class="carte-artiste card">
 						<div class="info-artiste">
 							<div class="profil-picture">
 								<img src="" alt="...">
 							</div>
 							<div class="name d-flex justify-content-between">
-								<p>NOM de l'artiste</p>
-								<p>| Localisation</p>
+								<p>{{ artiste.pseudo }}</p>
+								<p>| {{ artiste.city }}</p>
 							</div>
 							<div class="styles d-flex justify-content-between">
 								<p>exemple</p>
@@ -52,68 +54,9 @@
 						</div>
 					</div>
 				</a>
+				{% endfor %}
 				<!-- FIN CARTE APERCU ARTISTE -->
-				<!-- FIN DE BOUCLE ARTISTE APERCU -->
-
-				<!-- TEST REPETITION POUR AFFICHAGE -->
-					<a href=""> <div class="carte-artiste card m-4">
-						<div class="info-artiste">
-							<div class="profil-picture">
-								<img src="" alt="...">
-							</div>
-							<div class="name d-flex justify-content-between">
-								<p>NOM de l'artiste</p>
-								<p>| Localisation</p>
-							</div>
-							<div class="styles d-flex justify-content-between">
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href=""> <div class="carte-artiste card m-4">
-						<div class="info-artiste">
-							<div class="profil-picture">
-								<img src="" alt="...">
-							</div>
-							<div class="name d-flex justify-content-between">
-								<p>NOM de l'artiste</p>
-								<p>| Localisation</p>
-							</div>
-							<div class="styles d-flex justify-content-between">
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-							</div>
-						</div>
-					</div>
-				</a>
-				<a href=""> <div class="carte-artiste card m-4">
-						<div class="info-artiste">
-							<div class="profil-picture">
-								<img src="" alt="...">
-							</div>
-							<div class="name d-flex justify-content-between">
-								<p>NOM de l'artiste</p>
-								<p>| Localisation</p>
-							</div>
-							<div class="styles d-flex justify-content-between">
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-								<p>exemple</p>
-							</div>
-						</div>
-					</div>
-				</a>
-				<!-- FIN TEST REPETITION  -->
-
-
-				
+				<!-- FIN DE BOUCLE ARTISTE APERCU -->		
 			</div>
 		</div>
 
