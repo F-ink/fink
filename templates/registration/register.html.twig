@@ -11,8 +11,10 @@
     <button type="submit">
 			S'inscrire avec Instagram
 			<i class="lab la-instagram"></i>
-
 		</button>
+
+    <p>-- ou --</p>
+        
     {{ form_start(registrationForm) }}
         {{ form_widget(registrationForm.pseudo , {'attr': {'placeholder': ' pseudo'}}) }}
         {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email'}}) }}
