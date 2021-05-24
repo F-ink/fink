@@ -55,20 +55,16 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // $profilePicture = $form->get('profilePicture')->getData();
+            $profilePicture = $form->get('profilePicture')->getData();
 
-            // if ($profilePicture) {
-            //     $file = pathinfo($profilePicture->getPseudo(), PATHINFO_FILENAME);
-            //     $safeFile = $slugger->slug($file);
-            //     $newFile = $safeFile . '-' . uniqid() . '.' . $profilePicture->guessExtension();
+            $file = md5(uniqid()) . '.' . $profilePicture->guessExtension();
 
-            //     try {
-            //         $profilePicture->move(
-            //             $this->getParameter('profilePicture_directory'),
-            //             $newFile
-            //         );
-            //     } catch (FileException $e) {
-            //     }
+            $profilePicture->move(
+                $this->getParameter('images_directory'),
+                $file
+            );
+
+                $artist->setProfilePicture($file);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($artist);

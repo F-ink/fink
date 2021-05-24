@@ -7,8 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityRepository;
-use PhpParser\Parser\Multiple;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\Style;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -27,7 +26,6 @@ class ArtistAdminType extends AbstractType
             ->add('tattoo_shop')
             ->add('city')
             ->add('address')
-            ->add('profile_picture')
             ->add('description')
             ->add('instagram')
             ->add('siret')
@@ -36,6 +34,12 @@ class ArtistAdminType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_label' => 'name'
+            ])
+            ->add('profilePicture', FileType::class, [
+                'label' => false,
+                'multiple' => false,
+                'mapped' =>false,
+                'required' => false
             ])
             ->add('created_at', DateType::class)
             ->add('Valider', SubmitType::class);
