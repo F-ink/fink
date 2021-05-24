@@ -1,20 +1,19 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello ResetPasswordController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<h1 class="titleconnect">MOT DE PASSE OUBLIE</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64(2)/www/fink/src/Controller/ResetPasswordController.php'|file_link(0) }}">src/Controller/ResetPasswordController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64(2)/www/fink/templates/reset_password/index.html.twig'|file_link(0) }}">templates/reset_password/index.html.twig</a></code></li>
-    </ul>
-</div>
+			
+	<form method="post">
+
+
+	
+<p>Pour récupérer ton mot de passe, insère l'email utilisé à la création de ton compte.</p>
+		<div>
+			<input type="email" value="" name="email"  placeholder="Email" autocomplete="email" required autofocus>
+		</div>
+
+		<button type="submit">
+			OK !
+		</button>
+	</form>
 {% endblock %}
