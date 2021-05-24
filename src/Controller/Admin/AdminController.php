@@ -91,10 +91,6 @@ class AdminController extends AbstractController
     public function update(Artist $artist, int $id): Response
     {
 
-        $em = $this->getDoctrine()->getManager();
-        $artist = $em->getRepository(Artist::class)->find($id);
-        $artist_style = $artist->getStyles();
-
         if (!empty($_POST)) {
 
             if (strlen($_POST['lastname']) > 1 && strlen($_POST['firstname']) > 1) {
@@ -119,8 +115,7 @@ class AdminController extends AbstractController
             }
         }
         return $this->render('admin/update.html.twig', [
-            'artist' => $artist,
-            'artist_style' => $artist_style
+            'artist' => $artist
 
         ]);
     }
