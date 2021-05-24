@@ -1,5 +1,6 @@
 
 /* CARD ARTISTE */
+
 .cartes a {
     font-style: none;
     text-decoration: none;
@@ -7,23 +8,27 @@
     color: none;
 }
 
+
 .carte-artiste {
     height: 230px;
     width: 460px;
     position: relative;
-    /* image pour test */
-    background-image: url(../img/logo.png);
+    /* image pour test à remplacer par le lien vers le dossier qui contiendra les images de couverture */
+    /* background-image: url(../img/logo.png);
     background-position: center;
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     margin: 10% 0 5%;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #404f5798;
-
+}
+.carte-artiste:hover{
+    box-shadow: 5px 5px 35px 5px #9ba7b3c4;
+    transition: 0.5s;
 }
 
 .carte-artiste .profil-picture {
-    border: 2px solid black;
+    border: 1px solid #404F57;
     height: 60px;
     width: 60px;
     z-index: 99;
@@ -31,7 +36,7 @@
     position: absolute;
     bottom: 0;
     left: -30px;
-    background-color: red;
+    background-color: rgb(114, 128, 153);
 }
 
 .carte-artiste .name {
@@ -59,7 +64,6 @@
 .carte-artiste .styles {
     position: absolute;
     width: 70%;
-    justify-content: space-between;
     z-index: 90;
     bottom: -40px;
     left: 40px;
@@ -72,6 +76,10 @@
     padding: 1px 10px;
     font-size: 12px;
     text-align: justify;
+    margin-right: 2%;
+}
+.carte-artiste .styles p:hover{
+    background-color: #303e55;
 }
 
 /* END CARD ARTISTE */

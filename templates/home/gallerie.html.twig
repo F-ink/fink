@@ -39,13 +39,13 @@
 					<div class="carte-artiste card">
 						<div class="info-artiste">
 							<div class="profil-picture">
-								<img src="" alt="...">
+								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
 							</div>
 							<div class="name d-flex justify-content-between">
 								<p>{{ artiste.pseudo }}</p>
-								<p>| {{ artiste.city }}</p>
+								<p><i class="fas fa-map-marker-alt"></i> {{ artiste.city }}</p>
 							</div>
-							<div class="styles d-flex justify-content-between">
+							<div class="styles d-inline-flex">
 						    {% for style in artiste.styles %}
 								<p>{{ style.name }}</p>
 							  {% endfor %}

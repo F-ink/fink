@@ -1,13 +1,25 @@
 /* A MODIFIER SELON LA TAILLE DU HEADER faire soustraction */
-#home-header {
-    height: 85vh;
-    padding-left: 25%;
+#home{
+    background-image: url(../img/4507304.svg);
+    /* credit : <a href='https://fr.freepik.com/vecteurs/fond'>Fond vecteur créé par coolvector - fr.freepik.com</a> */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
+#home-header {
+    height: 80vh;
+    padding-left: 20%;
+}
+#home-header h1{
+    font-size: 100px ;
+}
+#home-header h2{
+    font-size: 70px ;
+}
 .centre {
     width: 90%;
+    transform: translateY(-30%);
 }
-
 /* BARRE DE RECHERCHE */
 /* Emplacement de recherches */
 #search-city {
@@ -116,7 +128,9 @@ select {
 /* FIN BUTTON FUNK */
 /* FIN BARRE DE RECHERCHE */
 
-
+#meet{
+    margin-top: 5%;
+}
 
 /* CARD ARTISTE */
 /* VOIR FICHIER styles/artistcard.css */
@@ -125,3 +139,13 @@ select {
     padding: 0 5%;
 }
 /* END CARD ARTISTE */
+
+
+@media screen and (max-width: 140px) {
+    h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-size: 2rem;
+    }
+}

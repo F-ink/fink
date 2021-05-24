@@ -26,9 +26,12 @@ class HomeController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
-        $artistes = $entityManager->getRepository(Artist::class)->findAll();
-
-        // $artist_style = $artist->getStyles();
+        
+        //j'affiche les nouveaux inscrits = par ordre d'ID, le plus grand est le dernier:
+        $artistes = $entityManager->getRepository(Artist::class)->findBy(
+            array(),
+            array('id' => 'DESC')
+        );
        
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -97,6 +100,7 @@ class HomeController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
+        
         //j'affiche les artistes  - de la date de création la plus récent vers la plus vieille avec l'id en AI, same result
         $artistes = $entityManager->getRepository(Artist::class)->findBy(
             array(),

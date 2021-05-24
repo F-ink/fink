@@ -18,14 +18,15 @@
 
 {% block body %}
 
-	{# ici le header user connected or not #}
+
+	<div id="home">
+		{# ici le header user connected or not #}
 	{% block header %}
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
+		<div class="container">
 
-	{# Container principale #}
-	<div class="container">
-		{# intro #}
+					{# intro #}
 		<div id="home-header" class="d-flex">
 			<div class="centre align-self-center">
 				<div id="intro" class="">
@@ -58,6 +59,11 @@
 				</div>
 			</div>
 		</div>
+		</div>
+	</div>
+	{# Container principale #}
+	<div class="container">
+
 
 
 		{# ils nous ont rejoins #}
@@ -73,18 +79,21 @@
 			{% for artiste in artistes %}
 				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 					<div class="carte-artiste card">
+					{# METTRE IMG CoverPicture ci-dessous: #}
+					<img src={{ asset('img/logo.png') }} alt="">
 						<div class="info-artiste">
 							<div class="profil-picture">
-								<img src="" alt="...">
+							{# ICi l'image de ProfilePicture #}
+								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
 							</div>
 							<div class="name d-flex justify-content-between">
 								<p>{{ artiste.pseudo }}</p>
-								<p>| {{ artiste.city }}</p>
+								<p><i class="fas fa-map-marker-alt"></i> {{ artiste.city }} </p>
 							</div>
-							<div class="styles d-flex justify-content-between">
-								{# {% for style in artist_style %}
-									<p>{{style.name}}</p>
-								{% endfor %} #}
+							<div class="styles d-inline-flex">
+								{% for style in artiste.styles %}
+									<p>{{ style.name }}</p>
+							  	{% endfor %}
 							</div>
 						</div>
 					</div>
