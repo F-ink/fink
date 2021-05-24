@@ -66,6 +66,22 @@ class HomeController extends AbstractController
 
 
     /**
+     * L'affichage de la page artiste 
+     * @Route("/decouvrir/{id}", name="artist_view")
+     */
+    public function view(int $id): Response
+    {
+        $em = $this->getDoctrine()->getManager(); // Connexion
+        $DetailArtist = $em->getRepository(Artist::class)->find($id); //trouver selon l'ID
+
+        //afficher la page 'detail'
+        return $this->render('home/view.html.twig', [
+            'DetailArtist' => $DetailArtist
+        ]);
+    }
+
+
+    /**
      * @Route("/gallerie", name="gallerie")
      */
     public function gallerie(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response

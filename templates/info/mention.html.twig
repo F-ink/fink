@@ -1,6 +1,20 @@
+{% extends 'base.html.twig' %}
 {% block stylesheets %}
     	<link href="{{ asset('styles/style.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
+
+{% block title %}FINK | Mentions Légales
+{% endblock %}
+
+
+{% block body %}
+
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
+
+	<div class="container">
 <article>
 <p>
 Merci de lire avec attention les différentes modalités d’utilisation du présent site avant d’y parcourir ses pages. En vous connectant sur ce site, vous acceptez, sans réserves, les présentes modalités.
@@ -92,3 +106,10 @@ Enfin, nous pouvons collecter de manière automatique certaines informations vou
 De telles informations sont utilisées exclusivement à des fins de statistiques internes, de manière à améliorer la qualité des services qui vous sont proposés. Les bases de données sont protégées par les dispositions de la loi du 1er juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la protection juridique des bases de données.
 </p>
 </article>
+</div>
+
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
+{% endblock %}

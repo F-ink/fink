@@ -70,8 +70,8 @@
 			<div class="Cartes d-flex flex-wrap justify-content-around">
 				<!-- FAIRE BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 				<!-- CARTE APERCU ARTISTE -->
-				{% for artiste in artistes %}
-				
+			{% for artiste in artistes %}
+				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 					<div class="carte-artiste card">
 						<div class="info-artiste">
 							<div class="profil-picture">
