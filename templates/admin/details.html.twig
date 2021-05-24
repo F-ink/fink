@@ -4,13 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Détails de
-		{{artist.pseudo}}</h1>
-
+	<h1>Détails de {{artist.pseudo}}</h1>
 
 	<div class="card" style="width: 18rem;">
 		<img
-		src="{{ asset('/uploads/' ~ artist.profilePicture) }}" class="card-img-top" alt="Image de l'artiste">
+		src="{{ asset('/asset/uploads/' ~ artist.profilePicture) }}" class="card-img-top" alt="Image de l'artiste">
 		<div class="card-body">
 			<h5 class="card-title">{{artist.pseudo}}</h5>
 			<p class="card-text">{{artist.description}}</p>
