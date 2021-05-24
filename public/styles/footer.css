@@ -1,3 +1,4 @@
+
 #footer {
 
     background-color: var(--blueGris);
@@ -38,6 +39,10 @@
     font-style: none;
     color: black;
 }
-.mentions{
+.copyright {
+    padding-top: 4rem;
+}
+.mentions, .presentation, .contact{
 text-decoration: underline;
+
 }
