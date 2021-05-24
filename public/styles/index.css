@@ -122,5 +122,6 @@ select {
 /* VOIR FICHIER styles/artistcard.css */
 .Cartes{
     margin-bottom: 70px;
+    padding: 0 5%;
 }
 /* END CARD ARTISTE */

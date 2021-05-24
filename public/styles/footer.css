@@ -2,14 +2,14 @@
 #footer {
 
     background-color: var(--blueGris);
-    color: black !important;
+    color: #1E2022 !important;
     
     text-decoration:none !important;
     /* background: linear-gradient ,(white, #404F57) ; */
     background: linear-gradient(#f1f1f1, #9ba7b3);
 
     font-family: open-sans, sans-serif;
-    padding-bottom: 4rem;
+    padding-bottom: 0.5rem;
     /* background-image: url(../img/BG.svg);
     background-repeat: no-repeat; */
   
@@ -19,7 +19,7 @@
 
 #footer section {
     
-    color: black;
+    color: #1E2022;
     text-decoration:none ;
 
 }
@@ -31,7 +31,7 @@
 #footer u {
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: #1E2022;
 }
 
 #footer a {
@@ -39,14 +39,16 @@
     font-style: none;
     color: black;
 }
+#footer a:hover {
+    color: #657686;
+}
 .copyright {
     padding-top: 4rem;
 }
 
 section:first-of-type a {
     padding-bottom: 1px;
-    border-bottom: black 1px solid;
-    text-transform: uppercase;
+    border-bottom: #1E2022 1px solid;
 }
 .contact{
     margin-top: 30px;
