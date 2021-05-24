@@ -4,36 +4,36 @@
 {% endblock %}
 {% block body %}
 <h1>Modification du tatoueur</h1>
-<form action="" method="POST">
+<form class="m-3" action="" method="POST">
 
-	<div>
+	<div class="mb-3">
 		<input type="text" name="email" value="{{ artist.email }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="lastname" value="{{ artist.lastname }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="firstname" value="{{ artist.firstname }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="pseudo" value="{{ artist.pseudo }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="tattooshop" value="{{ artist.tattooShop }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="address" value="{{ artist.address }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="profilePicture" value="{{ artist.profilePicture }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<textarea type="text" name="description" value="">{{ artist.description }}</textarea>
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="instagram" value="{{ artist.instagram }}">
 	</div>
-	<div>
+	<div class="mb-3">
 		<input type="text" name="siret" value="{{ artist.siret }}">
 	</div>
 
@@ -44,7 +44,7 @@
 	</select>
 
 	<div>
-		<button type="submit" name="submit">Valider</button>
+		<button class="btn btn-success" type="submit" name="submit">Valider</button>
 	</div>
 
 </form {% endblock %}
