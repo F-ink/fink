@@ -20,6 +20,10 @@ window.onload = () => {
         modal[1].style.visibility = "visible";
         modal[1].style.display = "block";
     }
+    btn[2].onclick = function () {
+        modal[2].style.visibility = "visible";
+        modal[2].style.display = "block";
+    }
     // When the user clicks on <span> (x), close the modal
     span[0].onclick = function () {
         modal[0].style.visibility = "hidden";
@@ -28,6 +32,9 @@ window.onload = () => {
     span[1].onclick = function () {
         modal[1].style.visibility = "hidden";
     }
+    span[2].onclick = function () {
+        modal[2].style.visibility = "hidden";
+    }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
@@ -35,6 +42,8 @@ window.onload = () => {
             modal[0].style.display = "inline";
             modal[1].style.display = "hidden";
             modal[1].style.display = "inline";
+            modal[2].style.display = "hidden";
+            modal[2].style.display = "inline";
         }
     }
 
