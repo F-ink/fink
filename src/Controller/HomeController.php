@@ -26,6 +26,8 @@ class HomeController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
+        $artistes = $entityManager->getRepository(Artist::class)->findAll();
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -57,7 +59,8 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'registrationForm' => $form->createView(),
-            'styles' => $styles
+            'styles' => $styles,
+            'artistes' => $artistes
         ]);
     }
 
@@ -99,7 +102,6 @@ class HomeController extends AbstractController
 
             return $this->redirectToRoute('_profiler_home');
         }
-
 
 
         return $this->render('home/gallerie.html.twig', [

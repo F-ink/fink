@@ -113,6 +113,11 @@ class Artist implements UserInterface
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cover_picture;
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -415,5 +420,17 @@ class Artist implements UserInterface
     public function getIsVerified(): ?bool
     {
         return $this->isVerified;
+    }
+
+    public function getCoverPicture(): ?string
+    {
+        return $this->cover_picture;
+    }
+
+    public function setCoverPicture(?string $cover_picture): self
+    {
+        $this->cover_picture = $cover_picture;
+
+        return $this;
     }
 }
