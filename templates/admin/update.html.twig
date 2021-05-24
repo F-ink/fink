@@ -38,7 +38,7 @@
 	</div>
 
 	<select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
-		{% for style in artist %}
+		{% for style in artist_style %}
 			<option value="{{style.id}}">{{style.name}}</option>
 		{% endfor %}
 	</select>

@@ -1,21 +1,70 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+	<script src="{{asset('js/search.js')}}"></script>
 
-{% block title %}Hello InfoController!{% endblock %}
+{# Fichier style de la page premium #}
+	<link href="{{ asset('styles/premium.css') }}" type="text/css" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block title %}FINK | Find your INK artist 
+{% endblock %}
+
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello ! ✅</h1>
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/fink/src/Controller/InfoController.php'|file_link(0) }}">src/Controller/InfoController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/fink/templates/info/index.html.twig'|file_link(0) }}">templates/info/index.html.twig</a></code></li>
-    </ul>
-</div>
+	{# Container principal du body#}
+	<div class="container" id="info-projet">
+    {# Ici la partie présentation du projet #}
+        <div class="info">
+        <h3 class="text-center mb-5">FINK, un projet de fin d'étude ancré </h3>
+        <div class="mt-5 row d-flex col-12">
+            <div class="talk col-8 col-xs-12">
+                <h4>Projet | Développeur Web & Web Mobile 2021</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a ipsam dignissimos voluptate quibusdam perferendis iste neque provident qui inventore. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, iusto praesentium. Ab fugit quis maiores eius nemo adipisci inventore voluptatem esse quaerat est, et nostrum quos alias vitae suscipit sequi! A quas accusamus quo sequi dolores, eius inventore consectetur voluptates. </p>
+            </div>
+            <div class="picture col-4 .d-xs-none .d-xs-none">
+                <img src={{ asset('img/logo.png') }} alt="Le logo Fink"/>           
+            </div>
+        </div>
+            
+        <div class="students col-12">
+            <div class="row">
+                <div class="col-4 col-xs-6"></div>
+                <div class="col-4 col-xs-6"></div>
+                <div class="col-4 col-xs-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-xs-6"></div>
+                <div class="col-6 col-xs-6"></div>
+            </div>
+        </div>
 
+
+        </div>
+
+    {# ici la partie présentation forfait de l'application | Premium #}
+        <div class="premium">
+        </div>
+
+
+
+    
+    </div>
+
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
 {% endblock %}

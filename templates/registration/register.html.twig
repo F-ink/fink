@@ -11,17 +11,25 @@
     <button type="submit">
 			S'inscrire avec Instagram
 			<i class="lab la-instagram"></i>
-
 		</button>
+
+    <p>-- ou --</p>
+        
     {{ form_start(registrationForm) }}
-        {{ form_widget(registrationForm.pseudo , {'attr': {'placeholder': 'Votre pseudo'}}) }}
-        {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Votre Email'}}) }}
-        {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Votre mot de passe'}}) }}
+        {{ form_widget(registrationForm.pseudo , {'attr': {'placeholder': ' pseudo'}}) }}
+        {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email'}}) }}
+        {{ form_widget(registrationForm.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
+        {{ form_widget(registrationForm.plainPassword.second, {'attr': {'placeholder': 'Répétez le mot de passe'}}) }}
         {{ form_widget(registrationForm.createdAt, { 'attr' : { 'style':'display:none'} }) }}
-        {{ form_widget(registrationForm.agreeTerms) }}
-
-        <button type="submit">
-			S'inscrire
-		</button>
+        <div>
+            {{ form_widget(registrationForm.agreeTerms) }}
+        </div>
+        
+<div>
+    <button type="submit">
+    S'inscrire
+</button>
+</div>
+        
     {{ form_end(registrationForm) }}
 {% endblock %}
