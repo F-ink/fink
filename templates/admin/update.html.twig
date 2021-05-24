@@ -37,11 +37,11 @@
 		<input type="text" name="siret" value="{{ artist.siret }}">
 	</div>
 
-	<select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+	{# <select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 		{% for style in artist_style %}
 			<option value="{{style.id}}">{{style.name}}</option>
 		{% endfor %}
-	</select>
+	</select> #}
 
 	<div>
 		<button class="btn btn-success" type="submit" name="submit">Valider</button>
