@@ -31,7 +31,8 @@
 			<a href="">
 				<span class="material-icons">logout</span>
 			</a>
-			<span class="material-icons">face</span>
+			{# {{ asset('/asset/uploads/' ~ artist.profilePicture) }} #}
+
 
 		</div>
 
@@ -94,6 +95,7 @@
 
 
 					<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
+					<p class="myBtn cursor">Mot de passe oublié ?</p>
 				</div>
 
 			</div>
@@ -111,6 +113,18 @@
 
 			</div>
 
+			{# <-- ESPACE OUBLI DE MDP --> #}
+			<div class="my-modal">
+
+				<div class="my-modal-content">
+
+					<span class="close">&times;</span>
+
+					{{render(controller('App\\Controller\\RegistrationController::register'))}}
+
+				</div>
+
+			</div>
 
 		</nav>
 

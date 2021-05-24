@@ -213,10 +213,10 @@ class AccountController extends AbstractController
                 foreach ($styles as $style) {
                     $artist->addStyle($style);
                 }
-                if(!isset($safe['re-style'])){
+                /*if(!isset($safe['re-style'])){
                   
                  $artist->removeStyle($style);
-                }
+                }*/
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
             }
