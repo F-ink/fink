@@ -1,57 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Votre Profil :) {% endblock %}
+{% block title %}Votre Profil :)
+{% endblock %}
 
 {% block body %}
 
-<div>
-<a href="{{ path('account_update', {id: artist.id}) }}" class="btn btn-warning"> Modifier mon profil </a>
-</div>
-<div class="container">
-<div class="col-12">
-<h2>{{artist.pseudo}}</h2>
-</div>
-<div class="row">
-<div class="col-9">
-<p>{{artist.description}}</p>
-<p>{{artist.city}}</p>
-<div >
-et ici des pictures en grid
-</div>
-<div class="col-12 d-flex justify-content-end">
-<a href="#" class="btn btn-primary ">Contacter</a>
+	<div>
+		<a href="{{ path('account_update', {id: artist.id}) }}" class="btn btn-warning">
+			Modifier mon profil
+		</a>
+	</div>
+	<div class="container">
+		<div class="col-12">
+			<h2>{{artist.pseudo}}</h2>
+		</div>
+		<div class="row">
+			<div class="col-9">
+				<p>{{artist.description}}</p>
+				<p>{{artist.city}}</p>
+				<div>
+					et ici des pictures en grid
+				</div>
+				<div class="col-12 d-flex justify-content-end">
+					<a href="#" class="btn btn-primary ">Contacter</a>
 
-</div>
-<div class="card" style="width: 18rem; border: none;">
-  <img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" class="card-img-top rounded-circle" alt="photo de profile">
-</div>
-</div>
+				</div>
+				<div class="card" style="width: 18rem; border: none;">
+					<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" class="card-img-top rounded-circle" alt="photo de profile">
+				</div>
+			</div>
 
+			<div class="row">
+				<h2>Ajouter vos photos Darlings</h2>
 
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
 
+				<h2>Images</h2>
+        <div class="col-3">
+				{% for picture in artist.pictures %}
 
-</div>
+					<img
+					src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
+					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+					{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+        </div>#}
+				{% endfor %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+				{#<button class="btn">{{ button_label|default('Save') }}</button>}#}
+				{{ form_end(form) }}
 
 
-
-{% endblock %}
-
+			{% endblock %}

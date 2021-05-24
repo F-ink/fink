@@ -32,16 +32,16 @@ class AccountController extends AbstractController
 
             // Je vérifie mes différents champs
             //J'utilise des regex pour raccourcir le code            
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['lastname']) || strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,80}$/", $safe['lastname'])) {
                 $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
             }
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['firstname']) || strlen($safe['firstname']) < 2 || strlen($safe['firstname']) > 80) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,80}$/", $safe['firstname'])) {
                 $errors[] = 'Votre prenom doit comporter entre 2 et 80 caracteres ';
             }
             if (strlen($safe['tattoo_shop']) < 1 || strlen($safe['tattoo_shop']) > 80) {
                 $errors[] = 'Le nom de votre salon  doit comporter entre 1 et 100 caracteres ';
             }
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['city']) || strlen($safe['city']) < 2 || strlen($safe['city']) > 100) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,100}*$/", $safe['city'])) {
                 $errors[] = 'La ville n\'est pas valide .';
             }
 
@@ -106,6 +106,11 @@ class AccountController extends AbstractController
                 $artist->setCreatedAt(new \DateTime('now')); // La date & heure de l'instant T
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
+                $this->addFlash('success', 'Super! Votre compte a bien ete cree');
+            }
+            else {
+                // J'ai des erreurs, je les affiche via le flash message
+                $this->addFlash('danger', implode(' - ', $errors));                
             }
         }
 
@@ -208,10 +213,10 @@ class AccountController extends AbstractController
                 foreach ($styles as $style) {
                     $artist->addStyle($style);
                 }
-                /* if($safe['re-style'] === false){
+                if(!isset($safe['re-style'])){
                   
-                 $artist->removeStyle($safe['re-style']);
-                }*/
+                 $artist->removeStyle($style);
+                }
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
             }
@@ -227,25 +232,12 @@ class AccountController extends AbstractController
     //Affichage du Profil
 
     /**
-     * @Route("/profil/{id}", name="account_profil")
+     * @Route("/profil/{id}", name="account_profil", methods={"GET","POST"})
      */
-    public function show(int $id): Response
+    public function show(int $id, Request $request): Response
     {
-        $em = $this->getDoctrine()->getManager(); // Connexion
+        $em = $this->getDoctrine()->getManager();
         $artist = $em->getRepository(Artist::class)->find($id);
-
-
-        return $this->render('account/profile.html.twig', [
-            'artist' => $artist
-        ]);
-    }
-    /**
-     * @Route("/picture/{id}", name="account_picture")
-     */
-    public function addPictures(int $id, Request $request): Response
-    {  
-        $entityManager = $this->getDoctrine()->getManager();
-        $artist= $entityManager->getRepository(Artist::class)->find($id);
         $form = $this->createForm(AccountType::class, $artist);
         $form->handleRequest($request);
 
@@ -254,7 +246,7 @@ class AccountController extends AbstractController
             $images = $form->get('pictures')->getData();
 
             // On boucle sur les images
-            foreach($images as $image){
+            foreach ($images as $image) {
                 // On génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $image->guessExtension();
 
@@ -271,17 +263,18 @@ class AccountController extends AbstractController
                 $artist->addPicture($picture);
             }
 
-            
-            $entityManager->persist($artist);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            $em->persist($artist);
+            $em->flush();
+
+            return $this->redirectToRoute('account_profil');
         }
 
-        return $this->render('picture/new.html.twig', [
+        return $this->render('account/profile.html.twig', [
             'artist' => $artist,
             'form' => $form->createView(),
         ]);
-
     }
+   
+        
 }
