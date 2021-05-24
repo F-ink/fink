@@ -4,13 +4,11 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Détails de
-		{{artist.pseudo}}</h1>
-
+	<h1>Détails de {{artist.pseudo}}</h1>
 
 	<div class="card" style="width: 18rem;">
 		<img
-		src="{{ asset('/uploads/' ~ artist.profilePicture) }}" class="card-img-top" alt="Image de l'artiste">
+		src="{{ asset('/asset/uploads/' ~ artist.profilePicture) }}" class="card-img-top" alt="Image de l'artiste">
 		<div class="card-body">
 			<h5 class="card-title">{{artist.pseudo}}</h5>
 			<p class="card-text">{{artist.description}}</p>
@@ -28,8 +26,8 @@
 			{# <li class="list-group-item">{{artist.styles|join('|')}}</li> #}
 		</ul>
 		<div class="card-body">
-			<a href="#" class="card-link btn btn-warning">Modifier</a>
-			<a href="#" class="card-link btn btn-danger">Supprimer</a>
+			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning">Modifier</a>
+			<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger">Supprimer</a>
 		</div>
 	</div>
 
