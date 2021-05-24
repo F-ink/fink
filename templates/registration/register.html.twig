@@ -14,13 +14,11 @@
 
 		</button>
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.pseudo) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-       
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.pseudo , {'attr': {'placeholder': 'Votre pseudo'}}) }}
+        {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Votre Email'}}) }}
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'placeholder': 'Votre mot de passe'}}) }}
+        {{ form_widget(registrationForm.createdAt, { 'attr' : { 'style':'display:none'} }) }}
+        {{ form_widget(registrationForm.agreeTerms) }}
 
         <button type="submit">
 			S'inscrire
