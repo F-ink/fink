@@ -16,7 +16,7 @@ class AccountController extends AbstractController
 
     //Creation de son profil et uploads de 0 a 6 
     /**
-     * @Route("/account/create/{id}", name="account_create")
+     * @Route("/account/create/{id}", name="create{id}")
      */
     public function create(int $id, Style $styles): Response
     {

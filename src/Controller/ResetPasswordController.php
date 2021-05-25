@@ -12,7 +12,8 @@ class ResetPasswordController extends AbstractController
      * @Route("/reset/password", name="reset_password")
      */
     public function index(): Response
-    {
+    {  
+        
         return $this->render('reset_password/index.html.twig', [
             'controller_name' => 'ResetPasswordController',
         ]);
