@@ -12,6 +12,11 @@
 	</div>
 	<div class="container">
 		<div class="col-12">
+			<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
+			<div class="form-check form-switch">
+				<input class="form-check-input" type="checkbox" name="hide" id="flexSwitchCheckChecked" checked>
+				<label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+			</div>
 			<h2>{{artist.pseudo}}</h2>
 		</div>
 		<div class="row">
@@ -37,18 +42,17 @@
 				{{ form_widget(form) }}
 
 				<h2>Images</h2>
-        <div class="col-3">
-				{% for picture in artist.pictures %}
+				<div class="col-3">
+					{% for picture in artist.pictures %}
 
-					<img
-					src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
+						<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
 					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
-					{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
-        </div>#}
-				{% endfor %}
+						{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
+						        </div>#}
+					{% endfor %}
 
-				{#<button class="btn">{{ button_label|default('Save') }}</button>}#}
-				{{ form_end(form) }}
+					{#<button class="btn">{{ button_label|default('Save') }}</button>}#}
+					{{ form_end(form) }}
 
 
-			{% endblock %}
+				{% endblock %}

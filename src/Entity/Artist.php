@@ -118,6 +118,11 @@ class Artist implements UserInterface
      */
     private $cover_picture;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $activation_token;
+
   
 
     public function __construct()
@@ -432,6 +437,18 @@ class Artist implements UserInterface
     public function setCoverPicture(?string $cover_picture): self
     {
         $this->cover_picture = $cover_picture;
+
+        return $this;
+    }
+
+    public function getActivationToken(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setActivationToken(?string $activation_token): self
+    {
+        $this->activation_token = $activation_token;
 
         return $this;
     }

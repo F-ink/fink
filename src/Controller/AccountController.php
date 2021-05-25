@@ -321,4 +321,9 @@ class AccountController extends AbstractController
     }
 
 
+    /*public function hide()
+    {
+        if();
+    }*/
+
 }

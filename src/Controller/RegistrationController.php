@@ -34,7 +34,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-           // Formulaire de connexion
+        // Formulaire de connexion
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -42,17 +42,19 @@ class RegistrationController extends AbstractController
                     $user,
                     $form->get('plainPassword')->getData()
                 )
-            
-                );
-           
-          //$user->setCreatedAt(new \DateTime('now'));
+
+            );
+            $user->setActivationToken(md5(uniqid()));
+            //$user->setCreatedAt(new \DateTime('now'));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+            $this->emailVerifier->sendEmailConfirmation(
+                'app_verify_email',
+                $user,
                 (new TemplatedEmail())
                     ->from(new Address('finkart@outlook.fr', 'Fink Art'))
                     ->to($user->getEmail())
@@ -73,8 +75,12 @@ class RegistrationController extends AbstractController
      * @Route("/verify/email", name="app_verify_email")
      */
     public function verifyUserEmail(Request $request, ArtistRepository $artistRepository): Response
-    {
+    {  
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        $user = $this->getUser();
+        
         $id = $request->get('id');
+
 
         if (null === $id) {
             return $this->redirectToRoute('app_register');
@@ -99,5 +105,31 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
 
         return $this->redirectToRoute('home');
+    }
+    /**
+     * @Route("/activation/{token}", name="activation")
+     */
+    public function activation($token, ArtistRepository $users)
+    {
+        // On recherche si un utilisateur avec ce token existe dans la base de données
+        $user = $users->findOneBy(['activation_token' => $token]);
+
+        // Si aucun utilisateur n'est associé à ce token
+        if (!$user) {
+            // On renvoie une erreur 404
+            throw $this->createNotFoundException('Cet utilisateur n\'existe pas');
+        }
+
+        // On supprime le token
+        $user->setActivationToken(null);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        // On génère un message
+        $this->addFlash('message', 'Utilisateur activé avec succès');
+
+        // On retourne à l'accueil
+        return $this->redirectToRoute('accueil');
     }
 }
