@@ -6,6 +6,7 @@
 parameters:
     images_directory: '%kernel.project_dir%/public/asset/uploads'
     pictures_directory: '%kernel.project_dir%/public/multi_uploads'
+    cover_directory: '%kernel.project_dir%/public/cover_picture'
 services:
     # default configuration for services in *this* file
     _defaults:

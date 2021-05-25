@@ -44,7 +44,7 @@ class RegistrationController extends AbstractController
                 )
             
                 );
-            
+           
           //$user->setCreatedAt(new \DateTime('now'));
 
             $entityManager = $this->getDoctrine()->getManager();

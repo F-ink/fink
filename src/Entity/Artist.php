@@ -118,6 +118,8 @@ class Artist implements UserInterface
      */
     private $cover_picture;
 
+  
+
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
@@ -433,4 +435,5 @@ class Artist implements UserInterface
 
         return $this;
     }
+
 }

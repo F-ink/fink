@@ -83,7 +83,7 @@
 				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 					<div class="carte-artiste card">
 					{# METTRE IMG CoverPicture ci-dessous: #}
-					<img src={{ asset('/asset/uploads/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+					<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
 						<div class="info-artiste">
 							<div class="profil-picture">
 							{# ICi l'image de ProfilePicture #}
