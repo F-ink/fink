@@ -10,6 +10,7 @@
     margin-bottom: 0;
 }
 
+/* Mentions 'avantages' dans la carte */
 .cat {
     padding: 3% 10%;
     justify-content: center;
@@ -19,11 +20,12 @@
     margin-top: 5%;
 }
 
+/* Ligne à gauche des icons */
 .vertical-line {
     border-left: 1px solid var(--blue);
     position: absolute;
     display: inline-block;
-    height: 60%;
+    height: 66%;
     margin: 0 20px;
     top: 62px;
     right: 65px;
@@ -49,26 +51,55 @@
     border-radius: 5px;
 }
 
-.bouton-forfait{
-    background: rgb(64,79,87);
-    background: linear-gradient(159deg, rgba(64,79,87,1) 0%, rgba(86,99,107,0.9416900549282213) 44%, rgba(188,205,215,1) 100%); 
-    border-radius: 10px;
-    width: 10%;
+.bouton-forfait {
+    background: rgb(85, 121, 129);
+    background: linear-gradient(90deg, rgb(94, 117, 122) 35%, rgb(169, 184, 185) 100%);
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    border: none;
+    padding: 5% 0;
+    margin-top: 10%;
+    position: absolute;
+    bottom: 0;
 }
-.bouton-forfait a{
+
+.bouton-forfait a {
     color: var(--fond);
     text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
 }
+
+/*Flemme -  Pour la marge du bouton avec les textes */
+.top{
+    margin-top: 4.5rem !important;
+}
+
+.forfait:hover {
+    box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    -webkit-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    -moz-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    transition-duration: 1s;
+}
+.bouton-forfait:hover{
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition-duration: 1s;
+}
+
+
+
+
 
 /* MEDIA QUERIES */
 
 /* // Small devices (landscape phones, less than 768px) */
-@media (max-width: 800px) {
-
+@media (max-width: 750px) {
     .carte1,
     .carte2 {
         display: flex;
         justify-content: center;
+        margin-bottom: 10%;
     }
 }
 
