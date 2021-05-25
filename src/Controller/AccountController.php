@@ -16,7 +16,7 @@ class AccountController extends AbstractController
 
     //Creation de son profil et uploads de 0 a 6 
     /**
-     * @Route("/account/create/{id}", name="create{id}")
+     * @Route("/account/create/{id}", name="create")
      */
     public function create(int $id, Style $styles): Response
     {
@@ -41,7 +41,7 @@ class AccountController extends AbstractController
             if (strlen($safe['tattoo_shop']) < 1 || strlen($safe['tattoo_shop']) > 80) {
                 $errors[] = 'Le nom de votre salon  doit comporter entre 1 et 100 caracteres ';
             }
-            if (!preg_match("/^[a-zA-Z-' ]{2,100}*$/", $safe['city'])) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,100}$/", $safe['city'])) {
                 $errors[] = 'La ville n\'est pas valide .';
             }
 
@@ -107,10 +107,9 @@ class AccountController extends AbstractController
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
                 $this->addFlash('success', 'Super! Votre compte a bien ete cree');
-            }
-            else {
+            } else {
                 // J'ai des erreurs, je les affiche via le flash message
-                $this->addFlash('danger', implode(' - ', $errors));                
+                $this->addFlash('danger', implode(' - ', $errors));
             }
         }
 
@@ -138,10 +137,10 @@ class AccountController extends AbstractController
             $safe = array_map('trim', array_map('strip_tags', $_POST));
 
             // Je vérifie mes différents champs            
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['lastname']) || strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,80}$/", $safe['lastname'])) {
                 $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
             }
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['firstname']) || strlen($safe['firstname']) < 2 || strlen($safe['firstname']) > 80) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,80}$/", $safe['firstname'])) {
                 $errors[] = 'Votre prenom doit comporter entre 2 et 80 caracteres ';
             }
             if (strlen($safe['tattoo_shop']) < 1 || strlen($safe['tattoo_shop']) > 80) {
@@ -150,10 +149,9 @@ class AccountController extends AbstractController
             if (strlen($safe['pseudo']) < 5 || strlen($safe['pseudo']) > 80) {
                 $errors[] = 'Votre pseudo doit comporter entre 5 et 80 caracteres ';
             }
-            if (!preg_match("/^[a-zA-Z-' ]*$/", $safe['city']) || strlen($safe['city']) < 2 || strlen($safe['city']) > 100) {
+            if (!preg_match("/^[a-zA-Z-' ]{2,100}$/", $safe['city'])) {
                 $errors[] = 'La ville n\'est pas valide .';
             }
-
             if (!is_numeric($safe['siret']) || $safe['siret'] < 14) {
                 $errors[] = 'Veuillez entrer les 14 chiffres de votre siret.';
             }
@@ -219,6 +217,10 @@ class AccountController extends AbstractController
                 }*/
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
+                $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
+            } else {
+                // J'ai des erreurs, je les affiche via le flash message
+                $this->addFlash('danger', implode(' - ', $errors));
             }
         }
 
@@ -275,6 +277,48 @@ class AccountController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-   
-        
+    public function addCover(int $id)
+    {
+
+        $em = $this->getDoctrine()->getManager(); // Connexion
+        $artist = $em->getRepository(Artist::class)->find($id);
+
+        if (!empty($_FILES)) {
+            $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
+            $file = basename($_FILES['cover_picture']['name']);
+            $target_file = $target_dir . $file;
+            $max_size = 5242880;
+            $size = $_FILES['profile_picture']['size'];
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $extensions = array('png', 'gif', 'jpg', 'jpeg');
+            $tmp_name = $_FILES["cover_picture"]["tmp_name"];
+
+            // verification de l'extension du fichier à uploader
+            if (!in_array($imageFileType, $extensions)) {
+                $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
+            }
+
+            // verification de la taille du fichier à uploader
+            if ($size > $max_size) {
+                $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
+            }
+            // Génère un identifiant unique
+            $fichier =  uniqid() . '.' . $imageFileType;
+
+            // On va copier le fichier dans le dossier upload
+            $newfile = $target_dir . $fichier;
+            if (!move_uploaded_file($tmp_name, $newfile)) {
+                $errors[] = 'Une erreur grave est survenue';
+            }
+
+            $artist->setProfilePicture($fichier);
+                   
+                  
+                   $em->flush();
+        }
+
+        return $this->render('account/index.html.twig');
+    }
+
+
 }
