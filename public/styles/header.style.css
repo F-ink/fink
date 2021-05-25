@@ -42,15 +42,9 @@
     padding: 0;
 }
 
-
-/* .userbutton button {
-    color: #0C233E;
-    border-style: none;
-    border-radius: 50px;
-    background-color: white;
-    padding: 4px 30px 8px;
-    margin: 10px 10px;
-} */
+.or{
+    margin: 1em;
+}
 
 .titleconnect{
     font-size: 40px;
@@ -60,17 +54,15 @@
 
 
 #nav button , .userbutton button{
-
-    
-    ;
     border-style: none;
     border-radius: 50px;
     background-color: white;
-    padding: 4px 30px 8px;
+    padding:  0 30px 4px;
     margin: 10px 10px;
+    height: 2.5em;
 }
 #nav button:hover , .userbutton button:hover{
-    box-shadow: 0px 0px 5px #9ba7b3c4;
+    box-shadow: 0px 0px 5px #8AADB2;
     transition: 0.3s;
 }
 
@@ -84,10 +76,34 @@ margin: 0;
 }
 
 
+#nav input::placeholder {
+    /* text-align: center; */
+    color: #5E8289;
+    font-size: 15px;
+    opacity: 0.7;
+}
+#nav input:focus {
+    box-shadow: 0px 0px 5px #8AADB2;
+    transition: 0.3s;
+    outline: none;
+}
+
+#nav input:hover{
+    box-shadow: 0px 0px 5px #8AADB2;
+    transition: 0.3s;
+}
+
+#nav .checkbox{
+    margin: 0;
+    padding: 0;
+    width: 1em;
+    height: 1em;
+}
 
 
 #nav input{
     width: 250px;
+    height: 2.5em;
     border-style: none;
     border-radius: 50px;
     padding: 10px;
@@ -96,8 +112,7 @@ margin: 0;
 
 #nav .bouton{
     color: white;
-    background: rgb(188,205,215);
-    background: linear-gradient(40deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%);
+    background: #8AADB2;
 }
 
 .cursor{
@@ -127,7 +142,21 @@ margin: 0;
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); 
+    background-color: rgba(0,0,0,0.6); 
+}
+
+.my-modal1{
+    text-align: center;
+    visibility: hidden; /* Hidden by default */
+    /* opacity:0; */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
 }
 
 
