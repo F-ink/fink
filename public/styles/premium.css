@@ -1,61 +1,96 @@
-.talk span {
-    color: #0C233E;
-    font-weight: 700;
-}
-
-.talk {
-    text-align: justify;
-    /* padding-right: 5%; */
+.forfait {
     background-color: white;
     border-radius: 15px;
-    padding: 1% 2%;
-    /* box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64);
-    -webkit-box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64);
-    -moz-box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64); */
-}
-
-.premium>h4 span {
-    color: #0C233E;
-    font-weight: 700;
-}
-
-
-
-/* CARTE PHOTOS */
-#img-student {
     position: relative;
-}
-#img-student .texte-original {
-    color: #fff;
-    font-size: 15px;
-    line-height: 1.5em;
-    text-shadow: 2px 2px 2px #000;
-    text-align: center;
-    position: absolute;
-    top: 24%;
-    left: 12%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-}
-#img-student .texte-hover {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-}
-#img-student:hover .texte-hover {
-    opacity: 1;
-}
-#img-student img {
-    max-width: 50%;
-    max-height: 50%;
-    border-radius: 50%;
-}
-#img-student:hover img{
-    opacity: 0.5;
+    width: 60%;
 }
 
-/* END CARTE PHOTO */
+.forfait p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
+.cat {
+    padding: 3% 10%;
+    justify-content: center;
+}
+
+.div-cartes {
+    margin-top: 5%;
+}
+
+.vertical-line {
+    border-left: 1px solid var(--blue);
+    position: absolute;
+    display: inline-block;
+    height: 60%;
+    margin: 0 20px;
+    top: 62px;
+    right: 65px;
+}
+
+.green {
+    color: #70949b;
+}
+
+.red {
+    color: #9b7070;
+}
+
+#price {
+    position: absolute;
+    color: white;
+    transform: rotate(20deg);
+    padding: 2%;
+    top: -1%;
+    right: -8%;
+    background: rgb(85, 121, 129);
+    background: linear-gradient(90deg, rgba(85, 121, 129, 1) 35%, rgba(179, 204, 207, 1) 100%);
+    border-radius: 5px;
+}
+
+.bouton-forfait{
+    background: rgb(64,79,87);
+    background: linear-gradient(159deg, rgba(64,79,87,1) 0%, rgba(86,99,107,0.9416900549282213) 44%, rgba(188,205,215,1) 100%); 
+    border-radius: 10px;
+    width: 10%;
+}
+.bouton-forfait a{
+    color: var(--fond);
+    text-decoration: none;
+}
+
+/* MEDIA QUERIES */
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 800px) {
+
+    .carte1,
+    .carte2 {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* affichage barre de séparation  */
+@media (max-width: 1200px) {
+    .vertical-line {
+        display: none;
+    }
+}
+
+
+
+
+/*  Large devices (desktops, 992px and up) */
+@media (min-width: 892px) {
+    .carte1 {
+        display: flex;
+        justify-content: right;
+    }
+
+    .carte2 {
+        display: flex;
+        justify-content: left;
+    }
+}

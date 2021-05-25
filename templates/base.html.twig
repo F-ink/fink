@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description " content="Bienvenue sur Fink | Le site qui te permet de trouver le tatoueur de ton style idéal">
 		<title>
 			{% block title %}FINK | Find your INK artist
@@ -9,23 +10,24 @@
 		</title>
 
 		{# APPEL BOOTSTRAP #}
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-		
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 		{# ICONS LINEAWESOME #}
-		<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+		<link
+		rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 		{# ICONS GOOGLE  #}
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		{# TYPO OPEN SANS  #}
-		<link rel="stylesheet" href="https://use.typekit.net/ort4rqt.css">
+		<link
+		rel="stylesheet" href="https://use.typekit.net/ort4rqt.css">
 		{# TYPO PROXIMA NOVA #}
-		<link rel="stylesheet" href="https://use.typekit.net/ort4rqt.css">
-		
-		{% block stylesheets %}
-		{% endblock %}
+		<link rel="stylesheet" href="https://use.typekit.net/ort4rqt.css"> {% block stylesheets %}{% endblock %}
 
 		{# Fichier de style personalisé généralisé (button, titre, couleurs ...) pour toute les pages#}
 		<link href="{{ asset('styles/style.css') }}" type="text/css" rel="stylesheet">
-		
+
 		{% block javascripts %}
 			{#{{ encore_entry_script_tags('app') }}#}
 		{% endblock %}
@@ -41,13 +43,18 @@
 			{% block footer %}
 				{% include 'main/footer.html.twig' %}
 			{% endblock footer %}
-			
+
 		{% endblock %}
 		{# JS BOOTSTRAP #}
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<<<<<<< Updated upstream
 		<script src="{{ asset('js/autoloc.js') }}" defer>
 		</script>
 		
+=======
+		<script src="{{ asset('js/geoloc.js') }}" defer></script>
+
+>>>>>>> Stashed changes
 	</body>
 </html>

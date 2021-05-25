@@ -29,22 +29,35 @@ h2 span{
 }
 h3{
     font-family: proxima-nova, sans-serif;
-    font-size: 25px;
-    font-weight: 400;
+    font-size: 35px;
+    font-weight: 300;
+    text-transform: uppercase;
     color: var(--blue);
 }
 h3 span{
     color: var(--blueGris2);
-    font-weight: 600;
+    font-weight: 500;
 }
 
-h4
-h5
+h4{
+    font-family: proxima-nova, sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    color: var(--blue);
+}
+h4 span{
+    color: var(--blueGris2);
+    font-weight: 500;
+}
+h5{
+    color:var(--blue) ;
+    font-weight: 600;
+    /* text-decoration: underline; */
+}
 p{
     font-family: open-sans, sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
-p span
+
 
 /* END FONTS SETTINGS */
-

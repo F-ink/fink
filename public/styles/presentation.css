@@ -1,0 +1,70 @@
+.talk span {
+    color: #0C233E;
+    font-weight: 700;
+}
+
+.talk {
+    text-align: justify;
+    /* padding-right: 5%; */
+    background-color: white;
+    border-radius: 15px;
+    padding: 1% 2%;
+    /* box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64);
+    -webkit-box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64);
+    -moz-box-shadow: 1px 1px 25px -5px rgba(12,35,62,0.64); */
+}
+
+.premium>h4 span {
+    color: #0C233E;
+    font-weight: 700;
+}
+
+
+
+/* CARTE PHOTOS */
+#img-student {
+    position: relative;
+}
+
+#img-student a {
+    justify-content: center;
+    display: flex;
+}
+
+#img-student .texte-original {
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.5em;
+    text-shadow: 2px 2px 2px #000;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+#img-student .texte-hover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+#img-student:hover .texte-hover {
+    opacity: 1;
+}
+
+#img-student img {
+    max-width: 40%;
+    max-height: 40%;
+    border-radius: 50%;
+}
+
+#img-student:hover img {
+    opacity: 0.5;
+}
+
+/* END CARTE PHOTO */
