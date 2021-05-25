@@ -19,7 +19,12 @@
     font-weight: 700;
 }
 
-
+.picture img {
+    width: 60%;
+    position: absolute;
+    right: 0;
+    z-index: -3;
+}
 
 /* CARTE PHOTOS */
 #img-student {

@@ -31,7 +31,7 @@
 			<div class="centre align-self-center">
 				<div id="intro" class="">
 					<div id="titre">
-						<h1 class="">FINK</h1>
+						<h1 class="d-xs-none d-none ">FINK</h1>
 						<h2 class="font-phone">FIND YOUR
 							<span>
 								INK
@@ -43,18 +43,18 @@
 				{# barre de recherche #}
 				<div class="row">
 				<div id="search" class="d-flex">
-					<form action="" method="POST" class="flex-wrap d-flex w-75 align-self-center ">
+					<form action="" method="POST" class="flex-wrap d-flex w-100 align-self-center ">
 
 						{# Style(s) #}
-						<select class="search-bar col-xs-12 col-sm-12 col-4" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+						<select class="search-bar col-12 col-sm-12 col-md-6" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 							{% for style in styles %}
 								<option value="{{style.id}}">{{style.name}}</option>
 							{% endfor %}
 						</select>
 
 						{# localisation #}
-						<input type="text" class="col-xs-12 col-sm-12 col-4" id="search-city" name="city" placeholder="Localisation">
-						<button for="submit" class="button-search col-xs-12 col-sm-12">FINK!</button>
+						<input type="text" class="col-12 col-sm-12 col-md-6" id="search-city" name="city" placeholder="Localisation">
+						<button for="submit" class="button-search col-12 col-sm-12 col-md-4">FINK!</button>
 					</form>
 				</div>
 				</div>

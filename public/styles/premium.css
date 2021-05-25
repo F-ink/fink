@@ -93,7 +93,7 @@
 
 /* MEDIA QUERIES */
 
-/* // Small devices (landscape phones, less than 768px) */
+/* // Small devices (landscape phones, less than 750px) */
 @media (max-width: 750px) {
     .carte1,
     .carte2 {
@@ -113,7 +113,7 @@
 
 
 
-/*  Large devices (desktops, 992px and up) */
+/*  Large devices (desktops, 892px and up) */
 @media (min-width: 892px) {
     .carte1 {
         display: flex;
