@@ -5,15 +5,15 @@
 <button type="submit">
 			Se connecter avec Instagram
 			<i class="lab la-instagram"></i>
-		
+		</button>
 
 			
-	<form method="post">
+	<form method="post" action="{{ path('app_login') }} ">
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 		
-		</button>
+		
 
 	<p>-- ou --</p>
 

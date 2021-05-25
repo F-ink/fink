@@ -10,11 +10,11 @@
 	{# --------------- NAV FOR AUTH TATOO --------------- #}
 
 
-	{# {% if app.user and is_granted('ROLE_ARTIST') %} #}
+	 {% if app.user  %}
 		<div class="userbar"> <div>
 			<p>
 				Bonjour
-				{#{{ app.user.username }}#}
+				{{ app.user.pseudo }}
 				! Bonne visite :)
 			</p>
 		</div>
@@ -28,16 +28,16 @@
 			<a href="">
 				<span class="material-icons">account_circle</span>
 			</a>
-			<a href="">
+			<a href="{{ path('app_logout') }}">
 				<span class="material-icons">logout</span>
 			</a>
-			{# {{ asset('/asset/uploads/' ~ artist.profilePicture) }} #}
+			
 
 
 		</div>
 
 	</div>
-	{# {% endif %} #}
+	 {% endif %} 
 
 
 	<nav class="navbar navbar-expand-lg navbar-light " id="nav">
@@ -47,7 +47,7 @@
 
 			{# LOGO & BASIC NAV #}
 			<div>
-				<img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/>
+				<a href="{{ path('home') }}"><img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/></a>
 			</div>
 
 			<div>
@@ -58,13 +58,13 @@
 					<ul>
 						<li>
 							<button>
-								GALLERIE
+								<a href="{{ path('gallerie') }}">GALLERIE</a>
 								<span class="material-icons">search</span>
 							</button>
 						</li>
 						<li>
 							<button>
-								HOME
+								<a href="{{ path('home') }}">HOME</a>
 								<span class="material-icons">home</span>
 							</button>
 
