@@ -37,19 +37,21 @@
 			{% for artiste in artistes %}
 				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 					<div class="carte-artiste card">
+					{# METTRE IMG CoverPicture ci-dessous: #}
+					<img src={{ asset('/asset/uploads/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
 						<div class="info-artiste">
 							<div class="profil-picture">
-								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
+							{# ICi l'image de ProfilePicture #}
+								<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
 							</div>
 							<div class="name d-flex justify-content-between">
 								<p>{{ artiste.pseudo }}</p>
-								<p><i class="fas fa-map-marker-alt"></i> {{ artiste.city }}</p>
+								<p><i class="fas fa-map-marker-alt"></i> {{ artiste.city }} </p>
 							</div>
 							<div class="styles d-inline-flex">
-						    {% for style in artiste.styles %}
-								<p>{{ style.name }}</p>
-							  {% endfor %}
-					
+								{% for style in artiste.styles %}
+									<p>{{ style.name }}</p>
+							  	{% endfor %}
 							</div>
 						</div>
 					</div>

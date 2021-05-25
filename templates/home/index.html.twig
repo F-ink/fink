@@ -30,9 +30,9 @@
 		<div id="home-header" class="d-flex">
 			<div class="centre align-self-center">
 				<div id="intro" class="">
-					<div>
-						<h1>FINK</h1>
-						<h2>FIND YOUR
+					<div id="titre">
+						<h1 class="">FINK</h1>
+						<h2 class="font-phone">FIND YOUR
 							<span>
 								INK
 							</span>
@@ -41,22 +41,25 @@
 				</div>
 
 				{# barre de recherche #}
+				<div class="row">
 				<div id="search" class="d-flex">
 					<form
 						action="" methode="" class="flex-wrap d-flex w-75 align-self-center ">
 
 						{# Style(s) #}
-						<select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+						<select class="search-bar col-xs-12 col-sm-12 col-4" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 							{% for style in styles %}
 								<option value="{{style.id}}">{{style.name}}</option>
 							{% endfor %}
 						</select>
 
 						{# localisation #}
-						<input type="text" id="search-city" placeholder="    Localisation">
-						<button for="submit" class="button-search ">FINK!</button>
+						<input type="text" class="col-xs-12 col-sm-12 col-4" id="search-city" placeholder="    Localisation">
+						<button for="submit" class="button-search col-xs-12 col-sm-12">FINK!</button>
 					</form>
 				</div>
+				</div>
+				
 			</div>
 		</div>
 		</div>
@@ -80,11 +83,11 @@
 				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 					<div class="carte-artiste card">
 					{# METTRE IMG CoverPicture ci-dessous: #}
-					<img src={{ asset('img/logo.png') }} alt="">
+					<img src={{ asset('/asset/uploads/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
 						<div class="info-artiste">
 							<div class="profil-picture">
 							{# ICi l'image de ProfilePicture #}
-								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
+								<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
 							</div>
 							<div class="name d-flex justify-content-between">
 								<p>{{ artiste.pseudo }}</p>
