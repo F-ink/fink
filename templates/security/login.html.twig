@@ -2,20 +2,20 @@
 
 <h1 class="titleconnect">SE CONNECTER</h1>
 
-<button type="submit">
+<button type="submit" class="bouton">
 			Se connecter avec Instagram
 			<i class="lab la-instagram"></i>
 		</button>
 
 			
-	<form method="post" action="{{ path('app_login') }} ">
+	<form method="post" action="{{ path('app_login') }} " >
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 		
 		
 
-	<p>-- ou --</p>
+	<p class="or"> ou </p>
 
 		<div>
 			<input type="email" value="" name="email"  placeholder="Email" autocomplete="email" required autofocus>
@@ -31,13 +31,13 @@
 
 		<div>
 			<label>
-				<input type="checkbox" name="_remember_me">
+				<input type="checkbox" name="_remember_me" class="checkbox">
 				Se souvenir de moi
 			</label>
 		</div>
 
 
-		<button type="submit">
+		<button type="submit" class="bouton">
 			OK !
 		</button>
 	</form>
