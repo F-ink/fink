@@ -34,6 +34,7 @@ class HomeController extends AbstractController
         );
        
 
+        // Formulaire de connexion
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -46,9 +47,8 @@ class HomeController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-
-            // // generate a signed url and email it to the user
+           
+            // generate a signed url and email it to the user
             // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
             //     (new TemplatedEmail())
             //         ->from(new Address('finkart@outlook.fr', 'Fink Art'))
@@ -58,7 +58,7 @@ class HomeController extends AbstractController
             // );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('_profiler_home');
+            return $this->redirectToRoute('home');
         }
 
 
@@ -131,7 +131,7 @@ class HomeController extends AbstractController
             // );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('_profiler_home');
+            return $this->redirectToRoute('home');
         }
 
 
