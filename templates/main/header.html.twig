@@ -14,9 +14,7 @@
 <div class="userbar">
 
 	<div>
-		<a href="">
-			<p>PASSER PREMIUM</p>
-		</a>
+		{# <img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}"> #}
 	</div>
 
 
@@ -34,7 +32,7 @@
 		<p>
 			Bonjour
 			{{ app.user.pseudo }}
-			! Bonne visite :)
+			! <a href="{{ path('info') }}">Vous souhaitez passer premium ?</a>
 		</p>
 	</div>
 </div>

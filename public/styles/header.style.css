@@ -18,12 +18,18 @@
     transform: translate(10px, 5px);
 }
 
-
+.userbutton p{
+    text-align: right;
+}
 
 .userbar{
     background: #5E8289;
     display: flex;
     justify-content: space-between;
+    /* position: fixed;  Set the navbar to fixed position 
+  top: 0;  Position the navbar at the top of the page 
+  width: 100%;  Full width 
+  z-index: 10000; */
 }
 
 .userbar div{
