@@ -7,13 +7,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 	<script src="{{asset('js/search.js')}}"></script>
 
-{# Fichier style de la page premium #}
+	{# Fichier style de la page premium #}
 	<link href="{{ asset('styles/premium.css') }}" type="text/css" rel="stylesheet">
 
 {% endblock %}
 
 
-{% block title %}FINK | Find your INK artist 
+{% block title %}FINK | Find your INK artist
 {% endblock %}
 
 
@@ -25,56 +25,91 @@
 	{% endblock header %}
 
 	{# Container principal du body#}
-	<div class="container" id="info-projet">
-    {# Ici la partie présentation du projet #}
-        <div class="info">
-        <h3 class="text-center mb-5">FINK, un projet de fin d'étude ancré </h3>
-        <div class="mt-5 row d-flex col-12">
-            <div class="talk col-8 col-xs-12">
-                <h4>Projet | Développeur Web & Web Mobile 2021</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic a ipsam dignissimos voluptate quibusdam perferendis iste neque provident qui inventore. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, iusto praesentium. Ab fugit quis maiores eius nemo adipisci inventore voluptatem esse quaerat est, et nostrum quos alias vitae suscipit sequi! A quas accusamus quo sequi dolores, eius inventore consectetur voluptates. </p>
-            </div>
-            <div class="picture col-4 .d-xs-none .d-xs-none">
-                <img src={{ asset('img/logo.png') }} alt="Le logo Fink"/>           
-            </div>
-        </div>
-            
-        <div class="students col-12">
-            <div class="row">
-                <div class="col-4 col-xs-6"></div>
-                <div class="col-4 col-xs-6"></div>
-                <div class="col-4 col-xs-6"></div>
-            </div>
-            <div class="row">
-                <div class="col-6 col-xs-6"></div>
-                <div class="col-6 col-xs-6"></div>
-            </div>
-        </div>
+	<div
+		class="container" id="info-projet">
+		{# Ici la partie présentation du projet #}
+		<div class="info">
+			<h3 class="text-center mb-5">FINK, un projet de fin d'étude ancré
+			</h3>
+			<div class="mt-5 row d-flex col-12">
+				<div class="talk col-8 col-xs-12">
+					<h4 class="mb-4">Projet | Développeur Web & Web Mobile 2021</h4>
+					<p>
+						\\ En 2021, 5 étudiants de l'école
+						<span>
+							WebForce3
+						</span>
+						se sont lancé un défi afin de réaliser leur projet de fin d'études dans le cadre de la formation
+						<span>
+							'Développeur Web & Web Mobile'.
+						</span>
+					</p>
+					<p>
+						<span>Le sujet :
+						</span>
+						Créer une
+						<span>
+							application web
+						</span>
+						en utilisant une architecture MVC et des FrameWorks Front-End.</p>
+					<p>Partant du constat que le monde artistique du tatouage est méconnu, que beaucoup utilisent le bouche à oreille pour trouver l'artiste idéal et n'arrive pas forcement à trouver un artiste selon un style en particulier, nous avons immaginé une application web se basant sur deux axes :
+					</p>
+					<p>
+						<span>Pour le tatoueur
+						</span>
+						: Une application permettant de se créer un profil public avec des informations de contact, un référencement dans sa ville, ses styles favoris et un apercu de son travail.</p>
+					<p>
+						<span>Pour le visiteur</span>
+						: La possibilité de trouver l'artiste idéal dans son style recherché, dans sa ville grace à la localisation possible puis d'avoir accès à un apercu de son travail.</p>
+				</div>
+				<div class="picture col-4 .d-xs-none .d-xs-none">
+					<img src={{ asset('img/logo.png') }} alt="Le logo Fink"/>
+				</div>
+			</div>
+
+			<div class="students mt-5 col-12">
+				<div
+					class="row">
+					<!-- RECADRER LES PHOTOS SQUARE -->
+					<div class="col-4 col-xs-6" id="img-student">
+						<a href="https://www.linkedin.com/in/aurelien-thierry83/">
+							<img src={{ asset('img/contacts/Aurélien.jpg') }} alt="Aurélien | Back-End">
+							<div class="texte-hover">
+								<div class="texte-original">Aurélien | Back-End</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-4 col-xs-6" id="img-student"></div>
+					<div class="col-4 col-xs-6" id="img-student"></div>
+					<div class="col-4 col-xs-6" id="img-student"></div>
+					<div class="col-4 col-xs-6" id="img-student"></div>
+				</div>
+			</div>
+		</div>
+
+		{# ici la partie présentation forfait de l'application | Premium #}
+		<div class="premium mt-5">
+			<h3 class="text-center">Envie de commencer avec nous?</h3>
+			<h4 class="text-center">Découvrez nos différentes
+				<span>
+					formules
+				</span>
+			</h4>
+			<div
+				class="row col-12">
+				{# section free #}
+				<div class="col-6">
+					<div class="carte-free"></div>
+				</div>
+				{# section premium #}
+				<div class="col-6 ">
+					<div class="carte-premium"></div>
+				</div>
+			</div>
+		</div>
 
 
-        </div>
-
-    {# ici la partie présentation forfait de l'application | Premium #}
-        <div class="premium">
-            <h3 class="text-center">Envie de commencer avec nous?</h3>
-            <h4 class="text-center">Découvrez nos différentes formules</h4>
-            <div class="row col-12">
-            {# section free #}
-                <div class="col-6">
-                    <div class="carte-free"></div>
-                </div>
-            {# section premium #}
-                <div class="col-6 ">
-                    <div class="carte-premium">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-    
-    </div>
+	</div>
 
 	{# ici le footer #}
 	{% block footer %}
