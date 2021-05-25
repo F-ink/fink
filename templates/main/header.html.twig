@@ -7,125 +7,124 @@
 {% block header %}
 
 
-	{# --------------- NAV FOR AUTH TATOO --------------- #}
+{# --------------- NAV FOR AUTH TATOO --------------- #}
 
 
-	 {% if app.user  %}
-		<div class="userbar"> <div>
-			<p>
-				Bonjour
-				{{ app.user.pseudo }}
-				! Bonne visite :)
-			</p>
-		</div>
-		<div>
-			<a href="">
-				<p>PASSER PREMIUM</p>
-			</a>
-		</div>
+{% if app.user  %}
+<div class="userbar">
 
-		<div class="usericons">
-			<a href="">
+	<div>
+		<a href="">
+			<p>PASSER PREMIUM</p>
+		</a>
+	</div>
+
+
+	<div class="userbutton">
+		<button>
+			<a href="{{ path('app_logout') }}">Mon profil
 				<span class="material-icons">account_circle</span>
 			</a>
-			<a href="{{ path('app_logout') }}">
-				<span class="material-icons">logout</span>
-			</a>
-			
+		</button>
 
+		<button>
+			<a href="{{ path('app_logout') }}">Se déconnecter <span class="material-icons">logout</span>
+			</a>
+		</button>
+		<p>
+			Bonjour
+			{{ app.user.pseudo }}
+			! Bonne visite :)
+		</p>
+	</div>
+</div>
+
+{% endif %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light " id="nav">
+<div class="container-fluid">
+
+
+	{# --------------- LOGO & BASIC NAV --------------- #}
+	<div>
+		<a href="{{ path('home') }}"><img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/></a>
+	</div>
+
+	<div>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse " id="navbarNav">
+			<ul>
+				<li>
+					<button>
+						<a href="{{ path('gallerie') }}">GALLERIE</a>
+						<span class="material-icons">search</span>
+					</button>
+				</li>
+				<li>
+					<button>
+						<a href="{{ path('home') }}">HOME</a>
+						<span class="material-icons">home</span>
+					</button>
+
+				</li>
+				{% if app.user == false %}
+					<li>
+						<button class="myBtn bouton">
+							JE SUIS TATOUEUR/SE
+							<span class="material-icons">brush</span>
+						</button>
+
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+
+	{# <-- ESPACE CONNEXION --> #}
+
+	<div class="my-modal">
+
+		<div class="my-modal-content">
+
+			<span class="close">&times;</span>
+
+			{{render(controller('App\\Controller\\SecurityController::login'))}}
+
+
+			<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
+			<p class="myBtn cursor">Mot de passe oublié ?</p>
+		</div>
+
+	</div>
+
+	{# <-- ESPACE INSCRIPTION --> #}
+	<div class="my-modal">
+
+		<div class="my-modal-content">
+
+			<span class="close">&times;</span>
+
+			{{render(controller('App\\Controller\\RegistrationController::register'))}}
 
 		</div>
 
 	</div>
-	 {% endif %} 
 
+	{# <-- ESPACE OUBLI DE MDP --> #}
+	<div class="my-modal">
 
-	<nav class="navbar navbar-expand-lg navbar-light " id="nav">
-		<div
-			class="container-fluid">
+		<div class="my-modal-content">
 
+			<span class="close">&times;</span>
 
-			{# LOGO & BASIC NAV #}
-			<div>
-				<a href="{{ path('home') }}"><img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/></a>
-			</div>
+			{{render(controller('App\\Controller\\ResetPasswordController::index'))}}
 
-			<div>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse " id="navbarNav">
-					<ul>
-						<li>
-							<button>
-								<a href="{{ path('gallerie') }}">GALLERIE</a>
-								<span class="material-icons">search</span>
-							</button>
-						</li>
-						<li>
-							<button>
-								<a href="{{ path('home') }}">HOME</a>
-								<span class="material-icons">home</span>
-							</button>
+		</div>
 
-						</li>
-						{% if is_granted('ROLE_ARTIST') == false %}
-							<li>
-								<button class="myBtn bouton">
-									JE SUIS TATOUEUR/SE
-									<span class="material-icons">brush</span>
-								</button>
+	</div>
 
-							</li>
-						{% endif %}
-					</ul>
-				</div>
-			</div>
-
-
-			{# <-- ESPACE CONNEXION --> #}
-
-			<div class="my-modal">
-
-				<div class="my-modal-content">
-
-					<span class="close">&times;</span>
-
-					{{render(controller('App\\Controller\\SecurityController::login'))}}
-
-
-					<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
-					<p class="myBtn cursor">Mot de passe oublié ?</p>
-				</div>
-
-			</div>
-
-			{# <-- ESPACE INSCRIPTION --> #}
-			<div class="my-modal">
-
-				<div class="my-modal-content">
-
-					<span class="close">&times;</span>
-
-					{{render(controller('App\\Controller\\RegistrationController::register'))}}
-
-				</div>
-
-			</div>
-
-			{# <-- ESPACE OUBLI DE MDP --> #}
-			<div class="my-modal">
-
-				<div class="my-modal-content">
-
-					<span class="close">&times;</span>
-
-					{{render(controller('App\\Controller\\ResetPasswordController::index'))}}
-
-				</div>
-
-			</div>
-
-		</nav>
-
-	{% endblock header %}
+</nav>{% endblock header %}

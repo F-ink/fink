@@ -14,15 +14,14 @@
     width: 200px;
 }
 
-#nav span{
+#nav span , .userbutton span{
     transform: translate(10px, 5px);
 }
 
 
 
 .userbar{
-    background: rgb(188,205,215);
-background: linear-gradient(2deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%);
+    background: #5E8289;
     display: flex;
     justify-content: space-between;
 }
@@ -37,12 +36,15 @@ background: linear-gradient(2deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%)
     padding: 0;
 }
 
-.userbar span{
-    color: white;
-    font-size: 35px;
-    
-}
 
+/* .userbutton button {
+    color: #0C233E;
+    border-style: none;
+    border-radius: 50px;
+    background-color: white;
+    padding: 4px 30px 8px;
+    margin: 10px 10px;
+} */
 
 .titleconnect{
     font-size: 40px;
@@ -51,18 +53,32 @@ background: linear-gradient(2deg, rgba(188,205,215,1) 0%, rgba(12,35,62,1) 100%)
 
 
 
-#nav button{
-    color: #0C233E;
+#nav button , .userbutton button{
+
+    
+    ;
     border-style: none;
     border-radius: 50px;
     background-color: white;
     padding: 4px 30px 8px;
     margin: 10px 10px;
 }
-#nav button:hover{
+#nav button:hover , .userbutton button:hover{
     box-shadow: 0px 0px 5px #9ba7b3c4;
     transition: 0.3s;
 }
+
+.userbutton button {
+margin: 0;
+}
+
+#nav a , .userbutton a{
+    text-decoration:none;
+    color: #0C233E
+}
+
+
+
 
 #nav input{
     width: 250px;
