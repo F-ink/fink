@@ -15,7 +15,7 @@
         <div class="list">
             {% for artiste in artistes %}
 				<a href="{{ path('artist_view', {'id': artiste.id}) }}">
-					<div class="carte-artiste card">
+					<div class="carte-artiste card js-marker">
 					{# METTRE IMG CoverPicture ci-dessous: #}
 					<img src={{ asset('/asset/uploads/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
 						<div class="info-artiste">
@@ -37,6 +37,10 @@
 				</a>
 				{% endfor %}
         </div>
+
+		<div class="map" id="map" >
+
+		</div>
 
     </div>
 
