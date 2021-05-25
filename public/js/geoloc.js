@@ -9,7 +9,9 @@ function maPosition(position) {
 
 
 if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(maPosition);
+    navigator.geolocation.getCurrentPosition(maPosition, erreurPosition,{maximumAge:120000, enableHighAccuracy:true});
+
+
   } else {
     function erreurPosition(error) {
         var info = "Erreur lors de la géolocalisation : ";
@@ -30,3 +32,5 @@ if(navigator.geolocation) {
     }
     document.getElementById("infoposition").innerHTML = info;
   };
+
+

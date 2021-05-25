@@ -141,4 +141,20 @@ class HomeController extends AbstractController
             
         ]);
     }
+
+     /**
+     * @Route("/search", name="search")
+     */
+    public function search(): Response
+    {
+        $artiste = $this->getDoctrine()->getRepository(Artist::class)->findBy(['city' => $_POST['city']]);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $styles = $entityManager->getRepository(Style::class)->findAll();
+
+        return $this->render('home/search.html.twig', [
+            'artiste' => $artiste,
+            'styles' => $styles
+        ]);
+    }
 }
