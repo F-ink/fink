@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Security;
-
+use App\Entity\Artist;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
