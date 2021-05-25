@@ -27,11 +27,10 @@ class HomeController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $styles = $entityManager->getRepository(Style::class)->findAll();
         
-        //j'affiche les nouveaux inscrits = par ordre d'ID, le plus grand est le dernier:
+        //j'affiche les nouveaux inscrits = par ordre d'ID, le plus grand ID est donc le dernier: limité à 4 affichages
         $artistes = $entityManager->getRepository(Artist::class)->findBy(
             array(),
-            array('id' => 'DESC')
-        );
+            array('id' => 'DESC'), 4);
        
 
         // Formulaire de connexion
