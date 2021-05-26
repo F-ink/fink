@@ -15,7 +15,7 @@
 
     <p class="or"> ou </p>
         
-    {{ form_start(registrationForm) }}
+    {{ form_start(registrationForm, {action: path('app_register')} ) }}
         {{ form_widget(registrationForm.pseudo , {'attr': {'placeholder': ' pseudo'}}) }}
         {{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email'}}) }}
         {{ form_widget(registrationForm.plainPassword.first, {'attr': {'placeholder': 'Mot de passe'}}) }}
