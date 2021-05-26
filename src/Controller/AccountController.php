@@ -223,7 +223,7 @@ class AccountController extends AbstractController
             $em->flush();
         }
 
-        return $this->render('account/index.html.twig');
+        return $this->render('account/update.html.twig');
     }
 
 
