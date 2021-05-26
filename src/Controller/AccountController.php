@@ -119,6 +119,7 @@ class AccountController extends AbstractController
                 foreach ($styles as $style) {
                     $artist->addStyle($style);
                 }
+
                 /*if(!isset($safe['re-style'])){
                   
                  $artist->removeStyle($style);
@@ -140,7 +141,7 @@ class AccountController extends AbstractController
             'artist_style' => $artist_style
         ]);
     }
-
+    }
     //Affichage du Profil
 
     /**
