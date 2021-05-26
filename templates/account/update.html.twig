@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body%}
-	<h2>Modifier mon profil</h2>
+	<h2>Mettre a jour mon profil</h2>
 	<form method="POST" enctype="multipart/form-data">
 		<div>
 			<label for="lastname">Votre nom:
@@ -22,9 +22,13 @@
 			<input type="text" name="pseudo" placeholder="Entrez votre nom ici" value="{{artist.pseudo}}" required>
 		</div>
 		<div>
-		    <img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" alt="Photo de profil" width="150px">
+			<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" alt="Photo de profil" width="150px">
 			<label for="profile_picture">Modifier ma photo de profil</label>
-			<input type="file" name="profile_picture" placeholder="Choississez une photo de profil"  >
+			<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
+		</div>
+		<div>
+			<label for="cover_picture">Choisissez une photo de couverture</label>
+			<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
 		</div>
 		<div>
 			<label for="tattoo_shop">Nom de votre salon :
@@ -62,7 +66,7 @@
 				<div class="form-check">
 					<input class="form-check-input" type="checkbox" name="re-style" id="re-style-{{style.id}}" value="{{style.id}}" checked>
 					<label class="form-check-label" for="re-style">
-					{{style.name}}
+						{{style.name}}
 					</label>
 				</div>
 			{% endfor %}
@@ -81,7 +85,7 @@
 		</div>
 
 		<div>
-			<input type="submit" name="submit" value="Modifier mon compte">
+			<input type="submit" name="submit" value="Mettre a jour mon profil">
 		</div>
 	</form>
 
