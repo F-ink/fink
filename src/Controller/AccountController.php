@@ -89,7 +89,7 @@ class AccountController extends AbstractController
             }
             if (count($errors) === 0) {
 
-   
+                $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
                 $artist->setPseudo($safe['pseudo']);

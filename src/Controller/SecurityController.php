@@ -88,7 +88,7 @@ class SecurityController extends AbstractController
                 $entityManager->flush();
             } catch (\Exception $e) {
                 $this->addFlash('warning', 'Une erreur est survenue : ' . $e->getMessage());
-                return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('home');
             }
 
             // On génère l'URL de réinitialisation de mot de passe
@@ -110,7 +110,7 @@ class SecurityController extends AbstractController
             $this->addFlash('message', 'E-mail de réinitialisation du mot de passe envoyé !');
 
             // On redirige vers la page de login
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('home');
         }
 
         // On envoie le formulaire à la vue
@@ -130,7 +130,7 @@ class SecurityController extends AbstractController
         if ($user === null) {
             // On affiche une erreur
             $this->addFlash('danger', 'Token Inconnu');
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('home');
         }
 
         // Si le formulaire est envoyé en méthode post
@@ -150,7 +150,7 @@ class SecurityController extends AbstractController
             $this->addFlash('message', 'Mot de passe mis à jour');
 
             // On redirige vers la page de connexion
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('profil_'.$user->getId());
         } else {
             // Si on n'a pas reçu les données, on affiche le formulaire
             return $this->render('security/reset_password.html.twig', ['token' => $token]);
