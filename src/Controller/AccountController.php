@@ -128,6 +128,8 @@ class AccountController extends AbstractController
                 // J'ai des erreurs, je les affiche via le flash message
                 $this->addFlash('danger', implode(' - ', $errors));
             }
+
+            return $this->redirectToRoute('profil_'.$artist->getId());
         }
 
         return $this->render('account/update.html.twig', [
@@ -140,7 +142,7 @@ class AccountController extends AbstractController
     //Affichage du Profil
 
     /**
-     * @Route("/profil/{id}", name="account_profil", methods={"GET","POST"})
+     * @Route("/profil/{id}", name="profil_", methods={"GET","POST"})
      */
     public function show(int $id, Request $request): Response
     {
@@ -175,7 +177,7 @@ class AccountController extends AbstractController
             $em->persist($artist);
             $em->flush();
 
-            return $this->redirectToRoute('account_profil');
+            return $this->redirectToRoute('profil_'.$artist->getId());
         }
 
         return $this->render('account/profile.html.twig', [
@@ -183,6 +185,9 @@ class AccountController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
+    
+    
     public function addCover(int $id)
     {
 
