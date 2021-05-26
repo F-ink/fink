@@ -14,11 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccountController extends AbstractController
 {
 
-    //Creation de son profil et uploads de 0 a 6 
+    
     /**
-     * @Route("/account/create/{id}", name="create")
+     * @Route("/account/create/{id}", name="account_create", requirements={"id":"\d+"})
      */
-    public function create(int $id, Style $styles): Response
+    public function create(int $id): Response
     {
         $errors = [];
 
@@ -55,7 +55,7 @@ class AccountController extends AbstractController
                 $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
             }
 
-            // je verifie mon $_files avec mes differentes contraintes, format, taille 
+            //je verifie mon $_files avec mes differentes contraintes, format, taille 
             if (!empty($_FILES)) {
                 $target_dir = $this->getParameter('images_directory') . "/"; // uploads directory
                 $file = basename($_FILES['profile_picture']['name']);
@@ -89,8 +89,8 @@ class AccountController extends AbstractController
                 }
             }
             if (count($errors) === 0) {
-
-
+                
+                $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
                 $artist->setTattooShop($safe['tattoo_shop']);
@@ -109,13 +109,16 @@ class AccountController extends AbstractController
                 $this->addFlash('success', 'Super! Votre compte a bien ete cree');
             } else {
                 // J'ai des erreurs, je les affiche via le flash message
+                
                 $this->addFlash('danger', implode(' - ', $errors));
             }
+
+            return $this->redirectToRoute('account_profil');
         }
 
         return $this->render('account/index.html.twig', [
-            'artist' => $artist,
-            'styles'  => $styles
+            'artist'    => $artist,
+            'styles'    => $styles
         ]);
     }
 
@@ -124,7 +127,7 @@ class AccountController extends AbstractController
     /**
      * @Route("/account/update/{id}", name="account_update")
      */
-    public function update(int $id, Style $style): Response
+    public function update(int $id): Response
     {
         $errors = [];
 
@@ -196,7 +199,7 @@ class AccountController extends AbstractController
             }
             if (count($errors) === 0) {
 
-
+   
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
                 $artist->setPseudo($safe['pseudo']);
@@ -319,11 +322,5 @@ class AccountController extends AbstractController
 
         return $this->render('account/index.html.twig');
     }
-
-
-    /*public function hide()
-    {
-        if();
-    }*/
 
 }
