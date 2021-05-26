@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210526082838 extends AbstractMigration
+final class Version20210526132259 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20210526082838 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE artist ADD reset_token VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE artist ADD lat VARCHAR(255) DEFAULT NULL, ADD lng VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE artist DROP reset_token');
+        $this->addSql('ALTER TABLE artist DROP lat, DROP lng');
     }
 }
