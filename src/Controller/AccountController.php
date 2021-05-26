@@ -15,7 +15,7 @@ class AccountController extends AbstractController
 {
     // Mise a jour de son Profil
     /**
-     * @Route("/account/update/{id}", name="account_update", requirements={"id":"\d+"})
+     * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"})
      */
     public function update(int $id): Response
     {
