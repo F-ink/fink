@@ -128,6 +128,16 @@ class Artist implements UserInterface
      */
     private $reset_token;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lng;
+
   
 
     public function __construct()
@@ -466,6 +476,30 @@ class Artist implements UserInterface
     public function setResetToken(?string $reset_token): self
     {
         $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
+    public function getLat(): ?string
+    {
+        return $this->lat;
+    }
+
+    public function setLat(string $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getLng(): ?string
+    {
+        return $this->lng;
+    }
+
+    public function setLng(?string $lng): self
+    {
+        $this->lng = $lng;
 
         return $this;
     }
