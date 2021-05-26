@@ -10,7 +10,9 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
@@ -27,7 +29,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/register", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, MailerInterface $mailer): Response
     {
         $user = new Artist();
         $user->setCreatedAt(new \DateTime('now'));
@@ -53,16 +55,32 @@ class RegistrationController extends AbstractController
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation(
-                'app_verify_email',
-                $user,
-                (new TemplatedEmail())
-                    ->from(new Address('finkart@outlook.fr', 'Fink Art'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                 'app_verify_email',
+                 $user,
+                 (new TemplatedEmail())
+                     ->from(new Address('finkart@outlook.fr', 'Fink Art'))
+                     ->to($user->getEmail())
+                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
+             );
             // do anything else you need here, like send an email
-
+            // On crée le message
+            $message = (new Email())
+                // On attribue l'expéditeur
+                ->From('finkart@outlook.fr')
+                // On attribue le destinataire
+                ->To($user->getEmail())
+                // On crée le texte avec la vue
+                ->subject('Time to activate your account')
+                            
+                ->html(
+                    $this->renderView(
+                        'emails/activation.html.twig',
+                        ['token' => $user->getActivationToken()]
+                    ),
+                    'text/html'
+                );
+            $mailer->send($message);
             return $this->redirectToRoute('home');
         }
 
@@ -75,10 +93,10 @@ class RegistrationController extends AbstractController
      * @Route("/verify/email", name="app_verify_email")
      */
     public function verifyUserEmail(Request $request, ArtistRepository $artistRepository): Response
-    {  
+    {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $user = $this->getUser();
-        
+
         $id = $request->get('id');
 
 
@@ -127,9 +145,9 @@ class RegistrationController extends AbstractController
         $entityManager->flush();
 
         // On génère un message
-        $this->addFlash('message', 'Utilisateur activé avec succès');
+        $this->addFlash('success', 'Utilisateur activé avec succès');
 
         // On retourne à l'accueil
-        return $this->redirectToRoute('accueil');
+        return $this->redirectToRoute('home');
     }
 }
