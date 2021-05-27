@@ -32,5 +32,7 @@
     border-top-color: #5069ff;
 }
 
-
-
+.map{
+    background-color: grey;
+    width: 500px;
+}
