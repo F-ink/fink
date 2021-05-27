@@ -13,11 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 class AccountController extends AbstractController
-{    // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
-    // Mise a jour de son Profil
-    /**
-     * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
-     */
+{ // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
+// Mise a jour de son Profil
+/**
+ * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
+ */
     public function update(int $id): Response
     {
         $errors = [];
@@ -57,7 +57,6 @@ class AccountController extends AbstractController
             if (empty($safe['style']) || count([$safe['style']]) > 4) {
                 $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
             }
-            // je verifie mon $_files avec mes differentes contraintes, format, taille 
             if (!empty($_FILES['profile_picture'])) {
                 $target_dir = $this->getParameter('images_directory') . "/"; // uploads directory
                 $file = basename($_FILES['profile_picture']['name']);
@@ -123,11 +122,10 @@ class AccountController extends AbstractController
                     }
                 }
             }
-        
-        
+            // je verifie mon $_files avec mes differentes contraintes, format, taille 
             if (count($errors) === 0) {
                 
-
+                
                 $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
@@ -135,12 +133,14 @@ class AccountController extends AbstractController
                 $artist->setTattooShop($safe['tattoo_shop']);
                 $artist->setCity($safe['city']);
                 $artist->setAddress($safe['address']);
-                $artist->setProfilePicture($fichier);
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
+                $artist->setProfilePicture($fichier);
                 $artist->setCoverPicture($fichier2);
+               
 
+               
                 $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
                 $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
                 if ($geoResult && $geoResult['total_results'] > 0) {
@@ -159,7 +159,7 @@ class AccountController extends AbstractController
 
                 // Pour rajouter chque style coche au tableau de styles il faut: 
                 $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
-               
+                 //dd($styles_artist);
                 foreach ($styles_artist as $style) {
                     $artist->addStyle($style);
                     
