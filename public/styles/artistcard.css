@@ -1,7 +1,6 @@
-
 /* CARD ARTISTE */
 
-.cartes a {
+.carte-artiste a {
     font-style: none;
     text-decoration: none;
     list-style: none;
@@ -22,13 +21,22 @@
     border-radius: 10px;
     box-shadow: 2px 2px 5px #404f5798;
 }
-.carte-artiste:hover{
+
+.carte-artiste > img{
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.carte-artiste:hover {
     box-shadow: 5px 5px 35px 5px #9ba7b3c4;
     transition: 0.5s;
 }
 
 .carte-artiste .profil-picture {
-    border: 1px solid #404F57;
+    border: 2px solid #404F57;
     height: 60px;
     width: 60px;
     z-index: 99;
@@ -37,6 +45,16 @@
     bottom: 0;
     left: -30px;
     background-color: rgb(114, 128, 153);
+
+
+}
+
+.carte-artiste .profil-picture img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 30px;
 }
 
 .carte-artiste .name {
@@ -65,8 +83,12 @@
     position: absolute;
     width: 70%;
     z-index: 90;
-    bottom: -40px;
+    bottom: -32px;
     left: 40px;
+    overflow-x: clip;
+    /* overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(100,137,144); */
 }
 
 .carte-artiste .styles p {
@@ -75,10 +97,15 @@
     border-radius: 55px;
     padding: 1px 10px;
     font-size: 12px;
-    text-align: justify;
+    text-align: center;
+    align-self: center;
+    white-space:nowrap;
     margin-right: 2%;
+    margin-bottom: 3%;
+    cursor: default;
 }
-.carte-artiste .styles p:hover{
+
+.carte-artiste .styles p:hover {
     background-color: #303e55;
 }
 

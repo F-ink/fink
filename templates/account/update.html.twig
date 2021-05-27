@@ -1,78 +1,39 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+	{# Fichier style de la page Update #}
+	<link href="{{ asset('styles/accountupdate.css') }}" type="text/css" rel="stylesheet">
+
+{% endblock %}
+
 {% block title %}Mettre a jour votre Profil
 {% endblock %}
 
-{% block body%}
+{% block body %}
 	{% for flashError in app.flashes('danger') %}
 		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
 	{% endfor %}
-	
-	<h2>Mettre a jour mon profil</h2>
-	<form method="POST" enctype="multipart/form-data">
-		<div>
-			<label for="lastname">Votre nom:
-			</label>
-			<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" required>
-		</div>
-		<div>
-			<label for="firstname">Votre prenom :
-			</label>
-			<input type="text" name="firstname" placeholder="Entrez votre prenom" value="{{artist.firstname}}" required>
-		</div>
-		<div>
-			<label for="pseudo">Votre pseudo:
-			</label>
-			<input type="text" name="pseudo" placeholder="Entrez votre nom ici" value="{{artist.pseudo}}" required>
-		</div>
-		<div>
-			<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" alt="Photo de profil" width="150px">
-			<label for="profile_picture">Modifier ma photo de profil</label>
-			<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
-		</div>
-		<div>
-			<label for="cover_picture">Choisissez une photo de couverture</label>
-			<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
-		</div>
-		<div>
-			<label for="tattoo_shop">Nom de votre salon :
-			</label>
-			<input type="text" name="tattoo_shop" placeholder="Votre salon" value="{{artist.tattooShop}}" required>
-		</div>
-		<div>
-			<label for="city">Ou peut-on vous trouver?
-			</label>
-			<input type="text" name="city" placeholder="Entrez votre ville" value="{{artist.city}}" required>
-		</div>
-		<div>
-			<label for="address">Votre adresse :
-			</label>
-			<input type="text" name="address" placeholder="Votre adresse" value="{{artist.address}}" required>
-		</div>
-		<div>
-			<label for="description">Description</label>
-			<textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required>
-				{{artist.description}}</textarea>
-		</div>
-		<div>
-			<label for="siret">Votre Siret :
-			</label>
-			<input type="text" name="siret" placeholder="Entrez votre siret" value="{{artist.siret}}" required>
-		</div>
-		<div>
-			<label for="instagram">Avez-vous Instagram?</label>
-			<input type="text" name="instagram" placeholder="Entrez votre pseudo :) " value="{{artist.instagram}}">
-		</div>
-		<div>
-			<p>Souhaitez-vous retirer des styles?
-			</p>
-			{% for style in artist_style %}
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" name="re-style" id="re-style-{{style.id}}" value="{{style.id}}" checked>
-					<label class="form-check-label" for="re-style">
-						{{style.name}}
+
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
+
+	{# container principal #}
+	<div class="container" id="update-profil">
+		<h3 class="text-center">Mettre à jour mon
+			<span>profil
+			</span>
+		</h3>
+		<div class="d-flex container-update">
+			<form method="POST" enctype="multipart/form-data">
+				<div>
+					<label for="lastname">Votre nom:
 					</label>
+					<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" required>
 				</div>
+<<<<<<< Updated upstream
 			{% endfor %}
 
 		</div>
@@ -83,15 +44,93 @@
 					<input class="form-check-input" type="checkbox" name="style" multiple="multiple" id="style{{style.id}}" value="{{style.id}}">
 					<label class="form-check-label" for="style{{style.id}}">
 						{{style.name}}
+=======
+				<div>
+					<label for="firstname">Votre prenom :
+>>>>>>> Stashed changes
 					</label>
+					<input type="text" name="firstname" placeholder="Entrez votre prenom" value="{{artist.firstname}}" required>
 				</div>
-			{% endfor %}
+				<div>
+					<label for="pseudo">Votre pseudo:
+					</label>
+					<input type="text" name="pseudo" placeholder="Entrez votre nom ici" value="{{artist.pseudo}}" required>
+				</div>
+				<div>
+					<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" alt="Photo de profil" width="150px">
+					<label for="profile_picture">Modifier ma photo de profil</label>
+					<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
+				</div>
+				<div>
+					<label for="cover_picture">Choisissez une photo de couverture</label>
+					<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
+				</div>
+				<div>
+					<label for="tattoo_shop">Nom de votre salon :
+					</label>
+					<input type="text" name="tattoo_shop" placeholder="Votre salon" value="{{artist.tattooShop}}" required>
+				</div>
+				<div>
+					<label for="city">Ou peut-on vous trouver?
+					</label>
+					<input type="text" name="city" placeholder="Entrez votre ville" value="{{artist.city}}" required>
+				</div>
+				<div>
+					<label for="address">Votre adresse :
+					</label>
+					<input type="text" name="address" placeholder="Votre adresse" value="{{artist.address}}" required>
+				</div>
+				<div>
+					<label for="description">Description</label>
+					<textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required>
+						{{artist.description}}</textarea>
+				</div>
+				<div>
+					<label for="siret">Votre Siret :
+					</label>
+					<input type="text" name="siret" placeholder="Entrez votre siret" value="{{artist.siret}}" required>
+				</div>
+				<div>
+					<label for="instagram">Avez-vous Instagram?</label>
+					<input type="text" name="instagram" placeholder="Entrez votre pseudo :) " value="{{artist.instagram}}">
+				</div>
+				<div>
+					<p>Souhaitez-vous retirer des styles?
+					</p>
+					{% for style in artist_style %}
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="re-style" id="re-style-{{style.id}}" value="{{style.id}}" checked>
+							<label class="form-check-label" for="re-style">
+								{{style.name}}
+							</label>
+						</div>
+					{% endfor %}
+
+				</div>
+				<div>
+					<p>Souhaitez-vous rajouter des styles ?</p>
+					{% for style in styles %}
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" name="style" id="style{{style.id}}" value="{{style.id}}">
+							<label class="form-check-label" for="style{{style.id}}">
+								{{style.name}}
+							</label>
+						</div>
+					{% endfor %}
+				</div>
+
+				<div>
+					<input type="submit" name="submit" value="Mettre a jour mon profil">
+				</div>
+			</form>
 		</div>
 
-		<div>
-			<input type="submit" name="submit" value="Mettre a jour mon profil">
-		</div>
-	</form>
+
+	</div>
 
 
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
 {% endblock %}
