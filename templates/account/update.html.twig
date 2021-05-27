@@ -16,7 +16,7 @@
 
 {% block body %}
 	{% for flashError in app.flashes('danger') %}
-		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+		<div class="alert alert-danger" id="barre-alerte" role="alert">{{ flashError }}</div>
 	{% endfor %}
 
 	{# ici le header user connected or not #}
