@@ -87,7 +87,7 @@ class AccountController extends AbstractController
                     if (!move_uploaded_file($tmp_name, $newfile)) {
                         $errors[] = 'Une erreur grave est survenue';
                     }
-                    $artist->setProfilePicture($fichier);
+                    
                    
                 }
     
@@ -123,7 +123,7 @@ class AccountController extends AbstractController
                     if (!move_uploaded_file($tmp_name2, $newfile2)) {
                         $errors[] = 'Une erreur grave est survenue';
                     }
-                    $artist->setCoverPicture($fichier2);
+                   
                    
                 }
                  
@@ -142,7 +142,8 @@ class AccountController extends AbstractController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
-
+                $artist->setCoverPicture($fichier2);
+                $artist->setProfilePicture($fichier);
 
 
 
