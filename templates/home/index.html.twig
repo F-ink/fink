@@ -9,6 +9,10 @@
 
 	<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
 	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/gotop.js') }}" defer></script>
 {% endblock %}
 
 
@@ -28,6 +32,7 @@
 		{% block header %}
 			{% include 'main/header.html.twig' %}
 		{% endblock header %}
+		<a id="gotop"></a>
 		<div
 			class="container">
 
