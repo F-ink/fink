@@ -21,15 +21,17 @@ class AccountController extends AbstractController
     public function update(int $id): Response
     {
         $errors = [];
-
+         
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
         $styles = $em->getRepository(Style::class)->findAll();
         $artist_style = $artist->getStyles();
-
+ 
+       
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
-            $safe = array_map('trim', array_map('strip_tags', $_POST));
-
+           
+            $safe = $_POST;
+         
             // Je vérifie mes différents champs            
             if (strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
                 $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
@@ -121,9 +123,10 @@ class AccountController extends AbstractController
                     }
                 }
             }
-           
+        
         
             if (count($errors) === 0) {
+                
 
                 $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
@@ -154,18 +157,25 @@ class AccountController extends AbstractController
                     // dd($geopoints);
                 }
 
-
-                $styles_artist = $em->getRepository(Style::class)->findBy(['id' => [$safe['style']]]);
+                // Pour rajouter chque style coche au tableau de styles il faut: 
+                $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
+               
                 foreach ($styles_artist as $style) {
                     $artist->addStyle($style);
+                    
                 }
+                if(isset($safe['re-style'])){
+                $styles_delete = $em->getRepository(Style::class)->findBy(['id' => $safe['re-style']]);
+                
+                foreach ($styles_delete as $styles){
+                
+                    $artist->removeStyle($styles);
+                   
 
-                //         /*if(!isset($safe['re-style'])){
+                }
+              }
 
-                //      $artist->removeStyle($style);
-                //     }*/
-
-                // }
+           
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
                 $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
                 return $this->redirectToRoute('profil_', ['id' => $artist->getId()]);
