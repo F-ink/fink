@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier votre Profil
+{% block title %}Mettre a jour votre Profil
 {% endblock %}
 
 {% block body%}
+	{% for flashError in app.flashes('danger') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
+	
 	<h2>Mettre a jour mon profil</h2>
 	<form method="POST" enctype="multipart/form-data">
 		<div>

@@ -19,13 +19,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private $emailVerifier;
-
-    public function __construct(EmailVerifier $emailVerifier)
-    {
-        $this->emailVerifier = $emailVerifier;
-    }
-
+    
     /**
      * @Route("/register", name="app_register")
      */
@@ -53,16 +47,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation(
-                 'app_verify_email',
-                 $user,
-                 (new TemplatedEmail())
-                     ->from(new Address('finkart@outlook.fr', 'Fink Art'))
-                     ->to($user->getEmail())
-                     ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-             );
             // do anything else you need here, like send an email
             // On crée le message
             $message = (new Email())
@@ -81,6 +65,8 @@ class RegistrationController extends AbstractController
                     'text/html'
                 );
             $mailer->send($message);
+
+            $this->addFlash('success','Merci pour votre inscription. Un mail d\'activation vous a ete envoye! ');
             return $this->redirectToRoute('home');
         }
 

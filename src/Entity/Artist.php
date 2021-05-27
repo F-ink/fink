@@ -107,12 +107,6 @@ class Artist implements UserInterface
      * @ORM\ManyToMany(targetEntity=Style::class, mappedBy="artist")
      */
     private $styles;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isVerified = false;
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -428,21 +422,9 @@ class Artist implements UserInterface
         return $this;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
+   
 
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-    public function getIsVerified(): ?bool
-    {
-        return $this->isVerified;
-    }
+    
 
     public function getCoverPicture(): ?string
     {

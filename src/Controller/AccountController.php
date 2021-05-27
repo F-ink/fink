@@ -101,51 +101,49 @@ class AccountController extends AbstractController
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
 
-                $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
-                $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
-                if ($geoResult && $geoResult['total_results'] > 0) {
-                    $first = $geoResult['results'][0];
-                    // dd($first);
+                //     $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
+                //     $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
+                //     if ($geoResult && $geoResult['total_results'] > 0) {
+                //         $first = $geoResult['results'][0];
+                //         // dd($first);
 
-                    $geopoints = [
-                        'lng' => $first['geometry']['lng'],
-                        'lat' => $first['geometry']['lat'],
-                    ];
-                    
-                    $artist->setLat($geopoints['lat']);
-                    $artist->setLng($geopoints['lng']);
-                    // dd($geopoints);
+                //         $geopoints = [
+                //             'lng' => $first['geometry']['lng'],
+                //             'lat' => $first['geometry']['lat'],
+                //         ];
+
+                //         $artist->setLat($geopoints['lat']);
+                //         $artist->setLng($geopoints['lng']);
+                //         // dd($geopoints);
 
                 foreach ($styles as $style) {
                     $artist->addStyle($style);
                 }
 
-                /*if(!isset($safe['re-style'])){
-                  
-                 $artist->removeStyle($style);
-                }*/
+                //         /*if(!isset($safe['re-style'])){
 
+                //      $artist->removeStyle($style);
+                //     }*/
+
+                // }
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
                 $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
+                return $this->redirectToRoute('home');
             } else {
                 // J'ai des erreurs, je les affiche via le flash message
                 $this->addFlash('danger', implode(' - ', $errors));
             }
-
-            return $this->redirectToRoute('profil_'.$artist->getId());
         }
-
         return $this->render('account/update.html.twig', [
             'artist' => $artist,
             'styles' => $styles,
             'artist_style' => $artist_style
         ]);
     }
-    }
     //Affichage du Profil
 
     /**
-     * @Route("/profil/{id}", name="profil_", methods={"GET","POST"})
+     * @Route("/profil/{id}", name="profil_", methods={"GET","POST"}, requirements={"id":"\d+"})
      */
     public function show(int $id, Request $request): Response
     {
@@ -180,7 +178,7 @@ class AccountController extends AbstractController
             $em->persist($artist);
             $em->flush();
 
-            return $this->redirectToRoute('profil_'.$artist->getId());
+            return $this->redirectToRoute('profil_' . $artist->getId());
         }
 
         return $this->render('account/profile.html.twig', [
@@ -188,51 +186,54 @@ class AccountController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    
-    
-    
+
+
+
     public function addCover(int $id)
     {
 
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
 
-        if (!empty($_FILES)) {
-            $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
-            $file = basename($_FILES['cover_picture']['name']);
-            $target_file = $target_dir . $file;
-            $max_size = 5242880;
-            $size = $_FILES['profile_picture']['size'];
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-            $extensions = array('png', 'gif', 'jpg', 'jpeg');
-            $tmp_name = $_FILES["cover_picture"]["tmp_name"];
+        if (!empty($_POST)) {
+            if (!empty($_FILES)) {
 
-            // verification de l'extension du fichier à uploader
-            if (!in_array($imageFileType, $extensions)) {
-                $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
+                $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
+                $file = basename($_FILES['cover_picture']['name']);
+                $target_file = $target_dir . $file;
+                $max_size = 5242880;
+                $size = $_FILES['cover_picture']['size'];
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+                $extensions = array('png', 'gif', 'jpg', 'jpeg');
+                $tmp_name = $_FILES["cover_picture"]["tmp_name"];
+
+                // verification de l'extension du fichier à uploader
+                if (!in_array($imageFileType, $extensions)) {
+                    $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
+                }
+
+                // verification de la taille du fichier à uploader
+                if ($size > $max_size) {
+                    $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
+                }
+
+                // Si pas d'erreurs, alors on upload le fichier
+                if (count($errors) == 0) {
+                    // Génère un identifiant unique
+                    $fichier =  uniqid() . $imageFileType;
+
+                    // On va copier le fichier dans le dossier upload
+                    $newfile = $target_dir . $fichier;
+                    if (!move_uploaded_file($tmp_name, $newfile)) {
+                        $errors[] = 'Une erreur grave est survenue';
+                    }
+                }
             }
-
-            // verification de la taille du fichier à uploader
-            if ($size > $max_size) {
-                $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
-            }
-            // Génère un identifiant unique
-            $fichier =  uniqid() . '.' . $imageFileType;
-
-            // On va copier le fichier dans le dossier upload
-            $newfile = $target_dir . $fichier;
-            if (!move_uploaded_file($tmp_name, $newfile)) {
-                $errors[] = 'Une erreur grave est survenue';
-            }
-
-            $artist->setProfilePicture($fichier);
-
+            $artist->setCoverPicture($fichier);
 
             $em->flush();
         }
 
         return $this->render('account/update.html.twig');
     }
-
-
 }
