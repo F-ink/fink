@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-
 	{# Fichier style de la page Update #}
 	<link href="{{ asset('styles/accountupdate.css') }}" type="text/css" rel="stylesheet">
+	{# Fichier style pour le go to the top #}
+	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
 
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/gotop.js') }}" defer></script>
 {% endblock %}
 
 {% block title %}Mettre a jour votre Profil
@@ -19,6 +23,11 @@
 	{% block header %}
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
+
+
+	{# Bouton To the Top #}
+	<a id="gotop"></a>
+
 
 	{# container principal #}
 	<div class="container" id="update-profil">
@@ -73,7 +82,7 @@
 				</div>
 				<div>
 					<label for="description">Description</label>
-					<textarea type="text" name="Description" placeholder="Parlez-nous de votre art et votre histoire" required>
+					<textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required>
 						{{artist.description}}</textarea>
 				</div>
 				<div>

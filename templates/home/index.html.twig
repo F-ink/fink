@@ -94,20 +94,17 @@
 			<div class="Cartes d-flex flex-wrap justify-content-around">
 				<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 					{% for artiste in artistes %}
-						 <div
-							class="carte-artiste card">
-							<a href="{{ path('artist_view', {'id': artiste.id}) }}">
+					<a href="{{ path('artist_view', {'id': artiste.id}) }}">
+						 <div class="carte-artiste card">
 							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
-							</a>
 							<div class="info-artiste">
-								<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 								<div
 									class="profil-picture">
 									{# ICi l'image de ProfilePicture #}
 									<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
 								</div>
 								<div class="name d-flex justify-content-between">
-									<p>{{ artiste.pseudo }}</p></a>
+									<p>{{ artiste.pseudo }}</p>
 									<p>
 										<i class="fas fa-map-marker-alt"></i>
 										{{ artiste.city }}
@@ -121,7 +118,7 @@
 								</div>
 							</div>
 						</div>
-					
+					</a>
 				{% endfor %}
 				<!-- FIN DE BOUCLE ARTISTE APERCU -->
 			</div> <!-- FIN CARTE APERCU ARTISTE -->

@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/gotop.js') }}" defer></script>
+{% endblock %}
+
 
 {% block title %}Votre Profil :)
 {% endblock %}
 
 {% block body %}
+
+
+	{# ici le header user connected or not #}
+	{% block header %}
+		{% include 'main/header.html.twig' %}
+	{% endblock header %}
+
+	{# Bouton To the Top #}
+	<a id="gotop"></a>
 
 	<div>
 		<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning">
@@ -48,11 +64,19 @@
 						<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
 					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
 						{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
-						        </div>#}
+																																										        </div>#}
 					{% endfor %}
 
 					{#<button class="btn">{{ button_label|default('Save') }}</button>}#}
 					{{ form_end(form) }}
 
+				</div>
+			</div>
+		</div>
+	</div>
 
-				{% endblock %}
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
+{% endblock %}

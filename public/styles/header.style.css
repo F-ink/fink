@@ -1,6 +1,6 @@
 .accroche{
     align-self: center;
-    width: 25%;
+    width: 26%;
     justify-content: space-between;
 }
 .accroche a{
@@ -8,7 +8,7 @@
     color:#233652 ;
     
 }
-.accroche a:hover{
+.accroche a span:hover{
     color: #d1e0e1;
 }
 .accroche p span{
