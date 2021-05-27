@@ -81,9 +81,9 @@
 					<span>REJOINDRE</span>
 				</h3>
 			</div>
+			<!-- CARTE APERCU ARTISTE -->
 			<div class="Cartes d-flex flex-wrap justify-content-around">
-				<!-- FAIRE BOUCLE ICI POUR AFFICHAGE ARTISTE -->
-				<!-- CARTE APERCU ARTISTE -->
+				<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 					{% for artiste in artistes %}
 						 <div
 							class="carte-artiste card">
@@ -105,6 +105,7 @@
 									</p>
 								</div>
 								<div class="styles d-inline-flex">
+								{# Boucle pour les styles #}
 									{% for style in artiste.styles %}
 										<p>{{ style.name }}</p>
 									{% endfor %}
@@ -113,9 +114,8 @@
 						</div>
 					
 				{% endfor %}
-				<!-- FIN CARTE APERCU ARTISTE -->
 				<!-- FIN DE BOUCLE ARTISTE APERCU -->
-			</div>
+			</div> <!-- FIN CARTE APERCU ARTISTE -->
 		</div>
 	</div>
 

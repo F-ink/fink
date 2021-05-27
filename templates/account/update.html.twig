@@ -26,39 +26,43 @@
 			<span>profil
 			</span>
 		</h3>
-		<div class="d-flex container-update">
+		<div class="d-flex container-update justify-content-center">
 			<form method="POST" enctype="multipart/form-data">
-				<div>
-					<label for="lastname">Votre nom:
-					</label>
-					<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" required>
+				<div class="name mb-5 d-flex justify-content-between">
+					<div class="d-flex flex-column align-items-center">
+						<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}"  id="photo-profil">
+						<label for="profile_picture">Modifier ma photo de profil</label>
+						<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
+					</div>
+					<div>
+						<label for="lastname">Votre nom:
+						</label>
+						<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" required>
+					</div>
+					<div>
+						<label for="firstname">Votre prenom :
+						</label>
+						<input type="text" name="firstname" placeholder="Entrez votre prenom" value="{{artist.firstname}}" required>
+					</div>
 				</div>
+			
 				<div>
-					<label for="firstname">Votre prenom :
-					</label>
-					<input type="text" name="firstname" placeholder="Entrez votre prenom" value="{{artist.firstname}}" required>
+					<label for="cover_picture">Choisissez une photo de couverture qui apparaittra sur la page d'accueil :</label>
+					<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
 				</div>
-				<div>
-					<label for="pseudo">Votre pseudo:
+				<div class="text-right">
+					<label for="pseudo">Votre pseudo :
 					</label>
 					<input type="text" name="pseudo" placeholder="Entrez votre nom ici" value="{{artist.pseudo}}" required>
 				</div>
-				<div>
-					<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" alt="Photo de profil" width="150px">
-					<label for="profile_picture">Modifier ma photo de profil</label>
-					<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
-				</div>
-				<div>
-					<label for="cover_picture">Choisissez une photo de couverture</label>
-					<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
-				</div>
+				
 				<div>
 					<label for="tattoo_shop">Nom de votre salon :
 					</label>
 					<input type="text" name="tattoo_shop" placeholder="Votre salon" value="{{artist.tattooShop}}" required>
 				</div>
 				<div>
-					<label for="city">Ou peut-on vous trouver?
+					<label for="city">Ville :
 					</label>
 					<input type="text" name="city" placeholder="Entrez votre ville" value="{{artist.city}}" required>
 				</div>
@@ -69,7 +73,7 @@
 				</div>
 				<div>
 					<label for="description">Description</label>
-					<textarea type="text" name="description" placeholder="Parlez-nous de votre art et votre histoire" required>
+					<textarea type="text" name="Description" placeholder="Parlez-nous de votre art et votre histoire" required>
 						{{artist.description}}</textarea>
 				</div>
 				<div>
@@ -85,9 +89,9 @@
 					<p>Souhaitez-vous retirer des styles?
 					</p>
 					{% for style in artist_style %}
-						<div class="form-check">
+						<div class="form-check ">
 							<input class="form-check-input" type="checkbox" name="re-style" id="re-style-{{style.id}}" value="{{style.id}}" checked>
-							<label class="form-check-label" for="re-style">
+							<label class=" form-check-label" for="re-style">
 								{{style.name}}
 							</label>
 						</div>
