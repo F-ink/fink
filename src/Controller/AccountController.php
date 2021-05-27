@@ -101,21 +101,21 @@ class AccountController extends AbstractController
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
 
-                //     $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
-                //     $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
-                //     if ($geoResult && $geoResult['total_results'] > 0) {
-                //         $first = $geoResult['results'][0];
-                //         // dd($first);
+                    $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
+                    $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
+                    if ($geoResult && $geoResult['total_results'] > 0) {
+                        $first = $geoResult['results'][0];
+                        // dd($first);
 
-                //         $geopoints = [
-                //             'lng' => $first['geometry']['lng'],
-                //             'lat' => $first['geometry']['lat'],
-                //         ];
+                        $geopoints = [
+                            'lng' => $first['geometry']['lng'],
+                            'lat' => $first['geometry']['lat'],
+                        ];
 
-                //         $artist->setLat($geopoints['lat']);
-                //         $artist->setLng($geopoints['lng']);
-                //         // dd($geopoints);
-
+                        $artist->setLat($geopoints['lat']);
+                        $artist->setLng($geopoints['lng']);
+                        // dd($geopoints);
+                    }
                 foreach ($styles as $style) {
                     $artist->addStyle($style);
                 }

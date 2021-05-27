@@ -126,7 +126,7 @@ class AdminController extends AbstractController
      */
     public function active(Artist $artist)
     {
-        $artist->setIsVerified(($artist->IsVerified()) ? false : true);
+        $artist->setIsVerified(($artist->getIsVerified()) ? false : true);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($artist);

@@ -132,6 +132,11 @@ class Artist implements UserInterface
      */
     private $lng;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified;
+
   
 
     public function __construct()
@@ -482,6 +487,18 @@ class Artist implements UserInterface
     public function setLng(?string $lng): self
     {
         $this->lng = $lng;
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

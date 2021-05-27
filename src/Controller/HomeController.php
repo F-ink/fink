@@ -148,7 +148,7 @@ class HomeController extends AbstractController
      /**
      * @Route("/result", name="result")
      */
-    public function search(): Response
+    public function result(): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
         $artiste = $entityManager->getRepository(Artist::class)->findBy(['city' => $_POST['city']]);
