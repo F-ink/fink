@@ -150,15 +150,15 @@ class HomeController extends AbstractController
      */
     public function result(): Response
     {
+        // dd($_POST);
         $entityManager = $this->getDoctrine()->getManager();
-        $artiste = $entityManager->getRepository(Artist::class)->findBy(['city' => $_POST['city']]);
+        $artistes = $entityManager->getRepository(Artist::class)->findBy(['city' => $_POST['city']]);
 
         $styles = $entityManager->getRepository(Style::class)->findAll();
         
-        return $this->redirectToRoute('result');
 
         return $this->render('home/result.html.twig', [
-            'artiste' => $artiste,
+            'artistes' => $artistes,
             'styles' => $styles
         ]);
     } 

@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	<script src="{{asset('js/geoloc.js')}}"></script>
+	<script src="{{asset('js/vendor.js')}}"></script>
+
+	<link href="{{ asset('styles/result.css') }}" type="text/css" rel="stylesheet">
+	
+	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+
 {% block title %}FINK | Find your INK artist !
 {% endblock %}
 
@@ -38,14 +47,12 @@
 				{% endfor %}
         </div>
 
-		<div class="map" id="map" >
-
-		</div>
+		<div class="map" id="map"> </div>
 
     </div>
 
 
 {% block footer %}
 		{% include 'main/footer.html.twig' %}
-	{% endblock footer %}
+{% endblock footer %}
 {% endblock %}

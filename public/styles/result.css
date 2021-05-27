@@ -33,21 +33,4 @@
 }
 
 
-@media only screen and (min-width:1100px){
-    .container{
-        display: grid;
-        grid-template-columns: 7fr 4fr;
-    }
-    
-    .map{
-        background-color: grey;
-        position: sticky!important;
-        left: 0;
-        top: 0;
-        height: 100vh;
-    }
-    .list{
-        grid-template-columns: repeat(4,1fr);
-    }
-}
 

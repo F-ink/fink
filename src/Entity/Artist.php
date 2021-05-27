@@ -133,7 +133,7 @@ class Artist implements UserInterface
     private $lng;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $isVerified;
 
