@@ -28,9 +28,6 @@
 		{# Fichier de style personalisé généralisé (button, titre, couleurs ...) pour toute les pages#}
 		<link href="{{ asset('styles/style.css') }}" type="text/css" rel="stylesheet">
 
-		{% block javascripts %}
-			{#{{ encore_entry_script_tags('app') }}#}
-		{% endblock %}
 	</head>
 
 	<body>
@@ -50,7 +47,8 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="{{ asset('js/autoloc.js') }}" defer>
 		</script>
-		<script src="{{ asset('js/geoloc.js') }}" defer></script>
+		
+		{% block javascripts %}{% endblock %}
 
 	</body>
 </html>
