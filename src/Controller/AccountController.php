@@ -6,13 +6,14 @@ use App\Entity\Artist;
 use App\Entity\Style;
 use App\Entity\Picture;
 use App\Form\AccountType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use App\Controller\AccountBaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class AccountController extends AbstractController
+class AccountController extends AccountBaseController
 { // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
     // Mise a jour de son Profil
     /**
@@ -31,103 +32,32 @@ class AccountController extends AbstractController
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
 
             $safe = $_POST;
-
+            $errors = array();
             // Je vérifie mes différents champs            
-            if (strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
-                $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
+
+            //dd($safe['lastname']);
+            $this->ValidateAlphanumericInput($safe['lastname'], 2, 80, "nom", $errors);
+            $this->ValidateAlphanumericInput($safe['firstname'], 2, 80, "prénom", $errors);
+            $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $error);
+            $this->ValidateAlphanumericInput($safe['pseudo'], 5, 80, "pseudo", $errors);
+            $this->ValidateAlphanumericInput($safe['city'], 1, 80, "ville", $errors);
+            $this->ValidateNumericInput($safe['siret'], 14, 14, "siret", $errors);
+            $this->ValidateGeneralInput($safe['description'], 15, 500, "description", $errors);
+
+            //dd($safe["profile_picture_value"]);
+            //if $safe['profile_picture_value'] is empty then fail validation. ask to upload a picture & validate uploaded picture.
+            //if $safe['profile_picture_value'] is not empty and $_FILES('profile_picture') is empty then bypass profile picture validation do not upload.
+            //if $safe['profile_picture_value'] is not empty and $_FILES('profile_picture') is not empty then validate uploaded picture and upload picture.
+            // dd((empty($_FILES['profile_picture'])));
+            if (empty($safe['profile_picture_value']) || !empty($_FILES['profile_picture']["name"])) {
+
+                $fichier = $this->UploadImage($_FILES['profile_picture'], 'images_directory', $errors);
             }
-            if (strlen($safe['firstname']) < 2 || strlen($safe['firstname']) > 80) {
-                $errors[] = 'Votre prenom doit comporter entre 2 et 80 caracteres ';
+            if (empty($safe['cover_picture_value']) || !empty($_FILES['cover_picture']["name"])) {
+
+                $fichier2 = $this->UploadImage($_FILES['cover_picture'], 'cover_directory', $errors);
             }
-            if (strlen($safe['tattoo_shop']) < 1 || strlen($safe['tattoo_shop']) > 80) {
-                $errors[] = 'Le nom de votre salon  doit comporter entre 1 et 100 caracteres ';
-            }
-            if (strlen($safe['pseudo']) < 5 || strlen($safe['pseudo']) > 80) {
-                $errors[] = 'Votre pseudo doit comporter entre 5 et 80 caracteres ';
-            }
-            if (strlen($safe['city']) < 1 || strlen($safe['city']) > 100) {
-                $errors[] = 'La ville n\'est pas valide .';
-            }
-            if (!is_numeric($safe['siret']) || $safe['siret'] < 14) {
-                $errors[] = 'Veuillez entrer les 14 chiffres de votre siret.';
-            }
-            if (strlen($safe['description']) < 15) {
-                $errors[] = 'La description doit comporter au moins 15 caractères';
-            }
-            if (empty($safe['style']) || count([$safe['style']]) > 4) {
-                $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
-            }
-            if (!empty($_FILES)) {
-                $target_dir = $this->getParameter('images_directory') . "/"; // uploads directory
-                $file = basename($_FILES['profile_picture']['name']);
-                $target_file = $target_dir . $file;
-                $max_size = 5242880;
-                $size = $_FILES['profile_picture']['size'];
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $extensions = array('png', 'gif', 'jpg', 'jpeg');
-                $tmp_name = $_FILES["profile_picture"]["tmp_name"];
-    
-                // verification de l'extension du fichier à uploader
-                if (!in_array($imageFileType, $extensions)) {
-                    $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
-                }
-    
-                // verification de la taille du fichier à uploader
-                if ($size > $max_size) {
-                    $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
-                }
-    
-                // Si pas d'erreurs, alors on upload le fichier
-                if (count($errors) == 0) {
-                    // Génère un identifiant unique
-                    $fichier =  uniqid() . '.' . $imageFileType;
-    
-                    // On va copier le fichier dans le dossier upload
-                    $newfile = $target_dir . $fichier;
-                    if (!move_uploaded_file($tmp_name, $newfile)) {
-                        $errors[] = 'Une erreur grave est survenue';
-                    }
-                    
-                   
-                }
-    
-    
-    
-    
-                $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
-                $file2 = basename($_FILES['cover_picture']['name']);
-                $target_file = $target_dir . $file2;
-                $max_size = 5242880;
-                $size2 = $_FILES['cover_picture']['size'];
-                $imageFileType2 = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $extensions2 = array('png', 'gif', 'jpg', 'jpeg');
-                $tmp_name2 = $_FILES["cover_picture"]["tmp_name"];
-    
-                // verification de l'extension du fichier à uploader
-                if (!in_array($imageFileType2, $extensions2)) {
-                    $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
-                }
-    
-                // verification de la taille du fichier à uploader
-                if ($size2 > $max_size) {
-                    $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
-                }
-    
-                // Si pas d'erreurs, alors on upload le fichier
-                if (count($errors) == 0) {
-                    // Génère un identifiant unique
-                    $fichier2 =  uniqid() . $imageFileType2;
-    
-                    // On va copier le fichier dans le dossier upload
-                    $newfile2 = $target_dir . $fichier2;
-                    if (!move_uploaded_file($tmp_name2, $newfile2)) {
-                        $errors[] = 'Une erreur grave est survenue';
-                    }
-                   
-                   
-                }
-                 
-            }
+            // dd($errors);
             // je verifie mon $_files avec mes differentes contraintes, format, taille 
             if (count($errors) === 0) {
 
@@ -142,8 +72,14 @@ class AccountController extends AbstractController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
-                $artist->setCoverPicture($fichier2);
-                $artist->setProfilePicture($fichier);
+                
+                if(!empty($fichier2)){
+                 $artist->setCoverPicture($fichier2);
+                 }
+                if (!empty($fichier)) {
+                    $artist->setProfilePicture($fichier);
+                }
+
 
 
 
@@ -164,11 +100,15 @@ class AccountController extends AbstractController
                 }
 
                 // Pour rajouter chque style coche au tableau de styles il faut: 
-                $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
-                //dd($styles_artist);
-                foreach ($styles_artist as $style) {
-                    $artist->addStyle($style);
+                if (isset($safe['style'])) {
+                    $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
+                    //dd($styles_artist);
+                    foreach ($styles_artist as $style) {
+                        $artist->addStyle($style);
+                    }
                 }
+
+
                 if (isset($safe['re-style'])) {
                     $styles_delete = $em->getRepository(Style::class)->findBy(['id' => $safe['re-style']]);
 
@@ -187,7 +127,7 @@ class AccountController extends AbstractController
                 $this->addFlash('danger', implode(' - ', $errors));
             }
         }
-       
+
         return $this->render('account/update.html.twig', [
             'artist' => $artist,
             'styles' => $styles,
