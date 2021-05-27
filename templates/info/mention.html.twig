@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     	<link href="{{ asset('styles/style.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/gotop.js') }}" defer></script>
 {% endblock %}
 
 {% block title %}FINK | Mentions Légales
@@ -14,6 +18,9 @@
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
 
+{# Bouton To the Top #}
+		<a id="gotop"></a>
+		
 	<div class="container">
 <article>
 <p>

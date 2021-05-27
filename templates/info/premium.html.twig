@@ -7,6 +7,10 @@
 	{# Fichier style de la page premium #}
 	<link href="{{ asset('styles/premium.css') }}" type="text/css" rel="stylesheet">
 
+	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/gotop.js') }}" defer></script>
 {% endblock %}
 
 
@@ -21,6 +25,9 @@
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
 
+{# Bouton To the Top #}
+		<a id="gotop"></a>
+		
 	{# Container principal du body#}
 	<div
 		class="container" id="premium">

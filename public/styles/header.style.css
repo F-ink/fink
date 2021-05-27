@@ -1,5 +1,7 @@
 .accroche{
     align-self: center;
+    width: 25%;
+    justify-content: space-between;
 }
 .accroche a{
     text-decoration: none;
