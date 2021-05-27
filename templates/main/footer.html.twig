@@ -5,49 +5,58 @@
 {% endblock %}
 
 <footer id="footer">
-
-    <section class="container">
-        <div class="row">
-            <div class="mentions col-md-9">
-
-                <a href="{{ path('mention_légales') }}">Mentions légales
-                </a>
-
+{# partie supérieure du footer #}
+    <div class="informations container">
+        <div class="left">
+        
+            <div class="mentions">
+                <a href="{{ path('mention_légales') }}">Mentions légales</a>
             </div>
-            <div class="presentation col-md-3 text-end">
 
+            <div class="premium">
+            <a href="http://localhost:8000/forfaits-fink">Passer premium</a>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="presentation">
                 <a href="{{ path('info') }}" class="text-decoration-none">Présentation du projet</a>
-
             </div>
-            <div class="contact col-md-12 text-end">
-                <a href="mailto:finkt@outlook.fr">
-                    Nous contacter</a>
-
+            
+            <div class="contact">
+                <a href="mailto:finkt@outlook.fr">Nous contacter</a>
             </div>
-    </section>
-
+        </div>
+    </div>
+    
+{# bas de page #}
     <section class="container">
-        <div class="mb-2 copyright">
-            <p class="fst-italic text-center">Copyright @ Fink 2021
-                <ul class="justify-content text-center">
-                    <li class=" d-md-inline fst-italic  ">
-                        <a href="https://www.linkedin.com/in/nicolas-van-butsele">Nicolas|</li>
-                    </li>
-                    <li class="d-md-inline fst-italic ">
-                        <a href="https://www.linkedin.com/in/carole-rabehaja-a206b8190" class="text-reset">Carole |</li>
-                    </li>
-                    <li class=" d-md-inline fst-italic ">
-                        <a href="https://www.linkedin.com/in/aurelien-thierry83/">Aurélien |</li>
-                    </li>
-                    <li class=" d-lg-inline fst-italic ">
-                        <a href="https://www.linkedin.com/in/magalie-choiset/">Magalie |</li>
-                    </li>
-                    <li class=" d-lg-inline fst-italic">
+        <div class="copyright">
+            <article class="fst-italic text-center">
+             <p> Copyright @ Fink 2021
+             </p>
+
+                <div class="linkedin">
+                
+                    <p class=" d-md-inline fst-italic  ">
+                        <a href="https://www.linkedin.com/in/nicolas-van-butsele">Nicolas|</a>
+                    </p>
+                    <p class="d-md-inline fst-italic ">
+                        <a href="https://www.linkedin.com/in/carole-rabehaja-a206b8190">Carole |</a>
+                    </p>
+                    <p class=" d-md-inline fst-italic ">
+                        <a href="https://www.linkedin.com/in/aurelien-thierry83/">Aurélien |</a>
+                    </p>
+                    <p class=" d-lg-inline fst-italic ">
+                        <a href="https://www.linkedin.com/in/magalie-choiset/">Magalie |</a>
+                    </p>
+                    <p class=" d-lg-inline fst-italic">
                         <a href="https://www.linkedin.com/in/gabriellefournierneri">
-                            Gabrielle </li>
-                    </li>
-                </ul>
-            </p>
+                            Gabrielle</a> 
+                    </p>
+                </div>
+                
+            </article>
         </div>
     </section>
 
