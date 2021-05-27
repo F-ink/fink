@@ -13,8 +13,12 @@
 {% if app.user  %}
 <div class="userbar">
 
-	<div>
-		{# <img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}"> #}
+	<div class="accroche">
+		<p>
+			Bonjour
+			<span> {{ app.user.pseudo }} </span>
+			! <a href="{{ path('premium') }}"> Et si vous passiez Premium ?</a>
+		</p>
 	</div>
 
 
@@ -29,11 +33,7 @@
 			<a href="{{ path('app_logout') }}">Se déconnecter <span class="material-icons">logout</span>
 			</a>
 		</button>
-		<p>
-			Bonjour
-			{{ app.user.pseudo }}
-			! <a href="{{ path('info') }}">Vous souhaitez passer premium ?</a>
-		</p>
+		
 	</div>
 </div>
 
@@ -56,13 +56,13 @@
 		<div class="collapse navbar-collapse " id="navbarNav">
 			<ul>
 				<li>
-					<button>
+					<button class="btn-navigation">
 						<a href="{{ path('gallerie') }}">GALLERIE</a>
 						<span class="material-icons">search</span>
 					</button>
 				</li>
 				<li>
-					<button>
+					<button class="btn-navigation">
 						<a href="{{ path('home') }}">HOME</a>
 						<span class="material-icons">home</span>
 					</button>

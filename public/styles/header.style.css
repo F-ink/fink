@@ -1,3 +1,19 @@
+.accroche{
+    align-self: center;
+}
+.accroche a{
+    text-decoration: none;
+    color:#233652 ;
+    
+}
+.accroche a:hover{
+    color: #d1e0e1;
+}
+.accroche p span{
+    text-transform: uppercase;
+}
+
+
 #nav {
     display: flex;
     justify-content: space-between;
@@ -23,8 +39,9 @@
 }
 
 .userbar{
-    background: #5E8289;
-    display: flex;
+    background: rgb(230,236,239);
+    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgba(155,167,180,1) 71%);   
+     display: flex;
     justify-content: space-between;
     position: sticky;  
     top: 0;  
@@ -56,14 +73,24 @@
 #nav button , .userbutton button{
     border-style: none;
     border-radius: 50px;
-    background-color: white;
-    padding:  0 30px 4px;
+    background-color: #f1f1f1;
+    padding:  0 20px 4px;
     margin: 10px 10px;
     height: 2.5em;
 }
 #nav button:hover , .userbutton button:hover{
-    box-shadow: 0px 0px 5px #8AADB2;
+    box-shadow: 0px 0px 5px white;
+    background-color: white;
     transition: 0.3s;
+}
+
+#navbarNav .btn-navigation{
+    padding:  0 30px 4px;
+    background-color: white;
+}
+
+#navbarNav .btn-navigation:hover{
+    box-shadow: 0px 0px 15px #8faeb3;
 }
 
 .userbutton button {
@@ -111,8 +138,15 @@ margin: 0;
 }
 
 #nav .bouton{
-    color: white;
-    background: #8AADB2;
+    color: #0C233E;
+    background: rgb(191,201,206);
+    background: radial-gradient(circle, rgba(191,201,206,1) 0%, rgba(155,167,180,1) 62%); 
+}
+#nav .bouton:hover{
+    color: #f1f1f1;
+    font-weight: 600;
+    transition: 0.5s;
+    box-shadow: 0px 0px 15px #8faeb3;
 }
 
 .cursor{
