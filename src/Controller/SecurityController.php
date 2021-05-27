@@ -110,7 +110,7 @@ class SecurityController extends AbstractController
             $this->addFlash('message', 'E-mail de réinitialisation du mot de passe envoyé !');
 
             // On redirige vers la page de login
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('home');
         }
 
         // On envoie le formulaire à la vue
@@ -150,7 +150,7 @@ class SecurityController extends AbstractController
             $this->addFlash('message', 'Mot de passe mis à jour');
 
             // On redirige vers la page de connexion
-            return $this->redirectToRoute('profil_'.$user->getId());
+            return $this->redirectToRoute('home');
         } else {
             // Si on n'a pas reçu les données, on affiche le formulaire
             return $this->render('security/reset_password.html.twig', ['token' => $token]);

@@ -25,7 +25,9 @@
 	{% for flashError in app.flashes('success') %}
 		<div class="alert alert-success" role="alert">{{ flashError }}</div>
 	{% endfor %}
-	
+	{% for flashError in app.flashes('message') %}
+		<div class="alert alert-success" role="alert">{{ flashError }}</div>
+	{% endfor %}
 	<div
 		id="home">
 		{# ici le header user connected or not #}
