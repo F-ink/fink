@@ -14,24 +14,24 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccountController extends AbstractController
 { // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
-// Mise a jour de son Profil
-/**
- * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
- */
+    // Mise a jour de son Profil
+    /**
+     * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
+     */
     public function update(int $id): Response
     {
         $errors = [];
-         
+
         $em = $this->getDoctrine()->getManager(); // Connexion
         $artist = $em->getRepository(Artist::class)->find($id);
         $styles = $em->getRepository(Style::class)->findAll();
         $artist_style = $artist->getStyles();
- 
-       
+
+
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
-           
+
             $safe = $_POST;
-         
+
             // Je vérifie mes différents champs            
             if (strlen($safe['lastname']) < 2 || strlen($safe['lastname']) > 80) {
                 $errors[] = 'Votre nom doit comporter entre 2 et 80 caracteres ';
@@ -57,75 +57,11 @@ class AccountController extends AbstractController
             if (empty($safe['style']) || count([$safe['style']]) > 4) {
                 $errors[] = 'Vous devez choisir entre 1 et 4 categories de style';
             }
-            if (!empty($_FILES['profile_picture'])) {
-                $target_dir = $this->getParameter('images_directory') . "/"; // uploads directory
-                $file = basename($_FILES['profile_picture']['name']);
-                $target_file = $target_dir . $file;
-                $max_size = 5242880;
-                $size = $_FILES['profile_picture']['size'];
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $extensions = array('png', 'gif', 'jpg', 'jpeg');
-                $tmp_name = $_FILES["profile_picture"]["tmp_name"];
 
-                // verification de l'extension du fichier à uploader
-                if (!in_array($imageFileType, $extensions)) {
-                    $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
-                }
-
-                // verification de la taille du fichier à uploader
-                if ($size > $max_size) {
-                    $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
-                }
-
-                // Si pas d'erreurs, alors on upload le fichier
-                if (count($errors) == 0) {
-                    // Génère un identifiant unique
-                    $fichier =  uniqid() . '.' . $imageFileType;
-
-                    // On va copier le fichier dans le dossier upload
-                    $newfile = $target_dir . $fichier;
-                    if (!move_uploaded_file($tmp_name, $newfile)) {
-                        $errors[] = 'Une erreur grave est survenue';
-                    }
-                }
-            }
-            if (!empty($_FILES['cover_picture'])) {
-
-                $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
-                $file2 = basename($_FILES['cover_picture']['name']);
-                $target_file = $target_dir . $file2;
-                $max_size = 5242880;
-                $size2 = $_FILES['cover_picture']['size'];
-                $imageFileType2 = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $extensions2 = array('png', 'gif', 'jpg', 'jpeg');
-                $tmp_name2 = $_FILES["cover_picture"]["tmp_name"];
-
-                // verification de l'extension du fichier à uploader
-                if (!in_array($imageFileType2, $extensions2)) {
-                    $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
-                }
-
-                // verification de la taille du fichier à uploader
-                if ($size2 > $max_size) {
-                    $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
-                }
-
-                // Si pas d'erreurs, alors on upload le fichier
-                if (count($errors) == 0) {
-                    // Génère un identifiant unique
-                    $fichier2 =  uniqid() . $imageFileType2;
-
-                    // On va copier le fichier dans le dossier upload
-                    $newfile2 = $target_dir . $fichier2;
-                    if (!move_uploaded_file($tmp_name2, $newfile2)) {
-                        $errors[] = 'Une erreur grave est survenue';
-                    }
-                }
-            }
             // je verifie mon $_files avec mes differentes contraintes, format, taille 
             if (count($errors) === 0) {
-                
-                
+
+
                 $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
@@ -136,11 +72,10 @@ class AccountController extends AbstractController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
-                $artist->setProfilePicture($fichier);
-                $artist->setCoverPicture($fichier2);
-               
 
-               
+
+
+
                 $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
                 $geoResult = $geocoder->geocode($safe['address'] . ' ' . $safe['city']);
                 if ($geoResult && $geoResult['total_results'] > 0) {
@@ -159,23 +94,20 @@ class AccountController extends AbstractController
 
                 // Pour rajouter chque style coche au tableau de styles il faut: 
                 $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
-                 //dd($styles_artist);
+                //dd($styles_artist);
                 foreach ($styles_artist as $style) {
                     $artist->addStyle($style);
-                    
                 }
-                if(isset($safe['re-style'])){
-                $styles_delete = $em->getRepository(Style::class)->findBy(['id' => $safe['re-style']]);
-                
-                foreach ($styles_delete as $styles){
-                
-                    $artist->removeStyle($styles);
-                   
+                if (isset($safe['re-style'])) {
+                    $styles_delete = $em->getRepository(Style::class)->findBy(['id' => $safe['re-style']]);
 
+                    foreach ($styles_delete as $styles) {
+
+                        $artist->removeStyle($styles);
+                    }
                 }
-              }
 
-           
+
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
                 $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
                 return $this->redirectToRoute('profil_', ['id' => $artist->getId()]);
@@ -183,6 +115,78 @@ class AccountController extends AbstractController
                 // J'ai des erreurs, je les affiche via le flash message
                 $this->addFlash('danger', implode(' - ', $errors));
             }
+        }
+        if (!empty($_FILES)) {
+            $target_dir = $this->getParameter('images_directory') . "/"; // uploads directory
+            $file = basename($_FILES['profile_picture']['name']);
+            $target_file = $target_dir . $file;
+            $max_size = 5242880;
+            $size = $_FILES['profile_picture']['size'];
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $extensions = array('png', 'gif', 'jpg', 'jpeg');
+            $tmp_name = $_FILES["profile_picture"]["tmp_name"];
+
+            // verification de l'extension du fichier à uploader
+            if (!in_array($imageFileType, $extensions)) {
+                $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
+            }
+
+            // verification de la taille du fichier à uploader
+            if ($size > $max_size) {
+                $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
+            }
+
+            // Si pas d'erreurs, alors on upload le fichier
+            if (count($errors) == 0) {
+                // Génère un identifiant unique
+                $fichier =  uniqid() . '.' . $imageFileType;
+
+                // On va copier le fichier dans le dossier upload
+                $newfile = $target_dir . $fichier;
+                if (!move_uploaded_file($tmp_name, $newfile)) {
+                    $errors[] = 'Une erreur grave est survenue';
+                }
+                $artist->setProfilePicture($fichier);
+               
+            }
+
+
+
+
+            $target_dir = $this->getParameter('cover_directory') . "/"; // uploads directory
+            $file2 = basename($_FILES['cover_picture']['name']);
+            $target_file = $target_dir . $file2;
+            $max_size = 5242880;
+            $size2 = $_FILES['cover_picture']['size'];
+            $imageFileType2 = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            $extensions2 = array('png', 'gif', 'jpg', 'jpeg');
+            $tmp_name2 = $_FILES["cover_picture"]["tmp_name"];
+
+            // verification de l'extension du fichier à uploader
+            if (!in_array($imageFileType2, $extensions2)) {
+                $errors[] = "l'extension du fichier n'est pas reconnu ['png', 'gif', 'jpg', 'jpeg']" . $file;
+            }
+
+            // verification de la taille du fichier à uploader
+            if ($size2 > $max_size) {
+                $errors[] = 'La taille du fichier dépasse la taille maxi ' . $max_size;
+            }
+
+            // Si pas d'erreurs, alors on upload le fichier
+            if (count($errors) == 0) {
+                // Génère un identifiant unique
+                $fichier2 =  uniqid() . $imageFileType2;
+
+                // On va copier le fichier dans le dossier upload
+                $newfile2 = $target_dir . $fichier2;
+                if (!move_uploaded_file($tmp_name2, $newfile2)) {
+                    $errors[] = 'Une erreur grave est survenue';
+                }
+                $artist->setCoverPicture($fichier2);
+               
+            }
+
+            $em->flush();               
         }
         return $this->render('account/update.html.twig', [
             'artist' => $artist,
