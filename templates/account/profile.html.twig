@@ -11,7 +11,9 @@
 {% endblock %}
 
 {% block body %}
-
+	{% for flashError in app.flashes('success') %}
+		<div class="alert alert-success" role="alert">{{ flashError }}</div>
+	{% endfor %}
 
 	{# ici le header user connected or not #}
 	{% block header %}
@@ -20,12 +22,13 @@
 
 	{# Bouton To the Top #}
 	<a id="gotop"></a>
-
-	<div>
-		<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning">
-			Modifier mon profil
-		</a>
-	</div>
+	{% if app.user %}
+		<div>
+			<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning">
+				Modifier mon profil
+			</a>
+		</div>
+	{% endif %}
 	<div class="container">
 		<div class="col-12">
 			<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
@@ -53,11 +56,11 @@
 
 			<div class="row">
 				<h2>Ajouter vos photos Darlings</h2>
-
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button class="btn btn-success" type="submit" name="submit">Ajouter</button>
-
+				{% if app.user %}
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<button class="btn btn-success" type="submit" name="submit">Ajouter</button>
+				{% endif %}
 				<h2>Images</h2>
 				<div class="col-3">
 					{% for picture in artist.pictures %}
@@ -65,7 +68,7 @@
 						<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
 					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
 						{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
-																																																        </div>#}
+																																																						        </div>#}
 					{% endfor %}
 
 					{{ form_end(form) }}

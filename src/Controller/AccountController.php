@@ -11,25 +11,42 @@ use App\Controller\AccountBaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class AccountController extends AccountBaseController
-{ // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
-    // Mise a jour de son Profil
+{ 
     /**
-     * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
+     * @IsGranted("ROLE_USER")
+     * @Route("/account/update/", name="update_",  methods = {"GET", "POST"})
+     * 
      */
-    public function update(int $id): Response
+    public function update(): Response
     {
         $errors = [];
-
-        $em = $this->getDoctrine()->getManager(); // Connexion
-        $artist = $em->getRepository(Artist::class)->find($id);
-        $styles = $em->getRepository(Style::class)->findAll();
-        $artist_style = $artist->getStyles();
-
-        if (!empty($_POST)) { // Mon formulaire n'est pas vide
-    
+        
+        // if(!$this->getUser()){
+            //     // Utilisateur non connecté
+            //      retun $this->redirectToRoute('some_url')
+            // }
+            
+            
+            $em = $this->getDoctrine()->getManager(); // Connexion
+            $artist = $em->getRepository(Artist::class)->find($this->getUser());
+            $styles = $em->getRepository(Style::class)->findAll();
+            $artist_style = $artist->getStyles();
+            
+            if (!empty($_POST)) { // Mon formulaire n'est pas vide
+                
+                // $post = [];
+                // foreach($_POST as $key => $value){
+                //     if(is_array($value)){
+                //         $post[$key] = array_map('trim', array_map('strip_tags', $value));
+                //     }
+                //     else {
+                //         $post[$key] = trim(strip_tags($value));
+                //     }
+                // }
             $safe = $_POST;
             $errors = array();
             // Je vérifie mes différents champs            
@@ -38,7 +55,7 @@ class AccountController extends AccountBaseController
             $this->ValidateAlphanumericInput($safe['lastname'], 2, 80, "nom", $errors);
             $this->ValidateAlphanumericInput($safe['firstname'], 2, 80, "prénom", $errors);
             $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $error);
-            $this->ValidateAlphanumericInput($safe['pseudo'], 5, 80, "pseudo", $errors);
+            $this->ValidateAlphanumericInput($safe['pseudo'], 3, 80, "pseudo", $errors);
             $this->ValidateAlphanumericInput($safe['city'], 1, 80, "ville", $errors);
             $this->ValidateNumericInput($safe['siret'], 14, 14, "siret", $errors);
             $this->ValidateGeneralInput($safe['description'], 15, 500, "description", $errors);
