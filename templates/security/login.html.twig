@@ -14,15 +14,12 @@
 {% block title %}Connectez-vous à votre espace personnel
 {% endblock %}
 
+
+
 {% block body %}
 	{% for flashError in app.flashes('danger') %}
 		<div class="alert alert-danger" id="barre-alerte" role="alert">{{ flashError }}</div>
 	{% endfor %}
-
-	{# ici le header user connected or not #}
-	{% block header %}
-		{% include 'main/header.html.twig' %}
-	{% endblock header %}
 
 
 	{# Bouton To the Top #}
