@@ -28,9 +28,8 @@ class AccountController extends AccountBaseController
         $styles = $em->getRepository(Style::class)->findAll();
         $artist_style = $artist->getStyles();
 
-
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
-
+    
             $safe = $_POST;
             $errors = array();
             // Je vérifie mes différents champs            
@@ -44,10 +43,12 @@ class AccountController extends AccountBaseController
             $this->ValidateNumericInput($safe['siret'], 14, 14, "siret", $errors);
             $this->ValidateGeneralInput($safe['description'], 15, 500, "description", $errors);
 
-            //dd($safe["profile_picture_value"]);
-            //if $safe['profile_picture_value'] is empty then fail validation. ask to upload a picture & validate uploaded picture.
-            //if $safe['profile_picture_value'] is not empty and $_FILES('profile_picture') is empty then bypass profile picture validation do not upload.
-            //if $safe['profile_picture_value'] is not empty and $_FILES('profile_picture') is not empty then validate uploaded picture and upload picture.
+
+            // si styles est vide et que le nombre de style est deja egal a 4
+            if(empty($safe['styles_value']) &&  !isset($safe['style']) && count($safe['styles_value']) == 4 && count($safe['style']) > 4){
+                 array_push($errors, "Vous devez choisir entre 1 et 4 styles.");
+            }
+            //dd($safe["profile_picture_value"]));
             // dd((empty($_FILES['profile_picture'])));
             if (empty($safe['profile_picture_value']) || !empty($_FILES['profile_picture']["name"])) {
 

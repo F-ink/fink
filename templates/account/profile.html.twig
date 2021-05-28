@@ -56,6 +56,7 @@
 
 				{{ form_start(form) }}
 				{{ form_widget(form) }}
+				<button class="btn btn-success" type="submit" name="submit">Ajouter</button>
 
 				<h2>Images</h2>
 				<div class="col-3">
@@ -64,10 +65,9 @@
 						<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
 					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
 						{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
-																																										        </div>#}
+																																																        </div>#}
 					{% endfor %}
 
-					{#<button class="btn">{{ button_label|default('Save') }}</button>}#}
 					{{ form_end(form) }}
 
 				</div>

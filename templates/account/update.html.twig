@@ -2,7 +2,8 @@
 
 {% block stylesheets %}
 	{# Fichier style de la page Update #}
-	<link href="{{ asset('styles/accountupdate.css') }}" type="text/css" rel="stylesheet">
+	<link
+	href="{{ asset('styles/accountupdate.css') }}" type="text/css" rel="stylesheet">
 	{# Fichier style pour le go to the top #}
 	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
 
@@ -39,7 +40,7 @@
 			<form method="POST" enctype="multipart/form-data" onsubmit="sendValidation">
 				<div class="name mb-5 d-flex justify-content-between">
 					<div class="d-flex flex-column align-items-center">
-						<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}"  id="photo-profil">
+						<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" id="photo-profil">
 						<label for="profile_picture">Modifier ma photo de profil</label>
 						<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
 						<input type="hidden" name="profile_picture_value" value="{{artist.profilePicture}}"/>
@@ -47,7 +48,7 @@
 					<div>
 						<label for="lastname">Votre nom:
 						</label>
-						<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" id= "lastname" data-min-length= "2" required>
+						<input type="text" name="lastname" placeholder="Entrez votre nom ici" value="{{artist.lastname}}" id="lastname" data-min-length="2" required>
 					</div>
 					<div>
 						<label for="firstname">Votre prenom :
@@ -55,10 +56,10 @@
 						<input type="text" name="firstname" placeholder="Entrez votre prenom" value="{{artist.firstname}}" required>
 					</div>
 				</div>
-			
+
 				<div>
 					<label for="cover_picture">Choisissez une photo de couverture qui apparaittra sur la page d'accueil :</label>
-					<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" >
+					<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture">
 					<input type="hidden" name="cover_picture_value" value="{{artist.CoverPicture}}"/>
 				</div>
 				<div class="text-right">
@@ -66,7 +67,7 @@
 					</label>
 					<input type="text" name="pseudo" placeholder="Entrez votre nom ici" value="{{artist.pseudo}}" required>
 				</div>
-				
+
 				<div>
 					<label for="tattoo_shop">Nom de votre salon :
 					</label>
@@ -105,7 +106,9 @@
 								{{style.name}}
 							</label>
 						</div>
+						<input type="hidden" name="styles_value[]" value="{{style.id}}"/>
 					{% endfor %}
+
 
 				</div>
 				<div>
