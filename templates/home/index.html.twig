@@ -53,21 +53,21 @@
 					</div>
 
 					{# barre de recherche #}
-					<div class="row">
+					<div class="row" id="search-info">
 						<div id="search" class="d-flex">
 							<form
 								action="{{ path('result') }}" method="POST" class="flex-wrap d-flex w-100 align-self-center ">
 
 								{# Style(s) #}
-								<select class="search-bar col-12 col-sm-12 col-md-6" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+								<select class="search-bar col-12 col-sm-12 col-md-5" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 									{% for style in styles %}
 										<option value="{{style.id}}">{{style.name}}</option>
 									{% endfor %}
 								</select>
 
 								{# localisation #}
-								<input type="text" class="col-12 col-sm-12 col-md-6" id="search-city" name="city" placeholder="Localisation">
-								<button for="submit" class="button-search col-12 col-sm-12 col-md-4">FINK!</button>
+								<input type="text" class="col-12 col-sm-12 col-md-5" id="search-city" name="city" placeholder="Localisation">
+								<button for="submit" class="button-search col-12 col-sm-12 col-md-2">FINK!</button>
 							</form>
 						</div>
 					</div>

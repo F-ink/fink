@@ -29,6 +29,12 @@
     width: 90%;
     transform: translateY(-30%);
 }
+#intro{
+    width: 85%;
+}
+#search-info{
+    width: 85%;
+}
 
 /* BARRE DE RECHERCHE */
 /* Emplacement de recherches */
