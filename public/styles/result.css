@@ -33,7 +33,7 @@
 }
 .carte-resultat{
     border: 3px solid #0C233E;  
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: -7px -7px 5px #36484a, 5px 5px 5px #81a4aa;
 }
 .map{
