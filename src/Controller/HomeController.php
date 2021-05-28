@@ -82,11 +82,14 @@ class HomeController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager(); // Connexion
         $DetailArtist = $em->getRepository(Artist::class)->find($id); //trouver selon l'ID
+        $artistes = $em->getRepository(Artist::class)->findAll();
 
         //afficher la page 'detail'
         return $this->render('home/view.html.twig', [
-            'DetailArtist' => $DetailArtist
+            'DetailArtist' => $DetailArtist,
+            'artistes' => $artistes
         ]);
+
     }
 
 

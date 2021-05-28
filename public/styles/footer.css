@@ -36,6 +36,7 @@
     left: 10%;
     text-decoration: underline;
     display: block;
+
 }
 .right{
 
@@ -43,19 +44,20 @@
     right: 10%;
     text-decoration: underline;
     display: block;
-   
+   text-align: end;
 }
-#footer u {
+/* #footer u {
     text-align: center;
     color: #1E2022;
     text-decoration: none ;
-}
+} */
 
 
 #footer a {
     text-decoration: none !important;
     font-style: none;
     color: black;
+    padding-bottom: 3px;
 }
 #footer a:hover {
     color: #657686;

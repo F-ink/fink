@@ -1,0 +1,167 @@
+body{
+    background-color: #f1f1f1;
+
+}
+main{
+    
+    font-family: open-sans, sans-serif;
+    min-height: 120vh;
+}
+/* phrase d'accroche */
+span{
+    color: #404F57;
+    font-weight: bold;
+}
+.artist_name h2{
+    color:#0C233E;
+}
+
+/* fond blanc */
+#artist_introduction{
+
+width: 80vw;
+border-radius: 20px;
+background-color: rgb(255, 255, 255);
+position: relative;
+display: inline-block;
+margin-left: 20%;
+margin-right: 20%;
+margin-bottom: 3rem;
+color:black;
+margin-top: 3rem ;
+margin-bottom: 3rem ;
+box-shadow: 1px 1px 1px 1px rgb(212, 212, 212);
+padding: 3rem;
+padding-top: 2rem;
+padding-left: 3rem;
+padding-bottom: 7rem;
+z-index:5;
+
+}
+/* partie supérieure */
+#insta{
+font-size: 54px;
+color:#404F57;
+display: block;
+justify-content: right ;
+text-align: right;
+}
+/*partie présentation artiste*/
+
+.artist_intro{
+color:black;
+padding-left: 1rem;
+
+}
+
+.style{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 1rem;
+
+    
+}
+.style p{
+    border:solid;
+    border-radius: 50px;
+    border-color: #9ba7b3;
+    background-color: #9ba7b3;
+    color: white;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    margin-left: 1rem;
+}
+.description{
+    height: 150px;
+    width:80%;
+    overflow: scroll;
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+}
+.city {
+    margin-left: 1rem;
+}
+/* partie médiane */
+.artist_work{
+justify-content: center;
+align-items: center;
+
+}
+
+.img{
+    max-width: 150px; 
+    max-height: 150px; 
+    object-fit: cover; 
+}
+
+#contacter{
+    border-radius: 50px;
+    /* border-top-color: white; */
+    /* border-bottom-color: lightgrey; */
+    background: linear-gradient(159deg, rgba(12, 35, 62, 0.7343137938769257) 30%, rgba(188, 205, 215, 1) 100%);
+    color:white;
+    /* z-index: 5; */
+    position: absolute;
+    /* bottom: 0; */
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    right: 4em;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.5rem;
+    padding-top: 0.4rem;
+    
+}
+.sphere{
+    background-color: rgb(255, 255, 255);
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    border: lightgrey;
+    border-style: solid;
+    position:absolute;
+    bottom: -5%;
+    right: -5%;
+    
+  
+}
+.action_sup{
+    /* text-align: center; */
+    font-weight: 500;
+    text-transform: uppercase;
+}
+#retour{
+    color:#404F57;
+    font-size: 64px;
+    display: block;
+    justify-content: right ;
+    text-align: right;
+    padding-top: 20px;
+
+  }
+
+
+  /* card artist */
+
+  .Cartes {
+    margin-bottom: 70px;
+    padding: 0 5%;
+}
+
+/* END CARD ARTISTE */
+
+/* MEDIA QUERIES */
+
+/* // Small devices (landscape phones, less than 750px) */
+@media (max-width: 750px) {
+    #home-header {
+        padding-left: 10%;
+    }
+    #home-header h2 {
+        font-size: 35px;
+    }
+    .button-search{
+        margin-left: 30%;
+    }
+}
