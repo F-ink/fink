@@ -152,7 +152,7 @@ class HomeController extends AbstractController
     {
         // dd($_POST);
         $entityManager = $this->getDoctrine()->getManager();
-        $artistes = $entityManager->getRepository(Artist::class)->findBy(['city' => $_POST['city']]);
+        $artistes = $entityManager->getRepository(Artist::class)->findBy(['city' => $_REQUEST['city']]);
 
         $styles = $entityManager->getRepository(Style::class)->findAll();
         
