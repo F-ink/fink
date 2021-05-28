@@ -10,6 +10,7 @@
 	<link href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
 	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
 	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/gallerie.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 {% block javascripts %}
 	<script src="{{ asset('js/gotop.js') }}" defer></script>
@@ -27,6 +28,12 @@
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
 
+	{# <div class="bg-feuille1">
+		<img src={{ asset('img/feuillesolo.svg') }} />
+	</div> #}
+
+
+
 {# Bouton to the top  #}
 	<a id="gotop"></a>
 
@@ -35,7 +42,7 @@
 		<div id="meet">
 			<div>
 				<h3 class="text-center mt-5 mb-5">
-					Découvrir tous les <span>artistes</span>
+					Découvrir tous les <span>artistes</span> Tatoueurs/ses
 				</h3>
 			</div>
 			<!-- CARTE APERCU ARTISTE -->

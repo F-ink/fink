@@ -13,14 +13,14 @@
 {% if app.user  %}
 <div class="userbar">
 
-	<div class="accroche d-flex align-items-center">
+	<div class="accroche col-12 col-sm-8 col-md-8 d-flex align-items-center">
 		<a href="{{ path('home') }}">
 			<span class="material-icons">home</span>
 			</a>
 		<p>					
-			Bonjour
-			<span> {{ app.user.pseudo }} </span>
-			! <a href="{{ path('premium') }}"> &nbsp; Et si vous passiez <span> PREMIUM ? </span> </a>
+			Bonjour &nbsp;
+			<span> {{ app.user.pseudo }} ! </span>
+			 <a href="{{ path('premium') }}"> &nbsp; Et si vous passiez <span> PREMIUM ? </span> </a>
 		</p>
 	</div>
 

@@ -58,6 +58,11 @@ p{
     font-family: open-sans, sans-serif;
     font-size: 15px;
 }
+a{
+    text-decoration: none;
+    font-style: none;
+    text-transform: none;
+}
 
 
 /* END FONTS SETTINGS */

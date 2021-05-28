@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
                 );
             $mailer->send($message);
 
-            $this->addFlash('success','Merci pour votre inscription. Un mail d\'activation vous a été envoyé! ');
+            $this->addFlash('message','Merci pour votre inscription. Un mail d\'activation vous a été envoyé! ');
             return $this->redirectToRoute('home');
         }
 
@@ -95,7 +95,7 @@ class RegistrationController extends AbstractController
         $entityManager->flush();
 
         // On génère un message
-        $this->addFlash('success', 'Votre compte a été activé avec succès, connectez-vous pour compléter votre profil artiste');
+        $this->addFlash('message', 'Votre compte a été activé avec succès, connectez-vous pour compléter votre profil artiste');
 
         // On retourne à l'accueil
         return $this->redirectToRoute('home');
