@@ -33,6 +33,12 @@
 }
 
 .map{
-    background-color: red;
-    
+    background-color: red; 
+    height: 500px;
+    width: 50%;
+    padding-right: 5%;
+}
+.list{
+    overflow: scroll;
+    height: 500px;
 }

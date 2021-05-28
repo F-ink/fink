@@ -41,6 +41,12 @@ class ArtistAdminType extends AbstractType
                 'mapped' =>false,
                 'required' => false
             ])
+            ->add('profilePicture', FileType::class, [
+                'label' => false,
+                'multiple' => false,
+                'mapped' =>false,
+                'required' => false
+            ])
             ->add('created_at', DateType::class)
             ->add('Valider', SubmitType::class);
 

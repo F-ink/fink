@@ -17,14 +17,13 @@
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
 
-	<div class="container-fluid">
-		<h2 class="text-center mt-5 mb-5">Les <span>tatoueurs</span> près de chez vous</h2>
+	<div class="container">
+		<h3 class="text-center mt-5 mb-5">Les <span>tatoueurs</span> près de chez vous</h3>
 		<div class="carte-resultat d-flex">
 			<div class="list col-6">
 				<div>
 					<!-- CARTE APERCU ARTISTE -->
-					<div
-						class="Cartes d-flex flex-wrap justify-content-around">
+					<div class="Cartes d-flex flex-wrap justify-content-around">
 						<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 						{% for artiste in artistes %}
 							<a href="{{ path('artist_view', {'id': artiste.id}) }}">
@@ -59,8 +58,8 @@
 					<!-- FIN CARTE APERCU ARTISTE -->
 				</div>
 			</div>
-			<div id="map" class="map col-5 me-5"></div>
-			<div class="col-1"></div>
+			<div id="map" class="map col-6"></div>
+			
 		</div>
 
 
