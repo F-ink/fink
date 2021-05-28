@@ -21,10 +21,8 @@
 
 
 {% block body %}
-    
-	{% for flashError in app.flashes('success') %}
-		<div class="alert alert-success" role="alert">{{ flashError }}</div>
-	{% endfor %}
+
+
 	{% for flashError in app.flashes('message') %}
 		<div class="alert alert-success" role="alert">{{ flashError }}</div>
 	{% endfor %}
@@ -57,7 +55,8 @@
 					{# barre de recherche #}
 					<div class="row">
 						<div id="search" class="d-flex">
-							<form action="{{ path('result') }}" method="POST" class="flex-wrap d-flex w-100 align-self-center ">
+							<form
+								action="{{ path('result') }}" method="POST" class="flex-wrap d-flex w-100 align-self-center ">
 
 								{# Style(s) #}
 								<select class="search-bar col-12 col-sm-12 col-md-6" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
@@ -91,11 +90,12 @@
 				</h3>
 			</div>
 			<!-- CARTE APERCU ARTISTE -->
-			<div class="Cartes d-flex flex-wrap justify-content-around">
+			<div
+				class="Cartes d-flex flex-wrap justify-content-around">
 				<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
-					{% for artiste in artistes %}
+				{% for artiste in artistes %}
 					<a href="{{ path('artist_view', {'id': artiste.id}) }}">
-						 <div class="carte-artiste card">
+						<div class="carte-artiste card">
 							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
 							<div class="info-artiste">
 								<div
@@ -110,8 +110,9 @@
 										{{ artiste.city }}
 									</p>
 								</div>
-								<div class="styles d-inline-flex">
-								{# Boucle pour les styles #}
+								<div
+									class="styles d-inline-flex">
+									{# Boucle pour les styles #}
 									{% for style in artiste.styles %}
 										<p>{{ style.name }}</p>
 									{% endfor %}
@@ -121,7 +122,8 @@
 					</a>
 				{% endfor %}
 				<!-- FIN DE BOUCLE ARTISTE APERCU -->
-			</div> <!-- FIN CARTE APERCU ARTISTE -->
+			</div>
+			<!-- FIN CARTE APERCU ARTISTE -->
 		</div>
 	</div>
 

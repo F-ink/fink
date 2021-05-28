@@ -11,26 +11,43 @@ use App\Controller\AccountBaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class AccountController extends AccountBaseController
-{ // @IsGranted("ROLE_ARTIST", "ROLE_ADMIN")
-    // Mise a jour de son Profil
+{
     /**
-     * @Route("/account/update/{id}", name="update_", requirements={"id":"\d+"},  methods = {"GET", "POST"})
+     * @IsGranted("ROLE_USER")
+     * @Route("/account/update/", name="update_",  methods = {"GET", "POST"})
+     * 
      */
-    public function update(int $id): Response
+    public function update(): Response
     {
         $errors = [];
 
+        // if(!$this->getUser()){
+        //     // Utilisateur non connecté
+        //      retun $this->redirectToRoute('some_url')
+        // }
+
+
         $em = $this->getDoctrine()->getManager(); // Connexion
-        $artist = $em->getRepository(Artist::class)->find($id);
+        $artist = $em->getRepository(Artist::class)->find($this->getUser());
         $styles = $em->getRepository(Style::class)->findAll();
         $artist_style = $artist->getStyles();
 
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
-    
-            $safe = $_POST;
+
+            $safe = [];
+            foreach ($_POST as $key => $value) {
+                if (is_array($value)) {
+                    $safe[$key] = array_map('trim', array_map('strip_tags', $value));
+                } else {
+                    $safe[$key] = trim(strip_tags($value));
+                }
+            }
+            // $safe = $_POST;
             $errors = array();
             // Je vérifie mes différents champs            
 
@@ -38,15 +55,15 @@ class AccountController extends AccountBaseController
             $this->ValidateAlphanumericInput($safe['lastname'], 2, 80, "nom", $errors);
             $this->ValidateAlphanumericInput($safe['firstname'], 2, 80, "prénom", $errors);
             $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $error);
-            $this->ValidateAlphanumericInput($safe['pseudo'], 5, 80, "pseudo", $errors);
+            $this->ValidateAlphanumericInput($safe['pseudo'], 3, 80, "pseudo", $errors);
             $this->ValidateAlphanumericInput($safe['city'], 1, 80, "ville", $errors);
             $this->ValidateNumericInput($safe['siret'], 14, 14, "siret", $errors);
             $this->ValidateGeneralInput($safe['description'], 15, 500, "description", $errors);
 
 
             // si styles est vide et que le nombre de style est deja egal a 4
-            if(empty($safe['styles_value']) &&  !isset($safe['style']) && count($safe['styles_value']) == 4 && count($safe['style']) > 4){
-                 array_push($errors, "Vous devez choisir entre 1 et 4 styles.");
+            if (empty($safe['styles_value']) &&  !isset($safe['style']) && count($safe['styles_value']) == 4 && count($safe['style']) > 4) {
+                array_push($errors, "Vous devez choisir entre 1 et 4 styles.");
             }
             //dd($safe["profile_picture_value"]));
             // dd((empty($_FILES['profile_picture'])));
@@ -73,10 +90,10 @@ class AccountController extends AccountBaseController
                 $artist->setDescription($safe['description']);
                 $artist->setInstagram($safe['instagram']);
                 $artist->setSiret($safe['siret']);
-                
-                if(!empty($fichier2)){
-                 $artist->setCoverPicture($fichier2);
-                 }
+
+                if (!empty($fichier2)) {
+                    $artist->setCoverPicture($fichier2);
+                }
                 if (!empty($fichier)) {
                     $artist->setProfilePicture($fichier);
                 }
@@ -138,12 +155,13 @@ class AccountController extends AccountBaseController
     //Affichage du Profil
 
     /**
-     * @Route("/profil/{id}", name="profil_", methods={"GET","POST"}, requirements={"id":"\d+"})
+     * @IsGranted("ROLE_USER")
+     * @Route("/profil/", name="profil_", methods={"GET","POST"})
      */
-    public function show(int $id, Request $request): Response
+    public function show(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $artist = $em->getRepository(Artist::class)->find($id);
+        $artist = $em->getRepository(Artist::class)->find($this->getUser());
         $form = $this->createForm(AccountType::class, $artist);
         $form->handleRequest($request);
 
@@ -164,11 +182,11 @@ class AccountController extends AccountBaseController
 
                 // On stocke l'image dans la base de données (son nom)
                 $picture = new Picture();
+
                 $picture->setName($fichier);
                 $picture->setDate(new \DateTime('now'));
                 $artist->addPicture($picture);
             }
-
 
             $em->persist($artist);
             $em->flush();
@@ -181,4 +199,5 @@ class AccountController extends AccountBaseController
             'form' => $form->createView(),
         ]);
     }
+    
 }
