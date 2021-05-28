@@ -1,3 +1,6 @@
+.info{
+    height: 90vh;
+}
 .talk span {
     color: #0C233E;
     font-weight: 700;
@@ -24,12 +27,14 @@
     position: absolute;
     right: 0;
     z-index: -3;
+    
    
 }
 
 /* CARTE PHOTOS */
 #img-student {
     position: relative;
+    margin-top: 40px;
     
     
 }

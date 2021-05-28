@@ -71,7 +71,7 @@
 }
 
 /*Flemme -  Pour la marge du bouton avec les textes */
-.top{
+.top {
     margin-top: 4.5rem !important;
 }
 
@@ -81,7 +81,8 @@
     -moz-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
     transition-duration: 1s;
 }
-.bouton-forfait:hover{
+
+.bouton-forfait:hover {
     font-size: 1.25rem;
     font-weight: 600;
     transition-duration: 1s;
@@ -95,6 +96,7 @@
 
 /* // Small devices (landscape phones, less than 750px) */
 @media (max-width: 750px) {
+
     .carte1,
     .carte2 {
         display: flex;
@@ -117,11 +119,13 @@
 @media (min-width: 892px) {
     .carte1 {
         display: flex;
-        justify-content: right;
+        flex-direction: row;
+        justify-content: flex-end
     }
 
     .carte2 {
         display: flex;
         justify-content: left;
+
     }
 }
