@@ -54,7 +54,7 @@ padding-left: 1rem;
 
 }
 
-.style{
+.thestyle{
     display: flex;
     justify-content: space-between;
     width: 50%;
@@ -62,7 +62,7 @@ padding-left: 1rem;
 
     
 }
-.style p{
+.thestyle p{
     border:solid;
     border-radius: 50px;
     border-color: #9ba7b3;
@@ -74,7 +74,6 @@ padding-left: 1rem;
 }
 .description{
     height: 150px;
-    width:80%;
     overflow: scroll;
     margin-bottom: 2rem;
     margin-left: 1rem;

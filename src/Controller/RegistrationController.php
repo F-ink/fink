@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
                 );
             $mailer->send($message);
 
-            $this->addFlash('success','Merci pour votre inscription. Un mail d\'activation vous a ete envoye! ');
+            $this->addFlash('message','Merci pour votre inscription. Un mail d\'activation vous a ete envoye! ');
             return $this->redirectToRoute('home');
         }
 
@@ -74,42 +74,6 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-
-    // /**
-    //  * @Route("/verify/email", name="app_verify_email")
-    //  */
-    // public function verifyUserEmail(Request $request, ArtistRepository $artistRepository): Response
-    // {
-    //     $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-    //     $user = $this->getUser();
-
-    //     $id = $request->get('id');
-
-
-    //     if (null === $id) {
-    //         return $this->redirectToRoute('app_register');
-    //     }
-
-    //     $user = $artistRepository->find($id);
-
-    //     if (null === $user) {
-    //         return $this->redirectToRoute('app_register');
-    //     }
-
-    //     // validate email confirmation link, sets User::isVerified=true and persists
-    //     try {
-    //         $this->emailVerifier->handleEmailConfirmation($request, $user);
-    //     } catch (VerifyEmailExceptionInterface $exception) {
-    //         $this->addFlash('verify_email_error', $exception->getReason());
-
-    //         return $this->redirectToRoute('app_register');
-    //     }
-
-    //     // @TODO Change the redirect on success and handle or remove the flash message in your templates
-    //     $this->addFlash('success', 'Your email address has been verified.');
-
-    //     return $this->redirectToRoute('home');
-    // }
     /**
      * @Route("/activation/{token}", name="activation")
      */
@@ -131,7 +95,7 @@ class RegistrationController extends AbstractController
         $entityManager->flush();
 
         // On génère un message
-        $this->addFlash('success', 'Utilisateur activé avec succès');
+        $this->addFlash('message', 'Utilisateur activé avec succès');
 
         // On retourne à l'accueil
         return $this->redirectToRoute('home');

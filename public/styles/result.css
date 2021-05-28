@@ -31,8 +31,18 @@
 .marker.is-active::after{
     border-top-color: #5069ff;
 }
-
+.carte-resultat{
+    border: 3px solid #0C233E;  
+    border-radius: 5px;
+    box-shadow: -7px -7px 5px #36484a, 5px 5px 5px #81a4aa;
+}
 .map{
-    background-color: red;
-    
+    background-color: red; 
+    height: 500px;
+    width: 50%;
+    padding-right: 5%;
+}
+.list{
+    overflow: scroll;
+    height: 500px;
 }

@@ -99,7 +99,7 @@ class SecurityController extends AbstractController
                 ->From('no-reply@finkart.fr')
                 ->To($user->getEmail())
                 ->html(
-                    "<p>Bonjour</p><p>Une demande de réinitialisation de mot de passe a été effectuée pour le site FinkArt.fr. Veuillez cliquer sur le lien suivant : " . $url . "</p>",
+                    "<p>Bonjour</p><p>Une demande de réinitialisation de mot de passe a été effectuée pour le site FinkArt.fr. Veuillez cliquer sur le lien suivant : <a href='" . $url . "'>Reinitialisation</a></p><p>Attention ,il n'est valable que 15 minutes ! </p>",
                     'text/html'
                 );
 
@@ -150,7 +150,7 @@ class SecurityController extends AbstractController
             $this->addFlash('message', 'Mot de passe mis à jour');
 
             // On redirige vers la page de connexion
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_login');
         } else {
             // Si on n'a pas reçu les données, on affiche le formulaire
             return $this->render('security/reset_password.html.twig', ['token' => $token]);

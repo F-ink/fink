@@ -104,6 +104,7 @@ class AdminController extends AbstractController
                 $artist->setTattooShop($_POST['tattooshop']);
                 $artist->setAddress($_POST['address']);
                 $artist->setProfilePicture($_POST['profilePicture']);
+                $artist->setProfilePicture($_POST['coverPicture']);
                 $artist->setDescription($_POST['description']);
                 $artist->setInstagram($_POST['instagram']);
                 $artist->setSiret($_POST['siret']);
