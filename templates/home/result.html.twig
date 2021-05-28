@@ -2,8 +2,9 @@
 
 {% block stylesheets %}
 	<link href="{{ asset('styles/result.css') }}" type="text/css" rel="stylesheet">
-	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
-	{# <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap" defer></script> #}
+	<link
+	href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
+{# <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap" defer></script> #}
 {% endblock %}
 
 {% block title %}FINK | Find your INK artist !
@@ -16,45 +17,49 @@
 		{% include 'main/header.html.twig' %}
 	{% endblock header %}
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="carte-resultat d-flex">
-			<div class="list">
+			<div class="list col-6">
 				<div>
-			<!-- CARTE APERCU ARTISTE -->
-			<div class="Cartes d-flex flex-wrap justify-content-around">
-				<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
-					{% for artiste in artistes %}
-					<a href="{{ path('artist_view', {'id': artiste.id}) }}">
-						 <div class="carte-artiste card">
-							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
-							<div class="info-artiste">
-								<div
-									class="profil-picture">
-									{# ICi l'image de ProfilePicture #}
-									<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+					<!-- CARTE APERCU ARTISTE -->
+					<div
+						class="Cartes d-flex flex-wrap justify-content-around">
+						<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
+						{% for artiste in artistes %}
+							<a href="{{ path('artist_view', {'id': artiste.id}) }}">
+								<div class="carte-artiste card">
+									<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+									<div class="info-artiste">
+										<div
+											class="profil-picture">
+											{# ICi l'image de ProfilePicture #}
+											<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+										</div>
+										<div class="name d-flex justify-content-between">
+											<p>{{ artiste.pseudo }}</p>
+											<p>
+												<i class="fas fa-map-marker-alt"></i>
+												{{ artiste.city }}
+											</p>
+										</div>
+										<div
+											class="styles d-inline-flex">
+											{# Boucle pour les styles #}
+											{% for style in artiste.styles %}
+												<p>{{ style.name }}</p>
+											{% endfor %}
+										</div>
+									</div>
 								</div>
-								<div class="name d-flex justify-content-between">
-									<p>{{ artiste.pseudo }}</p>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										{{ artiste.city }}
-									</p>
-								</div>
-								<div class="styles d-inline-flex">
-								{# Boucle pour les styles #}
-									{% for style in artiste.styles %}
-										<p>{{ style.name }}</p>
-									{% endfor %}
-								</div>
-							</div>
-						</div>
-					</a>
-				{% endfor %}
-				<!-- FIN DE BOUCLE ARTISTE APERCU -->
-			</div> <!-- FIN CARTE APERCU ARTISTE -->
+							</a>
+						{% endfor %}
+						<!-- FIN DE BOUCLE ARTISTE APERCU -->
+					</div>
+					<!-- FIN CARTE APERCU ARTISTE -->
 				</div>
 			</div>
-			<div id="map" class="map"></div>
+			<div id="map" class="map col-4 me-5"></div>
+			<div class="col-2"></div>
 		</div>
 
 
@@ -68,50 +73,51 @@
 
 
 {% block javascripts %}
-<script>
-function infoOpen (i){
-	google.maps.event.trigger(gmarkers[i], 'click')
+	<script>
+		function infoOpen(i) {
+google.maps.event.trigger(gmarkers[i], 'click')
 }
 
 var gmarkers = [];
-window.initMap = function() {
-	var artists = [
-		{% for artiste in artistes %}
-		["{{ artiste.id }}", "{{ artiste.pseudo}}", "{{artiste.address}}", "{{artiste.coverPicture}}", "{{artiste.lat}}", "{{artiste.lng}}" ],
-		{% endfor %}
-	];
-    
-	var bounds  = new google.maps.LatLngBounds();
-	var map = new google.maps.Map(document.getElementById('map'), {
-	    zoom: 8,
-	});
+window.initMap = function () {
+var artists = [{% for artiste in artistes %}[
+"{{ artiste.id }}",
+"{{ artiste.pseudo }}",
+"{{ artiste.address }}",
+"{{ artiste.coverPicture }}",
+"{{ artiste.lat }}",
+"{{ artiste.lng }}"
+],{% endfor %}];
 
-	var infowindow = new google.maps.InfoWindow({maxWidth: 350});
+var bounds = new google.maps.LatLngBounds();
+var map = new google.maps.Map(document.getElementById('map'), {zoom: 4});
 
-	var marker, i;
-	for(i=0; i < artists.length; i++) {
-		loc = new google.maps.LatLng(artists[i][4], artists[i][5]);
-		marker = new google.maps.Marker({
-			position: loc,
-			//icon: '/assets/img/position-pin.svg',
-			icon: {
-				path: 'M11 2c-3.9 0-7 3.1-7 7 0 5.3 7 13 7 13 0 0 7-7.7 7-13 0-3.9-3.1-7-7-7Zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5 0-1.4 1.1-2.5 2.5-2.5 1.4 0 2.5 1.1 2.5 2.5 0 1.4-1.1 2.5-2.5 2.5Z',
-				scale: 1.6363636363636363636363636364,
-				anchor: new google.maps.Point(11, 22),
-				fillOpacity: 1,
-				fillColor: '#0e3178',
-				strokeOpacity: 0
-			},
-			map: map
-		});
+var infowindow = new google.maps.InfoWindow({maxWidth: 350});
 
-		gmarkers.push(marker);
-		bounds.extend(loc);	}
-		
-	google.maps.event.addListener(marker, 'click', (function(marker, i) {
-			return function() {
+var marker,
+i;
+for (i = 0; i < artists.length; i++) {
+loc = new google.maps.LatLng(artists[i][4], artists[i][5]);
+marker = new google.maps.Marker({
+position: loc,
+// icon: '/assets/img/position-pin.svg',
+icon: {
+path: 'M11 2c-3.9 0-7 3.1-7 7 0 5.3 7 13 7 13 0 0 7-7.7 7-13 0-3.9-3.1-7-7-7Zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5 0-1.4 1.1-2.5 2.5-2.5 1.4 0 2.5 1.1 2.5 2.5 0 1.4-1.1 2.5-2.5 2.5Z',
+scale: 1.6363636363636363636363636364,
+anchor: new google.maps.Point(11, 22),
+fillOpacity: 1,
+fillColor: '#0e3178',
+strokeOpacity: 0
+},
+map: map
+});
 
-				/*for(var z=0; z< gmarkers.length;z++) {
+gmarkers.push(marker);
+bounds.extend(loc);
+}
+
+google.maps.event.addListener(marker, 'click', (function (marker, i) {
+return function () { /*for(var z=0; z< gmarkers.length;z++) {
 					gmarkers[z].setAnimation(null);
 				}
 				if(marker.getAnimation() != null) {
@@ -120,33 +126,26 @@ window.initMap = function() {
 					marker.setAnimation(google.maps.Animation.BOUNCE);
 				}*/
 
-				infowindow.setContent('<div>'
+infowindow.setContent('<div>' + '<img src="' + artists[i][3] + '" alt="" style="max-width:100%;height:auto;display:block;">' + '<h3 style="font-size:18px!important;margin-top:1rem;" class="titillium text-color-1-important">' + artists[i][1] + ' <small class="text-muted">- ' + artists[i][2] + '</small></h3>' + '<p style="font-size:16px">' + artists[i][5] + '</p>' + '</div>');
+infowindow.open(map, marker);
+}
+})(marker, i));
 
-					+'<img src="'+artists[i][3]+'" alt="" style="max-width:100%;height:auto;display:block;">'
-					+'<h3 style="font-size:18px!important;margin-top:1rem;" class="titillium text-color-1-important">'+artists[i][1]+' <small class="text-muted">- '+artists[i][2]+'</small></h3>'
-					+'<p style="font-size:16px">'+artists[i][5]+'</p>'
-				+'</div>');
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
+map.fitBounds(bounds);
+map.panToBounds(bounds);
 
-	map.fitBounds(bounds);
-	map.panToBounds(bounds);
-
-	var listener = google.maps.event.addListener(map, "idle", function () {
-		//map.setZoom(15);
-		map.setZoom(3);
-		google.maps.event.removeListener(listener);
-	});
+var listener = google.maps.event.addListener(map, "idle", function () { // map.setZoom(15);
+map.setZoom(13);
+google.maps.event.removeListener(listener);
+});
 };
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap';
 script.async = true;
 document.head.appendChild(script);
+	</script>
 
-</script>
 
-
-<!-- // script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap-->
+	<!-- // script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap-->
 
 {% endblock %}
