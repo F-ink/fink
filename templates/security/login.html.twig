@@ -1,84 +1,44 @@
-{% extends 'base.html.twig' %}
-
-{% block stylesheets %}
-	{# Fichier style de la page Update #}
-	<link
-	href="{{ asset('styles/login.css') }}" type="text/css" rel="stylesheet">
-	{# Fichier style pour le go to the top #}
-	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
-{% endblock %}
-{% block javascripts %}
-	<script src="{{ asset('js/gotop.js') }}" defer></script>
-{% endblock %}
-
-{% block title %}Connectez-vous à votre espace personnel
-{% endblock %}
-
 {% block body %}
-	{% for flashError in app.flashes('danger') %}
-		<div class="alert alert-danger" id="barre-alerte" role="alert">{{ flashError }}</div>
-	{% endfor %}
 
-	{# ici le header user connected or not #}
-	{% block header %}
-		{% include 'main/header.html.twig' %}
-	{% endblock header %}
+<h1 class="titleconnect">SE CONNECTER</h1>
 
+<button type="submit" class="bouton">
+			Se connecter avec Instagram
+			<i class="lab la-instagram"></i>
+		</button>
 
-	{# Bouton To the Top #}
-	<a id="gotop"></a>
+			
+	<form method="post" action="{{ path('app_login') }} " >
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+		
+		
 
+	<p class="or"> ou </p>
 
-	<div class="container" id="log-in">
-		<h1 class="titleconnect">SE CONNECTER</h1>
 		<div>
-			<button type="submit" class="bouton">
-				Se connecter avec Instagram
-				<i class="lab la-instagram"></i>
-			</button>
+			<input type="email" value="" name="email"  placeholder="Email" autocomplete="email" required autofocus>
+		</div>
+		<div>
+			<input type="password" name="password"  placeholder="Mot de passe" autocomplete="current-password" required>
+		</div>
+		<input
+		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 
-			<form method="post" action="{{ path('app_login') }} ">
-				{% if error %}
-					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-				{% endif %}
+		{# See https://symfony.com/doc/current/security/remember_me.html #}
 
-
-				<p class="or">
-					ou
-				</p>
-
-				<div>
-					<input type="email" value="" name="email" placeholder="Email" autocomplete="email" required autofocus>
-				</div>
-				<div>
-					<input type="password" name="password" placeholder="Mot de passe" autocomplete="current-password" required>
-				</div>
-				<input
-				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-
-				{# See https://symfony.com/doc/current/security/remember_me.html #}
-				<div>
-					<label>
-						<input type="checkbox" name="_remember_me" class="checkbox">
-						Se souvenir de moi
-					</label>
-				</div>
-
-
-				<button type="submit" class="bouton">
-					OK !
-				</button>
-			</form>
+		<div>
+			<label>
+				<input type="checkbox" name="_remember_me" class="checkbox">
+				Se souvenir de moi
+			</label>
 		</div>
 
-	</div>
 
-
-	{# ici le footer #}
-	{% block footer %}
-		{% include 'main/footer.html.twig' %}
-	{% endblock footer %}
-
+		<button type="submit" class="bouton">
+			OK !
+		</button>
+	</form>
 {% endblock %}
