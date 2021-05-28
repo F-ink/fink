@@ -145,6 +145,7 @@ class AccountController extends AccountBaseController
         $em = $this->getDoctrine()->getManager();
         $artist = $em->getRepository(Artist::class)->find($id);
         $form = $this->createForm(AccountType::class, $artist);
+        $styles = $em->getRepository(Style::class)->findAll();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -178,6 +179,7 @@ class AccountController extends AccountBaseController
 
         return $this->render('account/profile.html.twig', [
             'artist' => $artist,
+            'styles' => $styles,
             'form' => $form->createView(),
         ]);
     }

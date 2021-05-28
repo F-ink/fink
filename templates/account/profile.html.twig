@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
 	<link href="{{ asset('styles/gotop.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/profil.css') }}" type="text/css" rel="stylesheet">
+
 {% endblock %}
 {% block javascripts %}
 	<script src="{{ asset('js/gotop.js') }}" defer></script>
 {% endblock %}
 
 
-{% block title %}Votre Profil :)
+{% block title %}FINK | Mon profil 
 {% endblock %}
 
 {% block body %}
@@ -21,62 +26,99 @@
 	{# Bouton To the Top #}
 	<a id="gotop"></a>
 
-	<div>
-		<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning">
-			Modifier mon profil
-		</a>
-	</div>
-	<div class="container">
-		<div class="col-12">
-			<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
-			<div class="form-check form-switch">
-				<input class="form-check-input" type="checkbox" name="hide" id="flexSwitchCheckChecked" checked>
-				<label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
-			</div>
-			<h2>{{artist.pseudo}}</h2>
-		</div>
-		<div class="row">
-			<div class="col-9">
-				<p>{{artist.description}}</p>
-				<p>{{artist.city}}</p>
-				<div>
-					et ici des pictures en grid
-				</div>
-				<div class="col-12 d-flex justify-content-end">
-					<a href="#" class="btn btn-primary ">Contacter</a>
 
-				</div>
-				<div class="card" style="width: 18rem; border: none;">
+	<div class="container" id="accueil-profil">
+		<h3 class="text-center">Votre profil
+			<span>
+				artiste
+			</span>
+			tatoueur</h3>
+		<div class="carte-artiste">
+			<div class="profil-couverture">
+				<img src={{ asset('/cover_picture/' ~ artist.CoverPicture) }} class="card-img-top" alt="photo de couverture">
+			</div>
+			<div class="entete">
+				<div class="profil-picture">
 					<img src="{{asset('/asset/uploads/' ~ artist.profilePicture )}}" class="card-img-top rounded-circle" alt="photo de profile">
 				</div>
-			</div>
-
-			<div class="row">
-				<h2>Ajouter vos photos Darlings</h2>
-
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button class="btn btn-success" type="submit" name="submit">Ajouter</button>
-
-				<h2>Images</h2>
-				<div class="col-3">
-					{% for picture in artist.pictures %}
-
-						<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="150">
-					{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
-						{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a>
-																																																        </div>#}
-					{% endfor %}
-
-					{{ form_end(form) }}
-
+				<div class="pseudo-clic d-flex w-100 align-items-center justify-content-between">
+					<div class="pseudo d-flex align-items-baseline">
+						<div>
+							<h2 class="">{{artist.pseudo}}</h2>
+							<div
+								class="styles">
+								{# <h4>Vos styles de tatouage :</h4> #}
+								<div
+									class="style-name d-inline-flex">
+									{# Boucle pour les styles #}
+									{% for style in artist.styles %}
+										<p>{{ style.name }}</p>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div class="city">
+							<p>
+								<i class="fas fa-map-marker-alt"></i>
+								{{ artist.city }}</p>
+						</div>
+					</div>
+					<div class="update-bouton">
+						<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning ">
+							Modifier/Completer mon profil
+						</a>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+			{# END entete #}
 
-	{# ici le footer #}
-	{% block footer %}
-		{% include 'main/footer.html.twig' %}
-	{% endblock footer %}
-{% endblock %}
+			<div class="description ">
+				<h4>Description de votre profil :
+				</h4>
+				<p>{{artist.description}}</p>
+			</div>
+			<div class="work">
+				<h4>Les photos publiées sur votre profil :
+				</h4>
+				<p class="sous-titre">(Vous pouvez ajouter plusieurs photos en un clic avec la sélection multiple (ctrl + clic)</p>
+				<div class="realisations">
+					<div class="photos d-flex flex-wrap">
+						{% for picture in artist.pictures %}
+						<div class="photo">
+							<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="250">
+						{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+							{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a></div>#}
+						</div>
+							
+						{% endfor %}
+					</div>
+					<div class="d-flex">
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<button class="btn btn-success" type="submit" name="submit">Ajouter à mon profil</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+			<div class="info-plus">
+				<h4>informations complémentaires : </h4>
+				<div class="visible">
+					<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
+					<div class="form-check form-switch d-flex">
+						<input class="form-check-input" type="checkbox" name="hide" id="flexSwitchCheckChecked" checked>
+						<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+					</div>
+				</div>
+			</div>
+			<div class="help">
+				<div class="col-12 d-flex justify-content-center">
+					<a href="mailto:finkt@outlook.fr" class="btn btn-primary ">Besoin d'aide?</a>
+				</div>
+			</div>
+		</div>{# end carte artiste #}
+	</div> 
+
+{# ici le footer #}
+{% block footer %}
+	{% include 'main/footer.html.twig' %}
+{% endblock footer %}{% endblock %}
