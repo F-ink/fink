@@ -11,13 +11,13 @@ span{
 /* fond blanc */
 #artist_introduction{
 
-width: 80vw;
+width: 60vw;
 border-radius: 20px;
 background-color: rgb(255, 255, 255);
 position: relative;
 display: inline-block;
-margin-left: 20%;
-margin-right: 20%;
+margin-left: 10%;
+margin-right: 10%;
 margin-bottom: 3rem;
 color:black;
 margin-top: 3rem ;
@@ -46,15 +46,23 @@ padding-left: 1rem;
 
 }
 
-.thestyle{
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    padding: 1rem;
 
-    
+.thestyles p{
+    background-color: #9BA7B3;
+    color: white;
+    border-radius: 55px;
+    padding: 1px 10px;
+    font-size: 12px;
+    text-align: center;
+    align-self: center;
+    white-space:nowrap;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    cursor: default;
+    margin-left: 1rem;
 }
-.thestyle p{
+        /*   
+         text-align: start;
     border:solid;
     border-radius: 50px;
     border-color: #9ba7b3;
@@ -62,13 +70,18 @@ padding-left: 1rem;
     color: white;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
-    margin-left: 1rem;
-}
+    margin-left: 1rem; */
+
+
 .description{
-    height: 150px;
-    overflow: scroll;
+    
+ 
+    /* overflow: scroll; */
     margin-bottom: 2rem;
     margin-left: 1rem;
+    width: 100% ;
+    word-wrap: break-word;
+    
 }
 .city {
     margin-left: 1rem;
@@ -80,7 +93,7 @@ align-items: center;
 
 }
 
-.img{
+.artiste_work, img{
     max-width: 150px; 
     max-height: 150px; 
     object-fit: cover; 
