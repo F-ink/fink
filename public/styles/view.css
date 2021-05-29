@@ -4,13 +4,10 @@ span{
     color: #404F57;
     font-weight: bold;
 }
-.artist_name h2{
-    color:#0C233E;
-}
+
 
 /* fond blanc */
 #artist_introduction{
-
 width: 60vw;
 border-radius: 20px;
 background-color: rgb(255, 255, 255);
@@ -31,13 +28,18 @@ z-index:5;
 
 }
 /* partie supérieure */
-#insta{
-font-size: 54px;
-color:#404F57;
-display: block;
-justify-content: right ;
-text-align: right;
+.artist_name h2 {
+    color:#0C233E;
+    word-wrap: break-word;
 }
+
+#insta{
+    font-size: 54px;
+    color:#404F57;
+    display: block;
+    justify-content: right ;
+    text-align: right;
+    }
 /*partie présentation artiste*/
 
 .artist_intro{
@@ -88,8 +90,9 @@ padding-left: 1rem;
 }
 /* partie médiane */
 .artist_work{
+display: grid;
+grid-area: auto;
 justify-content: center;
-align-items: center;
 
 }
 
@@ -97,6 +100,8 @@ align-items: center;
     max-width: 150px; 
     max-height: 150px; 
     object-fit: cover; 
+    align-items: flex-end;
+    padding:5px;
 }
 
 #contacter{
@@ -106,15 +111,17 @@ align-items: center;
     background: linear-gradient(159deg, rgba(12, 35, 62, 0.7343137938769257) 30%, rgba(188, 205, 215, 1) 100%);
     color:white;
     /* z-index: 5; */
-    position: absolute;
+    position: relative;
+    bottom: 0;
     /* bottom: 0; */
     margin-bottom: 2rem;
-    margin-top: 2rem;
-    right: 4em;
+    margin-top: 3rem;
+    left: 35%;
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 0.5rem;
     padding-top: 0.4rem;
+    
     
 }
 .sphere{
@@ -130,10 +137,12 @@ align-items: center;
     
   
 }
+/* sous la div blanche */
 .action_sup{
     /* text-align: center; */
     font-weight: 500;
     text-transform: uppercase;
+    padding-top: 4rem;
 }
 #retour{
     color:#404F57;
