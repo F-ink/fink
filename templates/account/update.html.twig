@@ -77,8 +77,8 @@
 				{# LES STYLES DE L'ARTISTE #}
 				<div class="pickup-styles">
 					<h4 class="text-center">Styles</h4>
-					<div class="d-flex justify-content-center">
-						<div>
+					<div class="style-modif d-flex ">
+						<div class="justify-content-center">
 							<div class="remove-style d-flex">
 								<p>Enlever un style :
 								</p>
@@ -93,7 +93,7 @@
 							</div>
 							<div class="add-style d-flex w-50">
 								<p>Ajouter un style :
-								</p>
+								</p> <br>
 								{% for style in styles %}
 									<div class="form-check">
 										<input class="form-check-input" type="checkbox" name="style" id="style{{style.id}}" value="{{style.id}}">
@@ -108,6 +108,7 @@
 
 
 				</div>
+
 				{# INFO MAJEURS : Pseudo/ville/style #}
 				<div class="infos-maj ">
 					<h4 class="text-center">Carte de visite
@@ -153,7 +154,6 @@
 
 
 				</div>
-
 
 				{# Validation formulaire #}
 				<div class="update-bouton">
