@@ -1,21 +1,212 @@
-.container-update{
+/* Desactivation Bordure automatique*/
+#update-profil input:focus,
+#update-profil textarea:focus,
+#update-profil select:focus {
+    outline: none;
+}
+
+#update-profil input,
+select {
+    font-family: open-sans, sans-serif;
+}
+
+
+/* CARD */
+#update-profil .carte-artiste {
     background-color: white;
-    border-radius: 10px;
-    padding: 5%;
-    box-shadow: 5px 5px 15px 5px #9ba7b3c4;
+    border-radius: 15px;
+    position: relative;
+    height: 100%;
+    width: 100%;
     margin-top: 5%;
+    padding-bottom: 3% ;
 }
-.container-update form{
-    width: 90%;
+
+#update-profil .carte-artiste:hover {
+    box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    -webkit-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    -moz-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
+    transition-duration: 1s;
 }
-#photo-profil{
-    height: 100px;
-    width: 100px;
+
+/* END */
+/* COUV */
+.profil-couverture {
+    height: 230px;
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+.profil-couverture img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+/* END */
+/* MENTION PARCOURIR COUV + PROFIL picture */
+.entete-photo {
+    position: relative;
+    padding: 2% 2%;
+    margin-top: 2%;
+}
+
+.entete-photo label {
+    font-weight: 600;
+    color: #0C233E;
+}
+
+.pick-cover-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.pick-profil-picture {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* END */
+
+/* ENCADREMENT PHOTO PROFIL */
+.profil-picture {
     border-radius: 50%;
-    border: 2px solid black;
-    background-color: blue;
+    border: 2px solid;
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    top: -75px;
+    right: 45%;
 }
-#barre-alerte .alert .alert-danger{
-    margin-bottom: 0 !important;
-    position: fixed !important;
+
+.profil-picture img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50%;
+    display: block;
+    object-fit: cover;
+}
+
+/* END */
+/* PSEUDO */
+.pickup-pseudo {
+    text-align: center;
+    margin-top: 4%;
+}
+
+.pickup-pseudo input {
+    border: 1px dotted black;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    background: rgb(230,236,239);
+    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);
+    
+}
+/* .pickup-pseudo input:hover{
+    box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+} */
+/* END */
+/* DESCRIPTION */
+.description{
+    text-align: center;
+    margin-top: 2%;
+}
+.description textarea{
+    width: 50%;
+    height: 100px;
+    border-radius: 10px;
+    background: rgb(230,236,239);
+    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);;
+    border: none;
+}
+/* .description textarea:hover{
+    box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+} */
+/* END */
+/* CARTE DE VISITE */
+.info-contact{
+    align-items: center;
+    width: 50%;
+    /* border: 1px solid rgba(12, 35, 62, 0.68); */
+    padding: 1% 1%;
+    border-radius: 10px;
+    text-align: right;
+    padding-right: 10%;
+    background: rgb(230,236,239);
+    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);   
+}
+/* .info-contact:hover{
+    box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+} */
+.info-contact div{
+    margin-bottom: 2%;
+}
+.infos-maj{
+    margin-top: 2%;
+}
+.info-contact input{
+    border-radius: 30px;
+    padding-left: 10px;
+}
+.info-contact label{
+    font-weight: 600;
+}
+/* END */
+/* STYLES */
+.pickup-styles{
+    margin-top: 2%;
+}
+.add-style{
+    flex-wrap: wrap;
+}
+.pickup-styles p, .pickup-styles input, .pickup-styles label{
+    margin-right: 10px;
+}
+.pickup-styles p{
+    font-weight: 600;
+}
+
+
+
+
+
+
+/* END */
+.update-bouton{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    color: white;
+}
+.update-bouton input{
+    border-radius: 30px;
+    border: none;
+    background: rgb(230,236,239);
+    background: radial-gradient(circle, rgb(180, 196, 178) 3%, rgb(127, 139, 127) 71%);   
+    padding: 5px 2%;
+    color: white;
+}
+
+
+
+
+.update-bouton input:hover{
+    box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
 }
