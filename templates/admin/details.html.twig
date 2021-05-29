@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
 {% block title %}Details de l'artiste
 {% endblock %}
 
 {% block body %}
-	<h1>Détails de {{artist.pseudo}}</h1>
+	{% block header %}
+		{% include 'admin/adminHeader.html.twig' %}
+{% endblock header %}
+	<h1 class="text-center" >Détails de <span class="adminTitre"> {{artist.pseudo}}</span></h1>
 
 	<div class="card position-absolute top-50 start-50 translate-middle w-25 p-3 text-center h-50 d-inline-block" style="width: 18rem;">
 		<img
@@ -27,8 +33,8 @@
 			{% endfor %}
 		</ul>
 		<div class="card-body">
-			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning m-5">Modifier</a>
-			<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger">Supprimer</a>
+			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning m-5 detailsBtn">Modifier</a>
+			<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger detailsBtn">Supprimer</a>
 		</div>
 	</div>
 

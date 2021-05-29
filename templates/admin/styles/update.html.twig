@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Modifier un style{% endblock %}
-{% block body %}
-<h1>Modification du style</h1>
-<form action="" method="POST">
-
-    <div>
-        <input type="text" name="name" value="{{ style.name }}">
-    </div>
-
-    <div>
-    <button type="submit" name="submit" >Valider</button>
-    </div>
-
-</form
-
+{% block stylesheets %}
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
+
+{% block title %}Modifier un style
+{% endblock %}
+{% block body %}
+<h1 class="text-center">Modification du
+	<span class="adminTitre">style</span>
+</h1>
+<form action="" method="POST">
+	<div class="container">
+		<div class="formAdmin">
+			<input class="form-control" type="text" name="name" value="{{ style.name }}">
+		</div>
+
+		<div>
+			<button class="adminBtn mt-3" type="submit" name="submit">Valider</button>
+		</div>
+	</div>
+
+</form {% endblock %}

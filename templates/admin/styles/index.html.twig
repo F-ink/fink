@@ -1,33 +1,43 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
-{% block title %}Gestion des styles de tatouages{% endblock %}
+{% block title %}Gestion des styles de tatouages
+{% endblock %}
 
+{% block header %}
+	{% include '../adminHeader.html.twig' %}
+{% endblock header %}
 {% block body %}
 
-<h1>Gestion des styles de tatouages</h1>
+	<h1 class="text-center">Gestion des styles de
+		<span class="adminTitre">tatouages</span>
+	</h1>
+	<div class="container mt-5">
+		<a class="btn btn-primary" href="{{ path("admin_styles_add") }}">Ajouter un style</a>
 
-<a class="btn btn-primary" href="{{ path("admin_styles_add") }}">Ajouter un style</a>
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for style in styles %}
-        <tr>
-            <td>{{style.id}}</td>
-            <td>{{style.name}}</td>
-            <td class="text-center">
-            <a href="{{ path('admin_styles_style_update', {id: style.id}) }}" class="btn btn-warning">Modifier</a> 
-            <a href="{{ path('admin_styles_style_tampon', {id: style.id}) }}" class="btn btn-danger">supprimer</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for style in styles %}
+					<tr>
+						<td>{{style.id}}</td>
+						<td>{{style.name}}</td>
+						<td class="text-center">
+							<a href="{{ path('admin_styles_style_update', {id: style.id}) }}" class="btn btn-warning adminBtn">Modifier</a>
+							<a href="{{ path('admin_styles_style_tampon', {id: style.id}) }}" class="btn btn-danger adminBtn">supprimer</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock %}

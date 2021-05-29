@@ -1,53 +1,62 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
 {% block title %}Modifier un tatoueur
 {% endblock %}
 {% block body %}
-<h1>Modification du tatoueur</h1>
+{% block header %}
+		{% include 'admin/adminHeader.html.twig' %}
+{% endblock header %}
+<h1 class="text-center">Modification du
+	<span class="adminTitre">tatoueur</span>
+</h1>
 <form class="m-3" action="" method="POST">
+	<div class="container formAdmin">
+		<div class="mb-3">
+			<input class="form-control" type="text" name="email" value="{{ artist.email }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="lastname" value="{{ artist.lastname }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="firstname" value="{{ artist.firstname }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="pseudo" value="{{ artist.pseudo }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="tattooshop" value="{{ artist.tattooShop }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="address" value="{{ artist.address }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="profilePicture" value="{{ artist.profilePicture }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="coverPicture" value="{{ artist.profilePicture }}">
+		</div>
+		<div class="mb-3">
+			<textarea class="form-control" type="text" name="description" value="">{{ artist.description }}</textarea>
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="instagram" value="{{ artist.instagram }}">
+		</div>
+		<div class="mb-3">
+			<input class="form-control" type="text" name="siret" value="{{ artist.siret }}">
+		</div>
 
-	<div class="mb-3">
-		<input type="text" name="email" value="{{ artist.email }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="lastname" value="{{ artist.lastname }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="firstname" value="{{ artist.firstname }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="pseudo" value="{{ artist.pseudo }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="tattooshop" value="{{ artist.tattooShop }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="address" value="{{ artist.address }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="profilePicture" value="{{ artist.profilePicture }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="coverPicture" value="{{ artist.profilePicture }}">
-	</div>
-	<div class="mb-3">
-		<textarea type="text" name="description" value="">{{ artist.description }}</textarea>
-	</div>
-	<div class="mb-3">
-		<input type="text" name="instagram" value="{{ artist.instagram }}">
-	</div>
-	<div class="mb-3">
-		<input type="text" name="siret" value="{{ artist.siret }}">
-	</div>
+		{# <select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+					{% for style in artist_style %}
+						<option value="{{style.id}}">{{style.name}}</option>
+					{% endfor %}
+				</select> #}
 
-	{# <select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
-		{% for style in artist_style %}
-			<option value="{{style.id}}">{{style.name}}</option>
-		{% endfor %}
-	</select> #}
-
-	<div>
-		<button class="btn btn-success" type="submit" name="submit">Valider</button>
+		<div>
+			<button class="btn btn-success justify-content-center" type="submit" name="submit">Valider</button>
+		</div>
 	</div>
 
 </form {% endblock %}

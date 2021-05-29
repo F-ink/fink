@@ -1,0 +1,43 @@
+.adminTitre{
+    color: var(--blueGris2);
+}
+
+.adminBtn{
+    border: none;
+    font-size: 15px;
+    border-radius: 50px;
+    color: #fff;
+    width: 130px;
+    height: 35px;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    background-color: #9BA7B3;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+.logoAdmin{
+    width: 200px;
+    height: auto;
+    margin: 10px 0 0 10px;
+}
+
+.formAdmin{
+    width: 500px;
+}
+
+.detailsBtn{
+    border: none;
+    font-size: 15px;
+    border-radius: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    background-color: #9BA7B3;  
+}
+
+.navAdmin{
+    background-color: var(--blueGris2);
+    color: white;
+    text-transform: capitalize;
+}
