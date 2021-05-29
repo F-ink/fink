@@ -53,10 +53,9 @@
 
 
 				{% for style in artiste.styles %}
-					<div class="thestyle">
+					<div class="thestyles d-inline-flex">
 						<p>{{ style.name }}</p>
-						<p>
-							Aquarelle</p>
+						
 					</div>
 				{% endfor %}
 
@@ -74,10 +73,11 @@
 				{% for picture in artiste.pictures %}
 					<div class="container artist_work">
 						<div class="row row-cols-1 g-2 row-cols-sm-3 g-3">
-							<div class="col">
-								<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
+							{# <div class="col"> #}
+								<img class"img-fluid"
+								 src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
 							</div>
-							<div class="col">
+							{# <div class="col">
 								<img src="../img/tattoo2.jpg" class="img-fluid" alt="">
 							</div>
 							<div class="col">
@@ -85,23 +85,8 @@
 							</div>
 							<div class="col">
 								<img src="../img/tattoo4.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="col">
-								<img src="../img/tattoo1.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="col">
-								<img src="../img/tattoo2.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="col">
-								<img src="../img/tattoo3.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="col">
-								<img src="../img/tattoo4.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="col">
-								<img src="../img/tattoo1.jpg" class="img-fluid" alt="">
-							</div>
-
+							</div> #}
+					
 						</div>
 					</div>
 				{% endfor %}
@@ -128,14 +113,14 @@
 						<a href="{{ path('artist_view', {'id': artiste.id}) }}">
 							<div
 								class="carte-artiste card">
-								{# METTRE IMG CoverPicture ci-dessous:}
-								
-								                    <img src={{ asset('img/logo.png') }} alt="">
+								{# METTRE IMG CoverPicture ci-dessous:#}
+								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
+								                    {# <img src={{ asset('img/logo.png') }} alt=""> #}
 								                    <div class="info-artiste">
 								                    <div class="profil-picture">
 								
 								                                {# ICi l'image de ProfilePicture #}
-								<img src="{{ artiste.ProfilePicture }}" alt="{{ artiste.pseudo }}">
+								
 							</div>
 							<div class="name d-flex justify-content-between">
 								<p>{{ artiste.pseudo }}</p>
@@ -156,5 +141,5 @@
 		{% endfor %}
 	</section>
 </main>
-<footer></footer></div>{# ici le footer #}{% block footer %}
+{# ici le footer #}{% block footer %}
 {% include 'main/footer.html.twig' %}{% endblock footer %}{% endblock %}
