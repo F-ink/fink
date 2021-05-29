@@ -9,32 +9,37 @@
 {% block body %}
 	{% block header %}
 		{% include 'admin/adminHeader.html.twig' %}
-{% endblock header %}
-	<h1 class="text-center" >Détails de <span class="adminTitre"> {{artist.pseudo}}</span></h1>
+	{% endblock header %}
+	<h2 class="text-center m-5">Détails de
+		<span class="adminTitre">
+			{{artist.pseudo}}</span>
+	</h2>
+	<div class="container d-flex justify-content-center">
+		<div class="card" style="width: 40rem;">
+			<img src="{{ asset('/cover_picture/' ~ artist.coverPicture) }}" class="card-img-top" alt="Image de l'artiste">
+			<div class="card-body">
+				<h5 class="card-title fs-2">{{artist.pseudo}}</h5>
+			</div>
+			<ul class="list-group list-group-flush text-start">
+				<li class="list-group-item fs-4">Localisation: 
+					<span>{{artist.tattooShop}}
+					{{artist.city}}</span></li>
+				<li class="list-group-item fs-4 d-flex ">Email: 
+					<span>{{artist.email}}</span></li>
+				<li class="list-group-item fs-4 d-inline-block text-start" style="word-break: normal; ">Description: 
+					<span>{{artist.description}}</span></li>
+				<li class="list-group-item fs-5 d-flex ">Numéro de Siret:
+					<span>{{artist.siret}}</span></li>
+				{% for style in artist_style %}
+					<li class="list-group-item fs-5 text-center">{{style.name}}</li>
+				{% endfor %}
+			</ul>
 
-	<div class="card position-absolute top-50 start-50 translate-middle w-25 p-3 text-center h-50 d-inline-block" style="width: 18rem;">
-		<img
-		src="{{ asset('/asset/uploads/' ~ artist.coverPicture) }}" class="card-img-top" alt="Image de l'artiste">
-		<div class="card-body">
-			<h5 class="card-title fs-2">{{artist.pseudo}}</h5>
-		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item fs-4" >Localisation:
-				{{artist.tattooShop}}
-				{{artist.city}}</li>
-			<li class="list-group-item fs-">Email:
-				{{artist.email}}</li>
-			<li class="list-group-item fs-4">Description:
-				{{artist.description}}</li>
-			<li class="list-group-item fs-5">Numéro de Siret:
-				{{artist.siret}}</li>
-			{% for style in artist_style %}
-			<li class="list-group-item fs-5">{{style.name}}</li>
-			{% endfor %}
-		</ul>
-		<div class="card-body">
-			<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning m-5 detailsBtn">Modifier</a>
-			<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger detailsBtn">Supprimer</a>
+			<div class="card-body d-flex justify-content-evenly">
+				<a href="{{ path('artist_update', {id: artist.id}) }}" class="card-link btn btn-warning  detailsBtn">Modifier</a>
+				<a href="{{ path('artist_tampon', {id: artist.id}) }}" class="card-link btn btn-danger detailsBtn">Supprimer</a>
+			</div>
+
 		</div>
 	</div>
 

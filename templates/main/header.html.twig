@@ -7,126 +7,147 @@
 {% block header %}
 
 
-{# --------------- NAV FOR AUTH TATOO --------------- #}
+	{# --------------- NAV FOR AUTH TATOO --------------- #}
 
 
-{% if app.user  %}
-<div class="userbar">
+	{% if app.user  %}
+		<div class="userbar">
 
-	<div class="accroche col-12 col-sm-8 col-md-8 d-flex align-items-center">
-		<a href="{{ path('home') }}">
-			<span class="material-icons">home</span>
-			</a>
-		<p>					
-			Bonjour &nbsp;
-			<span> {{ app.user.pseudo }} ! </span>
-			 <a href="{{ path('premium') }}"> &nbsp; Et si vous passiez <span> PREMIUM ? </span> </a>
-		</p>
-	</div>
-
-
-	<div class="userbutton">
-		<button>
-			<a href="{{ path('profil_',{id: app.user.id} ) }}">Mon profil
-				<span class="material-icons">account_circle</span>
-			</a>
-		</button>
-
-		<button>
-			<a href="{{ path('app_logout') }}">Se déconnecter <span class="material-icons">logout</span>
-			</a>
-		</button>
-		
-	</div>
-</div>
-
-{% endif %}
+			<div class="accroche col-12 col-sm-8 col-md-8 d-flex align-items-center">
+				<a href="{{ path('home') }}">
+					<span class="material-icons">home</span>
+				</a>
+				<p>
+					Bonjour &nbsp;
+					<span>
+						{{ app.user.pseudo }}
+						!
+					</span>
+					<a href="{{ path('premium') }}">
+						&nbsp; Et si vous passiez
+						<span>
+							PREMIUM ?
+						</span>
+					</a>
+				</p>
+			</div>
 
 
-<nav class="navbar navbar-expand-lg navbar-light " id="nav">
-<div class="container-fluid">
-
-
-	{# --------------- LOGO & BASIC NAV --------------- #}
-	<div>
-		<a href="{{ path('home') }}"><img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/></a>
-	</div>
-
-	<div>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse " id="navbarNav">
-			<ul>
-				<li>
-					<button class="btn-navigation">
-						<a href="{{ path('gallerie') }}">GALLERIE</a>
-						<span class="material-icons">search</span>
-					</button>
-				</li>
-				<li>
-					<button class="btn-navigation">
-						<a href="{{ path('home') }}">ACCUEIL</a>
-						<span class="material-icons">home</span>
-					</button>
-
-				</li>
-				{% if app.user == false %}
-					<li>
-						<button class="myBtn bouton">
-							JE SUIS TATOUEUR/SE
-							<span class="material-icons">brush</span>
-						</button>
-
-					</li>
+			<div class="userbutton">
+			    {% if is_granted("ROLE_ADMIN") %}
+				<button>
+					<a href="{{ path('admin_' ) }}">Espace Admin
+						<span class="material-icons">shield</span>
+					</a>
+				</button>
 				{% endif %}
-			</ul>
-		</div>
-	</div>
+				<button>
+					<a href="{{ path('profil_',{id: app.user.id} ) }}">Mon profil
+						<span class="material-icons">account_circle</span>
+					</a>
+				</button>
 
+				<button>
+					<a href="{{ path('app_logout') }}">Se déconnecter
+						<span class="material-icons">logout</span>
+					</a>
+				</button>
 
-	{# <-- ESPACE CONNEXION --> #}
-
-	<div class="my-modal">
-
-		<div class="my-modal-content">
-
-			<span class="close">&times;</span>
-		
-			{{render(controller('App\\Controller\\SecurityController::login'))}}
-
-
-		<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
-		
-			<p class="myBtn cursor"><a href="{{path('app_forgotten_password')}}">Mot de passe oublié ?</a></p>
+			</div>
 		</div>
 
-	</div>
+	{% endif %}
 
-	{# <-- ESPACE INSCRIPTION --> #}
-	<div class="my-modal1">
 
-		<div class="my-modal-content">
+	<nav class="navbar navbar-expand-lg navbar-light " id="nav">
+		<div
+			class="container-fluid">
 
-			<span class="close">&times;</span>
 
-			{{render(controller('App\\Controller\\RegistrationController::register'))}}
+			{# --------------- LOGO & BASIC NAV --------------- #}
+			<div>
+				<a href="{{ path('home') }}"><img src={{ asset ('img/logo.png') }} alt="Le logo Fink"/></a>
+			</div>
 
-		</div>
+			<div>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse " id="navbarNav">
+					<ul>
+						
+						<li>
+							<button class="btn-navigation">
+								<a href="{{ path('gallerie') }}">GALLERIE</a>
+								<span class="material-icons">search</span>
+							</button>
+						</li>
+						<li>
+							<button class="btn-navigation">
+								<a href="{{ path('home') }}">ACCUEIL</a>
+								<span class="material-icons">home</span>
+							</button>
 
-	</div>
+						</li>
+						{% if app.user == false %}
+							<li>
+								<button class="myBtn bouton">
+									JE SUIS TATOUEUR/SE
+									<span class="material-icons">brush</span>
+								</button>
 
-	{# <-- ESPACE OUBLI DE MDP --> #}
-	{#<div class="my-modal">
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
 
-		<div class="my-modal-content">
 
-			<span class="close">&times;</span>
+			{# <-- ESPACE CONNEXION --> #}
 
-			{{render(controller('App\\Controller\\SecurityController::'))}}
+			<div class="my-modal">
 
-		</div>
+				<div class="my-modal-content">
 
-	</div>#}
+					<span class="close">&times;</span>
 
-</nav>{% endblock header %}
+					{{render(controller('App\\Controller\\SecurityController::login'))}}
+
+
+					<p class="myBtn cursor">Je n'ai pas de compte, c'est ici pour m'inscrire !</p>
+
+					<p class="myBtn cursor">
+						<a href="{{path('app_forgotten_password')}}">Mot de passe oublié ?</a>
+					</p>
+				</div>
+
+			</div>
+
+			{# <-- ESPACE INSCRIPTION --> #}
+			<div class="my-modal1">
+
+				<div class="my-modal-content">
+
+					<span class="close">&times;</span>
+
+					{{render(controller('App\\Controller\\RegistrationController::register'))}}
+
+				</div>
+
+			</div>
+
+			{# <-- ESPACE OUBLI DE MDP --> #}
+			{#<div class="my-modal">
+			
+					<div class="my-modal-content">
+			
+						<span class="close">&times;</span>
+			
+						{{render(controller('App\\Controller\\SecurityController::'))}}
+			
+					</div>
+			
+				</div>#}
+
+		</nav>
+	{% endblock header %}
