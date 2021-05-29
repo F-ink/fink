@@ -3,7 +3,5 @@
     position: sticky;
     background-repeat: no-repeat;
     background-position: 0 10%;
-    height: 100vh;
-    width: 100%;
-    z-index: -500;
+
 }
