@@ -1,3 +1,13 @@
+.bg-feuille2 {
+    background-image: url(../img/bgfeuillepremium.svg);
+    position: sticky;
+    background-repeat: no-repeat;
+    background-position: 0 67%;
+    background-size: cover;
+    padding: 75px 0;
+
+}
+
 .forfait {
     background-color: white;
     border-radius: 15px;
