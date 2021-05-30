@@ -63,6 +63,8 @@ a{
     font-style: none;
     text-transform: none;
 }
-
-
 /* END FONTS SETTINGS */
+.alert {
+    margin-bottom: 0 !important;
+}
+
