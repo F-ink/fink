@@ -23,17 +23,17 @@
 			<ul class="list-group list-group-flush ms-8">
 				<li class="list-group-item fs-3">Localisation: 
 					<span class="ms-3 fs-5">{{artist.tattooShop}}
-					{{artist.city}}</span></li>
+					 à {{artist.city}}</span></li>
 				<li class="list-group-item fs-3">Email: 
 					<span class="ms-3 fs-5">{{artist.email}}</span></li>
 				<li class="list-group-item fs-3">Numéro de Siret:
 					<span class="ms-2 fs-5">{{artist.siret}}</span></li>
 				
-					<p class="list-group-item fs-5 text-center">
+					<div class="list-group-item fs-5 text-center">
 					{% for style in artist_style %}
-					{{style.name}}
+					<p class="stylesAdmin d-inline">{{style.name}}</p>
 					{% endfor %}
-					</p>
+					</div>
 				<li class="list-group-item fs-3 " style="word-break: normal; ">Description: 
 					<span class=" d-block fs-5">{{artist.description}}</span></li>
 				

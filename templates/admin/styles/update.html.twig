@@ -6,18 +6,21 @@
 {% block title %}Modifier un style
 {% endblock %}
 {% block body %}
-<h1 class="text-center">Modification du
-	<span class="adminTitre">style</span>
-</h1>
-<form action="" method="POST">
-	<div class="container">
-		<div class="formAdmin">
-			<input class="form-control" type="text" name="name" value="{{ style.name }}">
-		</div>
+	<h1 class="text-center">Modification du
+		<span class="adminTitre">style</span>
+	</h1>
+	<div class="container text-center">
+		<form action="" method="POST">
 
-		<div>
-			<button class="adminBtn mt-3" type="submit" name="submit">Valider</button>
-		</div>
+			<div class="formAdmin">
+				<input class="form-control" type="text" name="name" value="{{ style.name }}">
+			</div>
+
+			<div>
+				<button class="adminBtn mt-3" type="submit" name="submit">Valider</button>
+			</div>
+
+
+		</form>
 	</div>
-
-</form {% endblock %}
+	{% endblock %}

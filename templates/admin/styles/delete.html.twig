@@ -1,23 +1,28 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-<link href="{{ asset('styles/delete.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/delete.css') }}" type="text/css" rel="stylesheet">
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
 
 {% endblock %}
 
-{% block title %}FINK !{% endblock %}
+{% block title %}FINK !
+{% endblock %}
 
 {% block body %}
 
-<h2>Supprimer le style</h2>
-<div class="d-flex" id="contenant">
-<div class="card">
-<h3>Etes vous sur de vouloir supprimer ?</h3>
-<div id="boutons">
-<a href="{{ path('admin_styles_style_delete', {id: style.id}) }}" class="btn btn-danger">Supprimer </a>
+	<h1 class="text-center">Supprimer le
+		<span class="adminTitre">style</span>
+	</h1>
+	<div class="container" id="contenant">
+		<div class="card text-center">
+			<h3>Etes vous sur de vouloir supprimer ?</h3>
+			<div id="boutons">
+				<a href="{{ path('admin_styles_style_delete', {id: style.id}) }}" class="btn btn-danger">Supprimer
+				</a>
 
-<a href="{{ path('admin_styles_home_styles')}}" class="btn btn-dark
-">Annuler</a>
-</div>
-</div>
-</div>
+				<a href="{{ path('admin_styles_home_styles')}}" class="btn btn-dark
+					">Annuler</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}

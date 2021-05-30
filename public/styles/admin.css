@@ -42,3 +42,15 @@
     text-transform: capitalize;
 }
 
+.stylesAdmin{
+    background-color: #9BA7B3;
+    color: white;
+    border-radius: 55px;
+    padding: 2px 15px;
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
+    white-space:nowrap;
+    margin-right: 2%;
+    margin-bottom: 3%;
+}
