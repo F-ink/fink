@@ -4,10 +4,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
 	{# ici le lien vers fichier style de la page 
-		
-		    ............... #}
+			
+			    ............... #}
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+
+	{# Fichier style de la recherche :  #}
+	<script src="{{asset('js/search.js')}}"></script>
+	<link href="{{ asset('styles/view.css') }}" type="text/css" rel="stylesheet">
 	<link
-	href="{{ asset('styles/view.css') }}" type="text/css" rel="stylesheet">
+	href="{{ asset('styles/index.css') }}" type="text/css" rel="stylesheet">
 
 	{# Fichier style des cartes :  #}
 	<link href="{{ asset('styles/artistcard.css') }}" type="text/css" rel="stylesheet">
@@ -37,101 +43,151 @@
 	<div class="container">
 		{# ICI LE CONTENU DE LA PAGE  #}
 
-		<section id="artist_introduction">
-			<div>
+		{# intro #}
+		{# <div id="home-header" class="d-flex"> #}
+		{# <div class="centre align-self-center"> #}
+		{# <div id="intro" class="">
+								<div id="titre">
+									<h1 class="d-xs-none d-none ">FINK</h1> #}
+		{# <h3 class="font-phone">FIND YOUR
+										<span>
+											INK
+										</span>
+										ARTIST</h3> #}
+		{# </div>
+							</div> #}
 
-				<a href="#" style="text-decoration:none" id="insta">
-					<i class="lab la-instagram"></i>
-				</a>
+		{# barre de recherche #}
+			<div class="row" id="search-info"> <div id="search" class="d-flex">
+				<form
+					action="{{ path('result') }}" method="POST" class="flex-wrap d-flex w-100 align-self-center ">
+
+					{# Style(s) #}
+					<select class="search-bar col-12 col-sm-12 col-md-5" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
+						{% for style in styles %}
+							<option value="{{style.id}}">{{style.name}}</option>
+						{% endfor %}
+					</select>
+
+					{# localisation #}
+					<input type="text" class="col-12 col-sm-12 col-md-5" id="search-city" name="city" placeholder="Localisation">
+					<button for="submit" class="button-search col-12 col-sm-12 col-md-2">FINK!</button>
+				</form>
+			</div>
+		{# </div> #}
+
+	</div>
+	<div id="titlemeet">
+				<h3>Meet your <span>ink</span> artist</h3>
+	</div>
+</div>
+{# informations artiste#}
+
+<section id="artist_introduction">
+
+	{% for artiste in artistes %}
+		<div class="artist_pix">
+
+			<img
+			src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+		{# <p>{{artiste.picture}}</p> #}
+		</div>
+
+		<div class="artist_name">
+			<h2>{{artiste.pseudo}}</h2>
+		</div>
+
+
+		{% for style in artiste.styles %}
+			<div class="thestyles d-inline-flex">
+				<p>{{ style.name }}</p>
 
 			</div>
+		{% endfor %}
+
+
+		<div class="sphere d-none d-md-block"></div>
+
+		<div class="description">
+			{{artiste.description}}
+		</div>
+		<div class="city">
+			<p>
+				<i class="fas fa-map-marker-alt"></i>
+				{{ artiste.city }}
+			</p>
+		</div>
+
+			<div id="instagr_icone">
+			<i class="lab la-instagram"></i>
+			</div>
+		
+			<div id="instagr_link">
+				<a href="instagram"> {{ artiste.instagram }}</a>
+			</div>
+		
+		
+
+
+		<!-- <a href="#"> -->
+		{% for picture in artiste.pictures %}
+			<div class="container row row-cols-2 g-2 row-cols-sm-3 g-3
+										artist_work">
+
+				<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
+			</div>
+
+
+		{% endfor %}
+	{% endfor %}
+	<p>
+		<button id="contacter">CONTACTER</button>
+	</p>
+</section></div><div class="action_sup text-center">
+<h3>Découvrez également
+	<span>
+		près de chez vous</span>
+</h3>
+
+
+<div>
+	<div class="Cartes d-flex flex-wrap justify-content-around">
+		<section>
+
 			{% for artiste in artistes %}
-				<div class="artist_name">
-					<h2>{{artiste.pseudo}}</h2>
-				</div>
+				<a
+					href="{{ path('artist_view', {'id': artiste.id}) }}">
 
+					{# METTRE IMG CoverPicture ci-dessous:#}
 
-				{% for style in artiste.styles %}
-					<div class="thestyles d-inline-flex">
-						<p>{{ style.name }}</p>
-
-					</div>
-				{% endfor %}
-
-
-				<div class="sphere d-none d-md-block">
-				</div>
-
-				<div class="description">
-					{{artiste.description}}
-				</div>
-				<div class="city"> 
-					<p>{{artiste.city}}</p>
-				</div>
-			
-
-				<!-- <a href="#"> -->
-				{% for picture in artiste.pictures %}
-					<div class="container row row-cols-2 g-2 row-cols-sm-3 g-3 
-					artist_work">
-						
-						<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
-					</div>
-					
-				
-				{% endfor %}
-			{% endfor %}
-				<p>
-					<button id="contacter">CONTACTER</button>
-				</p>
-		</section>
-	</div>
-
-	<div class="action_sup text-center">
-		<h3>Découvrez également
-			<span>
-				près de chez vous</span>
-		</h3>
-	
-
-	<div>
-		<div class="Cartes d-flex flex-wrap justify-content-around">
-			<section>
-
-				{% for artiste in artistes %}
-					<a href="{{ path('artist_view', {'id': artiste.id}) }}">
-						
-							{# METTRE IMG CoverPicture ci-dessous:#}
-
-							<div class="carte-artiste card">
-							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
-							<div class="info-artiste">
-								<div
-									class="profil-picture">
-						{# ICi l'image de ProfilePicture #}
+					<div class="carte-artiste card">
+						<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+						<div class="info-artiste">
+							<div
+								class="profil-picture">
+								{# ICi l'image de ProfilePicture #}
 								<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
-								</div>
-								<div class="name d-flex justify-content-between">
-									<p>{{ artiste.pseudo }}</p>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										{{ artiste.city }}
-									</p>
-								</div>
-								<div class="styles d-inline-flex">
-									{% for style in artiste.styles %}
-										<p>{{ style.name }}</p>
-									{% endfor %}
-								</div>
+							</div>
+							<div class="name d-flex justify-content-between">
+								<p>{{ artiste.pseudo }}</p>
+								<p>
+									<i class="fas fa-map-marker-alt"></i>
+									{{ artiste.city }}
+								</p>
+							</div>
+							<div class="styles d-inline-flex">
+								{% for style in artiste.styles %}
+									<p>{{ style.name }}</p>
+								{% endfor %}
 							</div>
 						</div>
-					</a>
-				</div>
-			{% endfor %}
-		</section>
-	</main>
-	{# ici le footer #}
-	{% block footer %}
-		{% include 'main/footer.html.twig' %}
-	{% endblock footer %}
-{% endblock %}
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</section>
+</main>
+{# ici le footer #}
+{% block footer %}
+	{% include 'main/footer.html.twig' %}
+{% endblock footer %}{% endblock %}

@@ -3,22 +3,29 @@
 span{
     color: #404F57;
     font-weight: bold;
+} 
+#search-info{
+   
+  margin: auto;
 }
 
+#titlemeet{
+    text-align: center;
+    padding-top: 2rem;
+}
 
 /* fond blanc */
 #artist_introduction{
-width: 60vw;
+width: 65vw;
 border-radius: 20px;
 background-color: rgb(255, 255, 255);
 position: relative;
 display: inline-block;
-margin-left: 10%;
+margin-left: 17%;
 margin-right: 10%;
-margin-bottom: 3rem;
 color:black;
-margin-top: 3rem ;
-margin-bottom: 3rem ;
+margin-bottom: 3rem;
+margin-top: 4rem;
 box-shadow: 1px 1px 1px 1px rgb(212, 212, 212);
 padding: 3rem;
 padding-top: 2rem;
@@ -27,23 +34,51 @@ padding-bottom: 7rem;
 z-index:5;
 
 }
-/* partie supérieure */
-.artist_name h2 {
+/* partie présentation artiste*/
+.artist_pix{
+    border: 2px solid #404F57;
+    height: 6rem;
+    width: 6rem;
+    z-index: 99;
+    border-radius: 50px;
+    position: relative;
+    left: -20px;
+    background-color: rgb(114, 128, 153);
+}
+.artist_pix img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 50px;
+}
+.artist_name h2{
     color:#0C233E;
     word-wrap: break-word;
+    /* margin-left: 2em; */
+    text-transform: uppercase;
+    margin-top: 30px;
 }
 
-#insta{
+#instagr_icone{
     font-size: 54px;
     color:#404F57;
-    display: block;
-    justify-content: right ;
-    text-align: right;
-    }
-/*partie présentation artiste*/
+    /* text-align: right; */
+   float: inline-start;
+    height: 2rem;
+    width: 1rem;
+}
+
+#instagr_link{
+   display: flex;
+   text-decoration: none;
+   color: black ;
+   margin: 3rem;
+}
+
 
 .artist_intro{
-color:black;
+color: black;
 padding-left: 1rem;
 
 }
@@ -51,7 +86,7 @@ padding-left: 1rem;
 
 .thestyles p{
     background-color: #9BA7B3;
-    color: white;
+    color:white;
     border-radius: 55px;
     padding: 1px 10px;
     font-size: 12px;
@@ -111,19 +146,26 @@ justify-content: center;
     background: linear-gradient(159deg, rgba(12, 35, 62, 0.7343137938769257) 30%, rgba(188, 205, 215, 1) 100%);
     color:white;
     /* z-index: 5; */
-    position: relative;
+    position: absolute;
     bottom: 0;
     /* bottom: 0; */
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     margin-top: 3rem;
-    left: 35%;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.5rem;
-    padding-top: 0.4rem;
-    
+   margin-left: 30%;
+    padding-left: 0.6em;
+    padding-right: 1em;
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+    max-width: 110px;
+   
     
 }
+#contacter:hover{
+    /* box-shadow: 4px 4px 4px 3px #9ba7b3c4; */
+    box-shadow: 1px 1px 5px #8AADB2;
+    transition: 0.3s;
+}
+
 .sphere{
     background-color: rgb(255, 255, 255);
     height: 10em;
@@ -144,7 +186,7 @@ justify-content: center;
     text-transform: uppercase;
     padding-top: 4rem;
 }
-#retour{
+/* #retour{
     color:#404F57;
     font-size: 64px;
     display: block;
@@ -152,7 +194,7 @@ justify-content: center;
     text-align: right;
     padding-top: 20px;
 
-  }
+  } */
 
 
   /* card artist */
@@ -177,4 +219,19 @@ justify-content: center;
     .button-search{
         margin-left: 30%;
     }
+
+    .artist_name h2 {
+        color:#0C233E;
+        word-wrap: break-word;
+        font-size: 2rem;
+    }
+
+#artist_introduction{
+
+margin-right: 3% ;
+padding: 3rem;
+padding-top: 1rem;
+padding-left: 1.5rem;
+padding-bottom: 7rem;
+}
 }

@@ -88,6 +88,7 @@ class HomeController extends AbstractController
         //afficher les styles de l'artiste
         $styles = $em->getRepository(Style::class)->findAll();
         $pictures = $em->getRepository(Style::class)->findBy(['id'=> $DetailArtist->getId()]);
+        $instagram = $em->getRepository(Style::class)->findAll();
         
 
         //afficher la page 'detail'
@@ -95,7 +96,8 @@ class HomeController extends AbstractController
             'DetailArtist' => $DetailArtist,
             'artistes' => $artistes,
             'styles' => $styles,
-            'pictures' =>$pictures
+            'pictures' =>$pictures,
+            'instagram'=>$instagram
             
         ]);
 
