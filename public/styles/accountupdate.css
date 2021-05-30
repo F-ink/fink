@@ -110,15 +110,21 @@ select {
     background: rgb(230,236,239);
     background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);
     border: none;
-    
 }
-/* .pickup-pseudo input:hover{
-    box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
-} */
+.pickup-pseudo input::placeholder{
+    font-weight: 300;
+    font-size: 10px;
+}
+
 /* END */
 /* DESCRIPTION */
+.description textarea::placeholder{
+    font-weight: 300;
+    font-size: 15px;
+    color: #0C233E;
+    padding: 0;
+    margin: 0;
+}
 .description{
     text-align: center;
     margin-top: 2%;
