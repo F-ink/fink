@@ -74,12 +74,15 @@
 						{{artist.description}}</textarea>
 				</div>
 				
+
+
+
 				{# LES STYLES DE L'ARTISTE #}
 				<div class="pickup-styles">
 					<h4 class="text-center">Styles</h4>
-					<div class="style-modif d-flex ">
-						<div class="justify-content-center">
-							<div class="remove-style d-flex">
+					<div class="style-modif d-flex w-100">
+						<div class="justify-content-center d-flex w-100">
+							<div class="remove-style w-50 d-flex">
 								<p>Enlever un style :
 								</p>
 								{% for style in artist_style %}
@@ -91,7 +94,7 @@
 									</div>
 								{% endfor %}
 							</div>
-							<div class="add-style d-flex w-50">
+							{# <div class="add-style d-flex w-50">
 								<p>Ajouter un style :
 								</p> <br>
 								{% for style in styles %}
@@ -102,12 +105,14 @@
 										</label>
 									</div>
 								{% endfor %}
-							</div>
+							</div> #}
 						</div>
 					</div>
-
-
 				</div>
+
+
+
+
 
 				{# INFO MAJEURS : Pseudo/ville/style #}
 				<div class="infos-maj ">
