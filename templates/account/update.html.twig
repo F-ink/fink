@@ -81,8 +81,9 @@
 				<div class="pickup-styles">
 					<h4 class="text-center">Styles</h4>
 					<div class="style-modif d-flex w-100">
-						<div class="justify-content-center d-flex w-100">
-							<div class="remove-style w-50 d-flex">
+						<div class="justify-content-center d-flex">
+							<div class="pour-center-flemme">
+								<div class="remove-style d-flex">
 								<p>Enlever un style :
 								</p>
 								{% for style in artist_style %}
@@ -94,7 +95,7 @@
 									</div>
 								{% endfor %}
 							</div>
-							{# <div class="add-style d-flex w-50">
+							<div class="add-style d-flex">
 								<p>Ajouter un style :
 								</p> <br>
 								{% for style in styles %}
@@ -105,7 +106,9 @@
 										</label>
 									</div>
 								{% endfor %}
-							</div> #}
+							</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
