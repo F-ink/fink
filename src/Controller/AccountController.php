@@ -139,7 +139,7 @@ class AccountController extends AccountBaseController
 
                 $em->flush(); // Execute la requete (equivalent du $bdd->execute())
                 $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
-                return $this->redirectToRoute('profil_', ['id' => $artist->getId()]);
+                return $this->redirectToRoute('profil_', ['id' => $this->getUser()]);
             } else {
                 // J'ai des erreurs, je les affiche via le flash message
                 $this->addFlash('danger', implode(' - ', $errors));
@@ -192,7 +192,7 @@ class AccountController extends AccountBaseController
             $em->persist($artist);
             $em->flush();
 
-            return $this->redirectToRoute('profil_', ['id' => $artist->getId()]);
+            return $this->redirectToRoute('profil_', ['id' => $this->getUser()]);
         }
 
         return $this->render('account/profile.html.twig', [
