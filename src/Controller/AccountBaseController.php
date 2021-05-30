@@ -94,7 +94,7 @@ class AccountBaseController extends AbstractController
                 $errors[] = 'Une erreur grave est survenue';
             }
            
-            //$errorMessage = [$errors];
+           // $errorMessage = [$errors];
            return $fichier; 
         }
     }

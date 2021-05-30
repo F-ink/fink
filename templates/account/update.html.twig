@@ -52,7 +52,8 @@
 					<div class="pick-cover-picture">
 						<label for="cover_picture">Votre photo de couverture :
 						</label>
-						<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture" required>
+						<input type="file" name="cover_picture" placeholder="Choississez une photo de couverture">
+						<input type="hidden" name="cover_picture_value" value="{{artist.CoverPicture}}"/>
 					</div>
 					<div class="photo-profil">
 						<div class="profil-picture">
@@ -62,6 +63,8 @@
 							<label for="profile_picture">Votre photo de profil :
 							</label>
 							<input type="file" name="profile_picture" placeholder="Choississez une photo de profil">
+							<input type="hidden" name="profile_picture_value" value="{{artist.profilePicture}}"/>
+
 						</div>
 					</div>
 				</div>
@@ -73,8 +76,6 @@
 					<textarea type="text" name="description" placeholder="L'occasion de vous présenter aux visiteurs qui viendront consulter votre profil" required>
 						{{artist.description}}</textarea>
 				</div>
-				
-
 
 
 				{# LES STYLES DE L'ARTISTE #}
@@ -84,37 +85,36 @@
 						<div class="justify-content-center d-flex">
 							<div class="pour-center-flemme">
 								<div class="remove-style d-flex">
-								<p>Enlever un style :
-								</p>
-								{% for style in artist_style %}
-									<div class="form-check d-flex">
-										<input class="form-check-input" type="checkbox" name="re-style" id="re-style-{{style.id}}" value="{{style.id}}" checked>
-										<label class="form-check-label" for="re-style">
-											{{style.name}}
-										</label>
-									</div>
-								{% endfor %}
+									<p>Enlever un style :
+									</p>
+									{% for style in artist_style %}
+										<div class="form-check d-flex">
+											<input class="form-check-input" type="checkbox" name="re-style[]" id="re-style-{{style.id}}" value="{{style.id}}">
+											<label class="form-check-label" for="re-style">
+												{{style.name}}
+											</label>
+										</div>
+										<input type="hidden" name="styles_value[]" value="{{style.id}}"/>
+									{% endfor %}
+								</div>
+								<div class="add-style d-flex">
+									<p>Ajouter un style :
+									</p>
+									<br>
+									{% for style in styles %}
+										<div class="form-check">
+											<input class="form-check-input" type="checkbox" name="style[]" id="style{{style.id}}" value="{{style.id}}">
+											<label class="form-check-label" for="style{{style.id}}">
+												{{style.name}}
+											</label>
+										</div>
+									{% endfor %}
+								</div>
 							</div>
-							<div class="add-style d-flex">
-								<p>Ajouter un style :
-								</p> <br>
-								{% for style in styles %}
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" name="style" id="style{{style.id}}" value="{{style.id}}">
-										<label class="form-check-label" for="style{{style.id}}">
-											{{style.name}}
-										</label>
-									</div>
-								{% endfor %}
-							</div>
-							</div>
-							
+
 						</div>
 					</div>
 				</div>
-
-
-
 
 
 				{# INFO MAJEURS : Pseudo/ville/style #}
@@ -139,7 +139,8 @@
 								<input type="text" name="tattoo_shop" placeholder="Entrez le nom de votre salon" value="{{artist.tattooShop}}" required>
 							</div>
 							<div>
-								<label for="instagram">Instagram : </label>
+								<label for="instagram">Instagram :
+								</label>
 								<input type="text" name="instagram" placeholder="Lien vers votre page instagram :" value="{{artist.instagram}}">
 							</div>
 							<div>

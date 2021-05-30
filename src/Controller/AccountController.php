@@ -76,7 +76,7 @@ class AccountController extends AccountBaseController
                 $fichier2 = $this->UploadImage($_FILES['cover_picture'], 'cover_directory', $errors);
             }
             // dd($errors);
-            // je verifie mon $_files avec mes differentes contraintes, format, taille 
+          
             if (count($errors) === 0) {
 
 
