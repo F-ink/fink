@@ -120,7 +120,7 @@ select {
 /* Sélectionné */
 #search .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #2f455c;
-    color: white;
+    color: white !important;
     border-radius: 50px;
     padding-right: 5px;
 }

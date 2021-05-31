@@ -112,3 +112,16 @@
 }
 
 /* END CARD ARTISTE */
+
+
+
+
+/* MEDIA QUERIES */
+
+/* // Small devices (landscape phones, less than 750px) */
+@media (max-width: 750px) {
+    .carte-artiste {
+        height: 150px;
+        width: 300px;
+    }
+}
