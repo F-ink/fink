@@ -63,13 +63,13 @@ select {
 .pick-cover-picture {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 2%;
 }
 
 .pick-profil-picture {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 2%;
 }
 
 /* END */
@@ -263,4 +263,16 @@ select {
 }
 /* END */
 
-/* MEDIA QUERIES POUR LES PICKUP PHOTOS COUV ET PROFIL */
+
+/* MEDIA QUERIES */
+
+/* // Small devices (landscape phones, less than 750px) */
+@media (max-width: 750px) {
+    .style-modif {
+        justify-content: space-around;
+    }
+    .info-contact input {
+        width: 100%;
+    }
+    
+}

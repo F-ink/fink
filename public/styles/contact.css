@@ -1,0 +1,9 @@
+#modal-contact{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+.action_sup #modal-contact .modal{
+    top: 15% !important;
+}

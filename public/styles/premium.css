@@ -14,7 +14,9 @@
     position: relative;
     width: 60%;
 }
-
+.premium h4{
+    margin-bottom: 5%;
+}
 .forfait p {
     margin-top: 0;
     margin-bottom: 0;
