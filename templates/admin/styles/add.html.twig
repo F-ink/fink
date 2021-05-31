@@ -14,8 +14,9 @@
 	</h1>
 	<div class="container formAdmin">
 		<form action="" method="POST" enctype="multipart/form-data">
-			{{form(form)}}
-
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
 			</form>
 		</div>
 	{% endblock %}
