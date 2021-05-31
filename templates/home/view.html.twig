@@ -96,13 +96,21 @@ myInput.focus()
 	{# informations artiste#}
 
 	<section id="artist_introduction">
+	
 
 		{% for artiste in artistes %}
+
+		{# instagram logo #}
+			<div id="instagr_icone">
+				<a href="{{ artiste.instagram }}" target="_blank"><i class="lab la-instagram"></i>
+				</a>
+			</div>
+{# photos du travail de l'artiste #}
 			<div class="artist_pix">
 
 				<img
 				src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
-			{# <p>{{artiste.picture}}</p> #}
+			
 			</div>
 
 			<div class="artist_name">
@@ -113,9 +121,9 @@ myInput.focus()
 			{% for style in artiste.styles %}
 				<div class="thestyles d-inline-flex">
 					<p>{{ style.name }}</p>
-
+					{% endfor %}			
 				</div>
-			{% endfor %}
+			
 
 
 			<div class="sphere d-none d-md-block"></div>
@@ -130,29 +138,21 @@ myInput.focus()
 				</p>
 			</div>
 
-			<div id="instagr_icone">
-				<i class="lab la-instagram"></i>
-			</div>
-
-			<div id="instagr_link">
-				<a href="instagram">
-					{{ artiste.instagram }}</a>
-			</div>
-
 
 			<!-- <a href="#"> -->
-			{% for picture in artiste.pictures %}
-				<div class="container row row-cols-2 g-2 row-cols-sm-3 g-3
-																																																				artist_work">
+	<div class="artist_realiz">
+				<div class="phototattoo d-flex flex-wrap">
+					{% for picture in artiste.pictures %}			<div class="div_artistwork">
+							<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="catalogue" width="250">
+				
 
-					<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
-				</div>
-
-
+						</div>		
 			{% endfor %}
+			</div>
+	</div>		
 		{% endfor %}
 		<p>
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-contact">
+			<button type="button" class="contacterb" data-bs-toggle="modal" data-bs-target="#modal-contact">
 				Contacter
 			</button>
 		</p>
@@ -206,7 +206,7 @@ myInput.focus()
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Contacter l'artiste</h5>
+					<h5 class=" modal-title">Contacter l'artiste</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				{{ form_start(form)}}

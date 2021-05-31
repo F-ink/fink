@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminController extends AbstractController
 {
@@ -50,8 +51,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/add", name="artist_add")
      */
-
-    public function add(Request $request): Response
+    // Ajout d'un artiste
+    public function add(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artist = new Artist();
 
@@ -61,6 +62,13 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $artist->setPassword(
+                $passwordEncoder->encodePassword(
+                    $artist,
+                    $form->get('password')->getData()
+                )
+            );
+                
             $profilePicture = $form->get('profilePicture')->getData();
 
             $file = md5(uniqid()) . '.' . $profilePicture->guessExtension();
@@ -88,6 +96,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/update/{id}", name="artist_update")
      */
+
+    // Mise à jour de l'artiste
     public function update(Artist $artist, int $id): Response
     {
 
@@ -125,6 +135,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/active/{id}", name="artist_active")
      */
+
+    //  Activation dans le l'artiste dans la base de données
     public function active(Artist $artist)
     {
         $artist->setIsVerified(($artist->getIsVerified()) ? false : true);
@@ -140,6 +152,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/tampon/{id}", name="artist_tampon")
      */
+
+    // Page tampon pour suppression
     public function tampon(Artist $artist): Response
     {
         return $this->render('admin/delete.html.twig', [

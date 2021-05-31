@@ -65,7 +65,7 @@
 						</div>
 					</div>
 					<div class="update-bouton">
-						<a href="{{ path('update_', {id: artist.id}) }}" class="btn btn-warning ">
+						<a href="{{ path('update_') }}" class="btn btn-warning ">
 							Modifier/Completer mon profil
 						</a>
 					</div>
@@ -87,8 +87,6 @@
 						{% for picture in artist.pictures %}
 						<div class="photo">
 							<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="250">
-						{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
-							{#<a href="{{ path('annonces_delete_image', {id: image.id})}}" data-delete data-token="{{ csrf_token('delete' ~ image.id )}}">Supprimer</a></div>#}
 						</div>
 							
 						{% endfor %}
