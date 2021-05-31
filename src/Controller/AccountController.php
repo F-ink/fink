@@ -54,7 +54,7 @@ class AccountController extends AccountBaseController
             //dd($safe['lastname']);
             $this->ValidateAlphanumericInput($safe['lastname'], 2, 80, "nom", $errors);
             $this->ValidateAlphanumericInput($safe['firstname'], 2, 80, "prénom", $errors);
-            $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $error);
+            $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $errors);
             $this->ValidateAlphanumericInput($safe['pseudo'], 3, 80, "pseudo", $errors);
             $this->ValidateAlphanumericInput($safe['city'], 1, 80, "ville", $errors);
             $this->ValidateNumericInput($safe['siret'], 14, 14, "siret", $errors);

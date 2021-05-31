@@ -102,7 +102,7 @@ class HomeController extends AbstractController
            $email = (new TemplatedEmail())
            ->from($contact->get('email')->getData())
            ->to($DetailArtist->getEmail())
-           ->subject('Bonjour, j\'aimerais avoir plus d\'information sur votre travail')
+           ->subject('Fink: un visiteur souhaite vous contacter! ')
            ->htmlTemplate('emails/contact_artist.html.twig')
            ->context([
                'objet' => $contact->get('title')->getData(),
