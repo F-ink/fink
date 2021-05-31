@@ -68,12 +68,8 @@
     padding-top: 5rem;
 }
 
-section:first-of-type a {
-    padding-bottom: 1px;
-    border-bottom: #1E2022 1px solid;
-}
 /* bas de page */
-.linkedin{
+.linkedin {
     text-decoration: none;
     display: flex;
     justify-content: center;
