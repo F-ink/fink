@@ -36,9 +36,9 @@ class AccountController extends AccountBaseController
         $artist = $em->getRepository(Artist::class)->find($this->getUser());
         $styles = $em->getRepository(Style::class)->findAll();
         $artist_style = $artist->getStyles();
-
+      
         if (!empty($_POST)) { // Mon formulaire n'est pas vide
-
+            // On securise les donnees des formulaires 
             $safe = [];
             foreach ($_POST as $key => $value) {
                 if (is_array($value)) {
@@ -47,11 +47,11 @@ class AccountController extends AccountBaseController
                     $safe[$key] = trim(strip_tags($value));
                 }
             }
-            // $safe = $_POST;
+            
             $errors = array();
-            // Je vérifie mes différents champs            
+            
+            // Je vérifie mes différents champs grace a mes fonctions présentes dans AccountBaseController             
 
-            //dd($safe['lastname']);
             $this->ValidateAlphanumericInput($safe['lastname'], 2, 80, "nom", $errors);
             $this->ValidateAlphanumericInput($safe['firstname'], 2, 80, "prénom", $errors);
             $this->ValidateAlphanumericInput($safe['tattoo_shop'], 1, 100, "nom de votre salon", $errors);
@@ -117,7 +117,7 @@ class AccountController extends AccountBaseController
                     // dd($geopoints);
                 }
 
-                // Pour rajouter chque style coche au tableau de styles il faut: 
+                // Pour rajouter chaque style coche au tableau de styles il faut: 
                 if (isset($safe['style'])) {
                     $styles_artist = $em->getRepository(Style::class)->findBy(['id' => $safe['style']]);
                     //dd($styles_artist);
@@ -137,9 +137,9 @@ class AccountController extends AccountBaseController
                 }
 
 
-                $em->flush(); // Execute la requete (equivalent du $bdd->execute())
+                $em->flush(); // Execute la requete
                 $this->addFlash('success', 'Super! Votre compte a bien ete mis a jour!');
-                return $this->redirectToRoute('profil_', ['id' => $this->getUser()]);
+                return $this->redirectToRoute('profil_');
             } else {
                 // J'ai des erreurs, je les affiche via le flash message
                 $this->addFlash('danger', implode(' - ', $errors));
@@ -192,7 +192,7 @@ class AccountController extends AccountBaseController
             $em->persist($artist);
             $em->flush();
 
-            return $this->redirectToRoute('profil_', ['id' => $this->getUser()]);
+            return $this->redirectToRoute('profil_');
         }
 
         return $this->render('account/profile.html.twig', [

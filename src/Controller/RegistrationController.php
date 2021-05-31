@@ -40,6 +40,8 @@ class RegistrationController extends AbstractController
                 )
 
             );
+            
+            $user->setRoles(['ROLE_USER']);
             $user->setActivationToken(md5(uniqid()));
             //$user->setCreatedAt(new \DateTime('now'));
 
