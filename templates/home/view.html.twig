@@ -75,7 +75,9 @@ myInput.focus()
 					{# Style(s) #}
 					<select class="search-bar col-12 col-sm-12 col-md-5" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 						{% for style in styles %}
+						<div class="divstyle">
 							<option value="{{style.id}}">{{style.name}}</option>
+						</div>
 						{% endfor %}
 					</select>
 
@@ -99,7 +101,11 @@ myInput.focus()
 	
 
 		{% for artiste in artistes %}
-
+{# cover picture #}
+		
+				<div class="coverdetail">
+							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+				</div>
 		{# instagram logo #}
 			<div id="instagr_icone">
 				<a href="{{ artiste.instagram }}" target="_blank"><i class="lab la-instagram"></i>
