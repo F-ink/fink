@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
 	{# ici le lien vers fichier style de la page 
-			
-			    ............... #}
+										
+										    ............... #}
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
@@ -21,6 +21,14 @@
 {% endblock %}
 {% block javascripts %}
 	<script src="{{ asset('js/gotop.js') }}" defer></script>
+	<script defer>
+		let myModal = document.getElementById('modal-contact')
+let myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+myInput.focus()
+})
+	</script>
 {% endblock %}
 
 
@@ -29,7 +37,9 @@
 
 
 {% block body %}
-
+{% for flashError in app.flashes('message') %}
+		<div class="alert alert-success" role="alert">{{ flashError }}</div>
+	{% endfor %}
 	{# ici le header user connected or not #}
 	{% block header %}
 		{% include 'main/header.html.twig' %}
@@ -47,15 +57,15 @@
 		{# <div id="home-header" class="d-flex"> #}
 		{# <div class="centre align-self-center"> #}
 		{# <div id="intro" class="">
-								<div id="titre">
-									<h1 class="d-xs-none d-none ">FINK</h1> #}
+																						<div id="titre">
+																							<h1 class="d-xs-none d-none ">FINK</h1> #}
 		{# <h3 class="font-phone">FIND YOUR
-										<span>
-											INK
-										</span>
-										ARTIST</h3> #}
+																								<span>
+																									INK
+																								</span>
+																								ARTIST</h3> #}
 		{# </div>
-							</div> #}
+																					</div> #}
 
 		{# barre de recherche #}
 			<div class="row" id="search-info"> <div id="search" class="d-flex">
@@ -74,120 +84,153 @@
 					<button for="submit" class="button-search col-12 col-sm-12 col-md-2">FINK!</button>
 				</form>
 			</div>
-		{# </div> #}
+			{# </div> #}
 
-	</div>
-	<div id="titlemeet">
-				<h3>Meet your <span>ink</span> artist</h3>
-	</div>
-</div>
-{# informations artiste#}
-
-<section id="artist_introduction">
-
-	{% for artiste in artistes %}
-		<div class="artist_pix">
-
-			<img
-			src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
-		{# <p>{{artiste.picture}}</p> #}
 		</div>
-
-		<div class="artist_name">
-			<h2>{{artiste.pseudo}}</h2>
+		<div id="titlemeet">
+			<h3>Meet your
+				<span>ink</span>
+				artist</h3>
 		</div>
+	</div>
+	{# informations artiste#}
 
+	<section id="artist_introduction">
 
-		{% for style in artiste.styles %}
-			<div class="thestyles d-inline-flex">
-				<p>{{ style.name }}</p>
+		{% for artiste in artistes %}
+			<div class="artist_pix">
 
+				<img
+				src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+			{# <p>{{artiste.picture}}</p> #}
 			</div>
-		{% endfor %}
+
+			<div class="artist_name">
+				<h2>{{artiste.pseudo}}</h2>
+			</div>
 
 
-		<div class="sphere d-none d-md-block"></div>
+			{% for style in artiste.styles %}
+				<div class="thestyles d-inline-flex">
+					<p>{{ style.name }}</p>
 
-		<div class="description">
-			{{artiste.description}}
-		</div>
-		<div class="city">
-			<p>
-				<i class="fas fa-map-marker-alt"></i>
-				{{ artiste.city }}
-			</p>
-		</div>
+				</div>
+			{% endfor %}
+
+
+			<div class="sphere d-none d-md-block"></div>
+
+			<div class="description">
+				{{artiste.description}}
+			</div>
+			<div class="city">
+				<p>
+					<i class="fas fa-map-marker-alt"></i>
+					{{ artiste.city }}
+				</p>
+			</div>
 
 			<div id="instagr_icone">
-			<i class="lab la-instagram"></i>
+				<i class="lab la-instagram"></i>
 			</div>
-		
+
 			<div id="instagr_link">
-				<a href="instagram"> {{ artiste.instagram }}</a>
-			</div>
-		
-		
-
-
-		<!-- <a href="#"> -->
-		{% for picture in artiste.pictures %}
-			<div class="container row row-cols-2 g-2 row-cols-sm-3 g-3
-										artist_work">
-
-				<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
+				<a href="instagram">
+					{{ artiste.instagram }}</a>
 			</div>
 
 
+			<!-- <a href="#"> -->
+			{% for picture in artiste.pictures %}
+				<div class="container row row-cols-2 g-2 row-cols-sm-3 g-3
+																																																				artist_work">
+
+					<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="{{picture.name}}">
+				</div>
+
+
+			{% endfor %}
 		{% endfor %}
-	{% endfor %}
-	<p>
-		<button id="contacter">CONTACTER</button>
-	</p>
-</section></div><div class="action_sup text-center">
-<h3>Découvrez également
-	<span>
-		près de chez vous</span>
-</h3>
+		<p>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-contact">
+				Contacter
+			</button>
+		</p>
+	</section>
+</div>
+<div class="action_sup text-center">
+	<h3>Découvrez également
+		<span>
+			près de chez vous</span>
+	</h3>
 
 
-<div>
-	<div class="Cartes d-flex flex-wrap justify-content-around">
-		<section>
+	<div>
+		<div class="Cartes d-flex flex-wrap justify-content-around">
+			<section>
 
-			{% for artiste in artistes %}
-				<a
-					href="{{ path('artist_view', {'id': artiste.id}) }}">
+				{% for artiste in artistes %}
+					<a
+						href="{{ path('artist_view', {'id': artiste.id}) }}">
 
-					{# METTRE IMG CoverPicture ci-dessous:#}
+						{# METTRE IMG CoverPicture ci-dessous:#}
 
-					<div class="carte-artiste card">
-						<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
-						<div class="info-artiste">
-							<div
-								class="profil-picture">
-								{# ICi l'image de ProfilePicture #}
-								<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
-							</div>
-							<div class="name d-flex justify-content-between">
-								<p>{{ artiste.pseudo }}</p>
-								<p>
-									<i class="fas fa-map-marker-alt"></i>
-									{{ artiste.city }}
-								</p>
-							</div>
-							<div class="styles d-inline-flex">
-								{% for style in artiste.styles %}
-									<p>{{ style.name }}</p>
-								{% endfor %}
+						<div class="carte-artiste card">
+							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+							<div class="info-artiste">
+								<div
+									class="profil-picture">
+									{# ICi l'image de ProfilePicture #}
+									<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+								</div>
+								<div class="name d-flex justify-content-between">
+									<p>{{ artiste.pseudo }}</p>
+									<p>
+										<i class="fas fa-map-marker-alt"></i>
+										{{ artiste.city }}
+									</p>
+								</div>
+								<div class="styles d-inline-flex">
+									{% for style in artiste.styles %}
+										<p>{{ style.name }}</p>
+									{% endfor %}
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
+					</a>
+				</div>
+			{% endfor %}
+		</section>
+	</main>
+	<div class="modal" tabindex="-1" id="modal-contact">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Contacter l'artiste</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				{{ form_start(form)}}
+				<div class="modal-body">
+
+					{{ form_widget(form.title) }}
+					{{ form_row(form.email) }}
+					{{ form_row(form.message) }}
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+					<button type="submit" class="btn btn-primary">Envoyer</button>
+				</div>
 			</div>
-		{% endfor %}
-	</section>
-</main>
-{# ici le footer #}
-{% block footer %}
-	{% include 'main/footer.html.twig' %}
-{% endblock footer %}{% endblock %}
+				{{ form_end(form)}}
+		</div>
+	</div>
+
+
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
+
+
+{% endblock %}

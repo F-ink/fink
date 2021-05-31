@@ -6,12 +6,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Form\RegistrationFormType;
+use App\Form\ContactArtistType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\Artist;
 use App\Entity\Style;
 use Doctrine\ORM\Mapping\Id;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
 
 
 
@@ -78,7 +81,7 @@ class HomeController extends AbstractController
      * L'affichage de la page artiste en détail
      * @Route("/decouvrir/{id}", name="artist_view")
      */
-    public function view(int $id): Response
+    public function view(int $id, Request $request, MailerInterface $mailer): Response
     {
         $em = $this->getDoctrine()->getManager(); // Connexion
         $DetailArtist = $em->getRepository(Artist::class)->find($id); //trouver selon l'ID
@@ -89,7 +92,30 @@ class HomeController extends AbstractController
         $styles = $em->getRepository(Style::class)->findAll();
         $pictures = $em->getRepository(Style::class)->findBy(['id'=> $DetailArtist->getId()]);
         $instagram = $em->getRepository(Style::class)->findAll();
-        
+       
+       // Pour contacter un artiste par mail 
+        $form = $this->createForm(ContactArtistType::class);
+
+        $contact = $form->handleRequest($request);
+       
+        if($form->isSubmitted() && $form->isValid()){
+           $email = (new TemplatedEmail())
+           ->from($contact->get('email')->getData())
+           ->to($DetailArtist->getEmail())
+           ->subject('Bonjour, j\'aimerais avoir plus d\'information sur votre travail')
+           ->htmlTemplate('emails/contact_artist.html.twig')
+           ->context([
+               'objet' => $contact->get('title')->getData(),
+               'mail' => $contact->get('email')->getData(),
+               'message' => $contact->get('message')->getData()
+           ]);
+
+          $mailer->send($email);
+
+            // On confirme et on redirige
+            $this->addFlash('message', 'Votre e-mail a bien été envoyé');
+            return $this->redirectToRoute('artist_view', ['id' => $DetailArtist->getId()]);
+        }
 
         //afficher la page 'detail'
         return $this->render('home/view.html.twig', [
@@ -97,8 +123,8 @@ class HomeController extends AbstractController
             'artistes' => $artistes,
             'styles' => $styles,
             'pictures' =>$pictures,
-            'instagram'=>$instagram
-            
+            'instagram'=>$instagram,
+            'form'     => $form->createView()
         ]);
 
     }

@@ -19,7 +19,7 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    
+
     /**
      * @Route("/register", name="app_register")
      */
@@ -56,7 +56,7 @@ class RegistrationController extends AbstractController
                 ->To($user->getEmail())
                 // On crée le texte avec la vue
                 ->subject('Time to activate your account')
-                            
+
                 ->html(
                     $this->renderView(
                         'emails/activation.html.twig',
@@ -66,7 +66,7 @@ class RegistrationController extends AbstractController
                 );
             $mailer->send($message);
 
-            $this->addFlash('message','Merci pour votre inscription. Un mail d\'activation vous a été envoyé! ');
+            $this->addFlash('message', 'Merci pour votre inscription. Un mail d\'activation vous a été envoyé! ');
             return $this->redirectToRoute('home');
         }
 
@@ -81,7 +81,7 @@ class RegistrationController extends AbstractController
     {
         // On recherche si un utilisateur avec ce token existe dans la base de données
         $user = $users->findOneBy(['activation_token' => $token]);
-          
+
         // Si aucun utilisateur n'est associé à ce token
         if (!$user) {
             // On renvoie une erreur 404
