@@ -50,6 +50,13 @@
     margin-bottom: 3%;
 }
 
+.btnAdminHeader{
+    background-color: grey !important;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+
 /* Nav */
 .navAdmin{
     background-color: var(--blueGris2);
@@ -70,12 +77,6 @@
     border-radius: 10px;
     width: 500px;
 }
-
-
-
-/* .required{
-    display: none;
-} */
 
 #artist_admin_created_at{
     display: none;
