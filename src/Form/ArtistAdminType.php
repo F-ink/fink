@@ -21,7 +21,7 @@ class ArtistAdminType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password', PasswordType::class, array('label' => 'Mot de passe'))
+            ->add('password', PasswordType::class, array('label' => 'Mot de passe',))
             ->add('lastname', TextType::class, array('label' => 'Nom de famille'))
             ->add('firstname', TextType::class, array('label' => 'Prénom'))
             ->add('pseudo', TextType::class, array('label' => 'Pseudo'))

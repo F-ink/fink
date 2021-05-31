@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AdminController extends AbstractController
 {
@@ -51,7 +52,7 @@ class AdminController extends AbstractController
      * @Route("/admin/add", name="artist_add")
      */
 
-    public function add(Request $request): Response
+    public function add(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artist = new Artist();
 
@@ -61,6 +62,13 @@ class AdminController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $artist->setPassword(
+                $passwordEncoder->encodePassword(
+                    $artist,
+                    $form->get('password')->getData()
+                )
+            );
+                
             $profilePicture = $form->get('profilePicture')->getData();
 
             $file = md5(uniqid()) . '.' . $profilePicture->guessExtension();
