@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
 	{# ici le lien vers fichier style de la page 
-											
-											    ............... #}
+												
+												    ............... #}
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
@@ -58,15 +58,15 @@ myInput.focus()
 		{# <div id="home-header" class="d-flex"> #}
 		{# <div class="centre align-self-center"> #}
 		{# <div id="intro" class="">
-																								<div id="titre">
-																									<h1 class="d-xs-none d-none ">FINK</h1> #}
+																										<div id="titre">
+																											<h1 class="d-xs-none d-none ">FINK</h1> #}
 		{# <h3 class="font-phone">FIND YOUR
-																										<span>
-																											INK
-																										</span>
-																										ARTIST</h3> #}
+																												<span>
+																													INK
+																												</span>
+																												ARTIST</h3> #}
 		{# </div>
-																							</div> #}
+																									</div> #}
 
 		{# barre de recherche #}
 			<div class="row" id="search-info"> <div id="search" class="d-flex">
@@ -93,7 +93,9 @@ myInput.focus()
 		<div id="titlemeet">
 			<h3>Meet your
 				<span>ink</span>
-				artist</h3>
+				artist <span>*</span></h3>
+				<p>rencontrez le tatoueur ou la tatoueuse idéal(e) dans votre style
+				<p>
 		</div>
 	</div>
 	{# informations artiste#}
@@ -124,20 +126,16 @@ myInput.focus()
 				<h2>{{artiste.pseudo}}</h2>
 			</div>
 
-
-			
-				<div class="thestyles d-inline-flex">
+			<div class="thestyles d-inline-flex">
 				{% for style in artiste.styles %}
 					<p>{{ style.name }}</p>
 				{% endfor %}
-				</div>
-
-
-			<div class="sphere d-none d-md-block"></div>
+			</div>
 
 			<div class="description">
 				{{artiste.description}}
 			</div>
+
 			<div class="city">
 				<p>
 					<i class="fas fa-map-marker-alt"></i>
@@ -152,8 +150,6 @@ myInput.focus()
 					{% for picture in artiste.pictures %}
 						<div class="div_artistwork">
 							<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="catalogue" width="250">
-
-
 						</div>
 					{% endfor %}
 				</div>
