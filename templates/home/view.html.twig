@@ -4,8 +4,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/font-awesome.min.css">
 	<script src="https://kit.fontawesome.com/5398383d22.js" crossorigin="anonymous"></script>
 	{# ici le lien vers fichier style de la page 
-										
-										    ............... #}
+											
+											    ............... #}
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
@@ -37,7 +37,7 @@ myInput.focus()
 
 
 {% block body %}
-{% for flashError in app.flashes('message') %}
+	{% for flashError in app.flashes('message') %}
 		<div class="alert alert-success" role="alert">{{ flashError }}</div>
 	{% endfor %}
 	{# ici le header user connected or not #}
@@ -57,15 +57,15 @@ myInput.focus()
 		{# <div id="home-header" class="d-flex"> #}
 		{# <div class="centre align-self-center"> #}
 		{# <div id="intro" class="">
-																						<div id="titre">
-																							<h1 class="d-xs-none d-none ">FINK</h1> #}
+																								<div id="titre">
+																									<h1 class="d-xs-none d-none ">FINK</h1> #}
 		{# <h3 class="font-phone">FIND YOUR
-																								<span>
-																									INK
-																								</span>
-																								ARTIST</h3> #}
+																										<span>
+																											INK
+																										</span>
+																										ARTIST</h3> #}
 		{# </div>
-																					</div> #}
+																							</div> #}
 
 		{# barre de recherche #}
 			<div class="row" id="search-info"> <div id="search" class="d-flex">
@@ -75,9 +75,9 @@ myInput.focus()
 					{# Style(s) #}
 					<select class="search-bar col-12 col-sm-12 col-md-5" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">
 						{% for style in styles %}
-						<div class="divstyle">
-							<option value="{{style.id}}">{{style.name}}</option>
-						</div>
+							<div class="divstyle">
+								<option value="{{style.id}}">{{style.name}}</option>
+							</div>
 						{% endfor %}
 					</select>
 
@@ -98,25 +98,25 @@ myInput.focus()
 	{# informations artiste#}
 
 	<section id="artist_introduction">
-	
+
 
 		{% for artiste in artistes %}
-{# cover picture #}
-		
-				<div class="coverdetail">
-							<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
-				</div>
-		{# instagram logo #}
+			{# cover picture #}
+
+			<div class="coverdetail">
+				<img src={{ asset('/cover_picture/' ~ artiste.CoverPicture) }} alt="Artiste à {{ artiste.city }} : {{ artiste.pseudo }}">
+			</div>
+			{# instagram logo #}
 			<div id="instagr_icone">
-				<a href="{{ artiste.instagram }}" target="_blank"><i class="lab la-instagram"></i>
+				<a href="{{ artiste.instagram }}" target="_blank">
+					<i class="lab la-instagram"></i>
 				</a>
 			</div>
-{# photos du travail de l'artiste #}
+			{# photos du travail de l'artiste #}
 			<div class="artist_pix">
 
-				<img
-				src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
-			
+				<img src={{ asset('/asset/uploads/' ~ artiste.profilePicture) }} alt="{{ artiste.pseudo }}">
+
 			</div>
 
 			<div class="artist_name">
@@ -124,12 +124,12 @@ myInput.focus()
 			</div>
 
 
-			{% for style in artiste.styles %}
-				<div class="thestyles d-inline-flex">
-					<p>{{ style.name }}</p>
-					{% endfor %}			
-				</div>
 			
+				<div class="thestyles d-inline-flex">
+				{% for style in artiste.styles %}
+					<p>{{ style.name }}</p>
+				{% endfor %}
+				</div>
 
 
 			<div class="sphere d-none d-md-block"></div>
@@ -146,16 +146,17 @@ myInput.focus()
 
 
 			<!-- <a href="#"> -->
-	<div class="artist_realiz">
+			<div class="artist_realiz">
 				<div class="phototattoo d-flex flex-wrap">
-					{% for picture in artiste.pictures %}			<div class="div_artistwork">
+					{% for picture in artiste.pictures %}
+						<div class="div_artistwork">
 							<img src="{{ asset('/multi_uploads/'~picture.name)}}" alt="catalogue" width="250">
-				
 
-						</div>		
-			{% endfor %}
+
+						</div>
+					{% endfor %}
+				</div>
 			</div>
-	</div>		
 		{% endfor %}
 		<p>
 			<button type="button" class="contacterb" data-bs-toggle="modal" data-bs-target="#modal-contact">
@@ -228,7 +229,7 @@ myInput.focus()
 					<button type="submit" class="btn btn-primary">Envoyer</button>
 				</div>
 			</div>
-				{{ form_end(form)}}
+			{{ form_end(form)}}
 		</div>
 	</div>
 
