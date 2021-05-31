@@ -46,3 +46,9 @@
     overflow: scroll;
     height: 500px;
 }
+
+@media (max-width: 750px) {
+    #map{
+        display: none;
+    }
+}
