@@ -3,17 +3,22 @@
 	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
 {% endblock %}
 
-{% block title %}Ajouter un artiste{% endblock %}
+{% block title %}Ajouter un artiste
+{% endblock %}
 {% block body %}
-{% block header %}
+	{% block header %}
 		{% include 'admin/adminHeader.html.twig' %}
-{% endblock header %}
-<h1 class="text-center">Nouvel <span class="adminTitre">artiste</span></h1>
-<form action="" method="POST" enctype="multipart/form-data">
-{{ form_start(form) }}
-     {{ form_widget(form) }}
-{{ form_end(form) }}
+	{% endblock header %}
+	<h1 class="text-center">Nouvel
+		<span class="adminTitre">artiste</span>
+	</h1>
+	<div class="formAdmin container">
+		<form action="" method="POST" enctype="multipart/form-data">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			{{ form_end(form) }}
 
-</form
+		</form>
+	</div>
 
 {% endblock %}

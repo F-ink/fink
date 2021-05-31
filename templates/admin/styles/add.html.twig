@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('styles/admin.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 
 {% block title %}Ajouter un style{% endblock %}
 {% block body %}
-<h1>Nouveau style</h1>
+{% block header %}
+		{% include 'admin/adminHeader.html.twig' %}
+{% endblock header %}
+<h1 class="text-center">Nouveau <span class="adminTitre">style</span></h1>
 <form action="" method="POST" enctype="multipart/form-data">
 {{form(form)}}
 
