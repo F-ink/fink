@@ -85,6 +85,8 @@ class StylesController extends AbstractController
     /**
      * @Route("/tampon/{id}", name="style_tampon")
      */
+
+      // Page tampon pour suppression
     public function tampon(Style $style): Response
     {
         return $this->render('admin/styles/delete.html.twig', [

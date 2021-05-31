@@ -51,7 +51,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/add", name="artist_add")
      */
-
+    // Ajout d'un artiste
     public function add(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $artist = new Artist();
@@ -96,6 +96,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/update/{id}", name="artist_update")
      */
+
+    // Mise à jour de l'artiste
     public function update(Artist $artist, int $id): Response
     {
 
@@ -133,6 +135,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/active/{id}", name="artist_active")
      */
+
+    //  Activation dans le l'artiste dans la base de données
     public function active(Artist $artist)
     {
         $artist->setIsVerified(($artist->getIsVerified()) ? false : true);
@@ -148,6 +152,8 @@ class AdminController extends AbstractController
     /**
      * @Route("/tampon/{id}", name="artist_tampon")
      */
+
+    // Page tampon pour suppression
     public function tampon(Artist $artist): Response
     {
         return $this->render('admin/delete.html.twig', [
