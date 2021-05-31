@@ -10,10 +10,11 @@ class AccountBaseController extends AbstractController
 {
     protected function ValidateAlphanumericInput($input, $minLength, $maxLength, $fieldName, &$errorMessages)
     {
-        $regularExpression = "/^[a-zA-Z]+[a-zA-Z0-9 ._]{".$minLength.","."$maxLength}+$/";
+        $regularExpression = "/^[a-zA-ZÀ-ÿ0-9 ._'-]{".$minLength.","."$maxLength}+$/";
         $errorMsg = 'Votre  '.$fieldName.' doit comporter entre ' .$minLength.' et ' .$maxLength.'  caracteres ';
         
         $error = $this->ValidateInput($regularExpression,$errorMsg, $input);
+      
         if(!empty($error))
         {
             array_push($errorMessages, $error);
@@ -94,7 +95,7 @@ class AccountBaseController extends AbstractController
                 $errors[] = 'Une erreur grave est survenue';
             }
            
-           // $errorMessage = [$errors];
+           $errorMessage = [$errors];
            return $fichier; 
         }
     }
