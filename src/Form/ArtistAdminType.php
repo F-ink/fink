@@ -10,7 +10,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use App\Entity\Style;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
 class ArtistAdminType extends AbstractType
@@ -19,16 +21,16 @@ class ArtistAdminType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password')
-            ->add('lastname')
-            ->add('firstname')
-            ->add('pseudo')
-            ->add('tattoo_shop')
-            ->add('city')
-            ->add('address')
+            ->add('password', PasswordType::class, array('label' => 'Mot de passe'))
+            ->add('lastname', TextType::class, array('label' => 'Nom de famille'))
+            ->add('firstname', TextType::class, array('label' => 'Prénom'))
+            ->add('pseudo', TextType::class, array('label' => 'Pseudo'))
+            ->add('tattoo_shop', TextType::class, array('label' => 'Nom du salon'))
+            ->add('city', TextType::class, array('label' => 'Ville'))
+            ->add('address', TextType::class, array('label' => 'Adresse'))
             ->add('description')
-            ->add('instagram')
-            ->add('siret')
+            ->add('instagram', TextType::class, array('label' => 'Instagram', 'required' => false))
+            ->add('siret', TextType::class, array('label' => 'Siret'))
             ->add('styles', EntityType::class, [
                 'class' => Style::class,
                 'multiple' => true,
@@ -36,20 +38,19 @@ class ArtistAdminType extends AbstractType
                 'choice_label' => 'name'
             ])
             ->add('coverPicture', FileType::class, [
-                'label' => false,
+                'label' => 'Photo de couverture',
                 'multiple' => false,
-                'mapped' =>false,
+                'mapped' => false,
                 'required' => false
             ])
             ->add('profilePicture', FileType::class, [
-                'label' => false,
+                'label' => 'Photo de profil',
                 'multiple' => false,
-                'mapped' =>false,
+                'mapped' => false,
                 'required' => false
             ])
-            ->add('created_at', DateType::class)
+            ->add('created_at', DateTimeType::class, ['label' => false])
             ->add('Valider', SubmitType::class);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)
