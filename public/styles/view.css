@@ -1,9 +1,5 @@
 
-/* phrase d'accroche */
-span{
-    color: #404F57;
-    font-weight: bold;
-} 
+
 #search-info{
    
   margin: auto;
@@ -11,7 +7,7 @@ span{
 
 #titlemeet{
     text-align: center;
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
 }
 
 /* fond blanc */
@@ -55,31 +51,24 @@ z-index:5;
 .artist_name h2{
     color:#0C233E;
     word-wrap: break-word;
-    /* margin-left: 2em; */
     text-transform: uppercase;
     margin-top: 30px;
 }
 
 #instagr_icone{
     font-size: 54px;
+   
+    display: flex;
+    justify-content: end;
+}
+
+#instagr_icone a{
     color:#404F57;
-    /* text-align: right; */
-   float: inline-start;
-    height: 2rem;
-    width: 1rem;
 }
-
-#instagr_link{
-   display: flex;
-   text-decoration: none;
-   color: black ;
-   margin: 3rem;
-}
-
 
 .artist_intro{
 color: black;
-padding-left: 1rem;
+
 
 }
 
@@ -96,7 +85,6 @@ padding-left: 1rem;
     margin-right: 2%;
     margin-bottom: 3%;
     cursor: default;
-    margin-left: 1rem;
 }
         /*   
          text-align: start;
@@ -115,14 +103,11 @@ padding-left: 1rem;
  
     /* overflow: scroll; */
     margin-bottom: 2rem;
-    margin-left: 1rem;
     width: 100% ;
     word-wrap: break-word;
     
 }
-.city {
-    margin-left: 1rem;
-}
+
 /* partie médiane */
 .artist_work{
 display: grid;
@@ -130,16 +115,39 @@ grid-area: auto;
 justify-content: center;
 
 }
-
-.artiste_work, img{
+.artist_realiz{
+    padding: 0 5%;
+    position: relative;
+    width: 100%;
+}
+.phototattoo{
+    padding: 2% 0;
+}
+.div_artistwork{
+    border-radius: 10px;
+    border: 2px solid;
+    height: 250px;
+    width: 250px;
+    margin: 0 2% 2% 0;
+}
+.div_artistwork img{
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+}
+/* .artiste_work, img{
     max-width: 150px; 
     max-height: 150px; 
     object-fit: cover; 
     align-items: flex-end;
     padding:5px;
-}
+} */
 
-#contacter{
+.contacterb{
     border-radius: 50px;
     /* border-top-color: white; */
     /* border-bottom-color: lightgrey; */
@@ -151,16 +159,15 @@ justify-content: center;
     /* bottom: 0; */
     margin-bottom: 3rem;
     margin-top: 3rem;
-   margin-left: 30%;
-    padding-left: 0.6em;
-    padding-right: 1em;
+     margin-left: 30%;
+    padding-left:  50px;
+    padding-right: 50px;
     padding-bottom: 0.3rem;
     padding-top: 0.3rem;
-    max-width: 110px;
-   
-    
+    max-width: 170px;
 }
-#contacter:hover{
+
+.contacterb:hover{
     /* box-shadow: 4px 4px 4px 3px #9ba7b3c4; */
     box-shadow: 1px 1px 5px #8AADB2;
     transition: 0.3s;
@@ -186,16 +193,6 @@ justify-content: center;
     text-transform: uppercase;
     padding-top: 4rem;
 }
-/* #retour{
-    color:#404F57;
-    font-size: 64px;
-    display: block;
-    justify-content: right ;
-    text-align: right;
-    padding-top: 20px;
-
-  } */
-
 
   /* card artist */
 
@@ -234,4 +231,4 @@ padding-top: 1rem;
 padding-left: 1.5rem;
 padding-bottom: 7rem;
 }
-}
+
