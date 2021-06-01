@@ -72,7 +72,7 @@ class HomeController extends AbstractController
             'registrationForm' => $form->createView(),
             'styles' => $styles,
             'artistes' => $artistes,
-            'address' => $address
+            
             // 'artist_style' =>$artist_style
         ]);
     }
@@ -94,7 +94,7 @@ class HomeController extends AbstractController
         $pictures = $em->getRepository(Style::class)->findBy(['id'=> $DetailArtist->getId()]);
         $instagram = $em->getRepository(Style::class)->findAll();
         $artistsNear = $em->getRepository(Artist::class)->findByCity($DetailArtist->getCity(),$DetailArtist->getId());
-        $address = $em->getRepository(Artist::class)->find($id);
+        
        
        // Pour contacter un artiste par mail 
         $form = $this->createForm(ContactArtistType::class);
@@ -128,7 +128,8 @@ class HomeController extends AbstractController
             'pictures' =>$pictures,
             'artistsNear' => $artistsNear,
             'instagram'=>$instagram,
-            'form'     => $form->createView()
+            'form'     => $form->createView(),
+            
         ]);
 
     }
