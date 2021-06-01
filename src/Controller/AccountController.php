@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AccountController extends AccountBaseController
 {
     /**
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ARTIST")
      * @Route("/account/update/", name="update_",  methods = {"GET", "POST"})
      * 
      */
@@ -80,7 +80,7 @@ class AccountController extends AccountBaseController
             if (count($errors) === 0) {
 
 
-                $artist->setRoles(['ROLE_ARTIST']);
+                // $artist->setRoles(['ROLE_ARTIST']);
                 $artist->setLastName($safe['lastname']);
                 $artist->setFirstName($safe['firstname']);
                 $artist->setPseudo($safe['pseudo']);

@@ -84,6 +84,7 @@ class RegistrationController extends AbstractController
         // On recherche si un utilisateur avec ce token existe dans la base de données
         $user = $users->findOneBy(['activation_token' => $token]);
 
+
         // Si aucun utilisateur n'est associé à ce token
         if (!$user) {
             // On renvoie une erreur 404
@@ -92,6 +93,7 @@ class RegistrationController extends AbstractController
 
         // On supprime le token
         $user->setActivationToken(null);
+        $user->setRoles(['ROLE_ARTIST']);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
