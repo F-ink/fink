@@ -1,9 +1,9 @@
 /* Général */
-.adminTitre{
+.adminTitre {
     color: var(--blueGris2);
 }
 
-.adminBtn{
+.adminBtn {
     border: none;
     font-size: 15px;
     border-radius: 50px;
@@ -17,27 +17,27 @@
     align-self: center;
 }
 
-.logoAdmin{
+.logoAdmin {
     width: 200px;
     height: auto;
     margin: 10px 0 0 10px;
 }
 
-.formAdmin{
+.formAdmin {
     width: 500px;
 }
 
-.detailsBtn{
+.detailsBtn {
     border: none;
     font-size: 15px;
     border-radius: 50px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.15rem;
-    background-color: #9BA7B3;  
+    background-color: #9BA7B3;
 }
 
-.stylesAdmin{
+.stylesAdmin {
     background-color: #9BA7B3;
     color: white;
     border-radius: 55px;
@@ -45,44 +45,57 @@
     font-size: 20px;
     text-align: center;
     align-self: center;
-    white-space:nowrap;
+    white-space: nowrap;
     margin-right: 2%;
     margin-bottom: 3%;
 }
 
-.btnAdminHeader{
-    background-color: grey !important;
+.btnAdminHeader {
+    background-color: #f1f1f1 !important;
     border-radius: 10px;
     margin-right: 10px;
+    color: black !important;
+    text-transform: uppercase;
 }
 
+.btnAdminHeader:hover {
+    box-shadow: 0px 0px 5px white;
+    background-color: white;
+    transition: 0.3s;
+}
 
 /* Nav */
-.navAdmin{
+.navAdmin {
     background-color: var(--blueGris2);
     color: white;
     text-transform: capitalize;
 }
-.navAdmin a {
-    color: white !important;
+
+.btnAdminHeader {
+    border-style: none;
+    border-radius: 50px;
+    background-color: #f1f1f1;
+    margin: 10px 10px;
+    height: 2.5em;
     text-transform: uppercase;
 }
 
 /* Formulaire d'ajout artiste Admin */
-#artist_admin input{
-    border-radius: 10px;
-    width: 500px;
-}
-#artist_admin textarea{
+#artist_admin input {
     border-radius: 10px;
     width: 500px;
 }
 
-#artist_admin_created_at{
+#artist_admin textarea {
+    border-radius: 10px;
+    width: 500px;
+}
+
+#artist_admin_created_at {
     display: none;
 }
 
-#artist_admin button{
+#artist_admin button {
     border-radius: 10px;
     margin: 25px 0 50px 0;
     text-align: center;
@@ -93,26 +106,26 @@
 
 /* Ajout styles Admin */
 
-#styles_admin_name{
-display: block;
-width: 50%;
-padding: .375rem .75rem;
-font-size: 1rem;
-font-weight: 400;
-line-height: 1.5;
-color: #212529;
-background-color: #fff;
-background-clip: padding-box;
-border: 1px solid #ced4da;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-border-radius: .25rem;
-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+#styles_admin_name {
+    display: block;
+    width: 50%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 
-#styles_admin_Valider{
+#styles_admin_Valider {
     border-radius: 10px;
     margin: 25px 0 50px 0;
     text-align: center;
@@ -120,4 +133,3 @@ transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     color: white;
     padding: 5px 15px;
 }
-
