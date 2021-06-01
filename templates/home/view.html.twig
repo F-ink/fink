@@ -94,7 +94,7 @@ myInput.focus()
 			<h3>Meet your
 				<span>ink</span>
 				artist <span>*</span></h3>
-				<p>*Rencontrez le tatoueur ou la tatoueuse idéal(e) dans votre style
+				<p>rencontrez le tatoueur ou la tatoueuse idéal(e) dans votre style
 				<p>
 		</div>
 	</div>
@@ -173,7 +173,7 @@ myInput.focus()
 		<div class="Cartes d-flex flex-wrap justify-content-around">
 			<section>
 
-				{% for artiste in artistes %}
+				{% for artiste in artistsNear %}
 					<a
 						href="{{ path('artist_view', {'id': artiste.id}) }}">
 

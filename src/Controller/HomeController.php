@@ -92,6 +92,8 @@ class HomeController extends AbstractController
         $styles = $em->getRepository(Style::class)->findAll();
         $pictures = $em->getRepository(Style::class)->findBy(['id'=> $DetailArtist->getId()]);
         $instagram = $em->getRepository(Style::class)->findAll();
+        $artistsNear = $em->getRepository(Artist::class)->findBy(['city' => $DetailArtist->getCity()], null, 2, null);
+        dump($artistsNear);
        
        // Pour contacter un artiste par mail 
         $form = $this->createForm(ContactArtistType::class);
@@ -123,6 +125,7 @@ class HomeController extends AbstractController
             'artistes' => $artistes,
             'styles' => $styles,
             'pictures' =>$pictures,
+            'artistsNear' => $artistsNear,
             'instagram'=>$instagram,
             'form'     => $form->createView()
         ]);

@@ -18,12 +18,17 @@
 	{% endblock header %}
 
 	<div class="container">
-		<h3 class="text-center mt-5 mb-5">Les <span>tatoueurs</span> dans votre <span>style </span>près de chez vous</h3>
+		<h3 class="text-center mt-5 mb-5">Les
+			<span>tatoueurs</span>
+			dans votre
+			<span>style
+			</span>près de chez vous</h3>
 		<div class="carte-resultat d-flex">
 			<div class="list col-xs-12 col-sm-6">
 				<div>
 					<!-- CARTE APERCU ARTISTE -->
-					<div class="Cartes d-flex flex-wrap justify-content-around">
+					<div
+						class="Cartes d-flex flex-wrap justify-content-around">
 						<!--  BOUCLE ICI POUR AFFICHAGE ARTISTE -->
 						{% for artiste in artistes %}
 							<a href="{{ path('artist_view', {'id': artiste.id}) }}">
@@ -59,7 +64,7 @@
 				</div>
 			</div>
 			<div id="map" class="map d-xs-none"></div>
-			
+
 		</div>
 
 
@@ -74,10 +79,6 @@
 
 {% block javascripts %}
 	<script>
-		function infoOpen(i) {
-google.maps.event.trigger(gmarkers[i], 'click')
-}
-
 var gmarkers = [];
 window.initMap = function () {
 var artists = [{% for artiste in artistes %}[
@@ -88,64 +89,57 @@ var artists = [{% for artiste in artistes %}[
 "{{ artiste.lat }}",
 "{{ artiste.lng }}"
 ],{% endfor %}];
+console.log(artists);
 
 var bounds = new google.maps.LatLngBounds();
 var map = new google.maps.Map(document.getElementById('map'), {zoom: 4});
 
-var infowindow = new google.maps.InfoWindow({maxWidth: 350});
+
 
 var marker,
 i;
 for (i = 0; i < artists.length; i++) {
-loc = new google.maps.LatLng(artists[i][4], artists[i][5]);
-marker = new google.maps.Marker({
-position: loc,
-// icon: '/assets/img/position-pin.svg',
-icon: {
-path: 'M4.6,13.9c0,0,0-0.4,0-0.9l0-0.9l0.1-0.4l0.1-0.4l-0.3-0.1c-0.2,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.2-0.2-0.3 c0,0,0.2-0.7,0.4-1.4l0.3-1.3L4.3,8C3.9,7.9,3.8,7.9,3.7,7.8C3.6,7.7,3.6,7.5,3.6,7.4C3.7,7.2,3.9,7.1,4,7.1c0,0,1.2,0.3,2.7,0.7 l2.6,0.7l0.6-2l0.6-2L9.8,4.3L9.3,4.2L9.2,4.6L9.1,4.9L9.4,5l0.2,0.1L9.3,6.4L8.9,7.7L8.1,7.5L7.4,7.3L7.7,6l0.4-1.3l0.3,0.1 l0.3,0.1l0.1-0.4l0.1-0.4L8,3.8C7.5,3.7,7.1,3.6,7.1,3.6C7.1,3.6,7,3.8,7,4L6.9,4.3l0.3,0.1l0.3,0.1L7,5.8L6.7,7.1L5.9,6.9L5.1,6.7l0.4-1.3L5.8,4l0.3,0.1c0.2,0,0.3,0.1,0.3,0.1c0,0,0.2-0.7,0.2-0.7c0,0-0.2-0.1-0.5-0.1C5.9,3.3,5.7,3.2,5.7,3.2C5.6,3.1,5.5,3,5.5,2.9c0-0.2,0.1-0.4,0.3-0.4c0.1,0,0.3,0,1.8,0.4c0.9,0.2,1.7,0.4,1.7,0.4c0,0,0-0.1,0-0.2C9.1,2.9,8.9,2.5,8.8,2.3C8.3,1.8,7.9,1.5,7.2,1.5C7,1.5,6.8,1.3,6.8,1c0-0.1,0.1-0.2,0.2-0.3c0.2-0.1,0.9,0,1.4,0.2c0.5,0.3,1,0.7,1.3,1.2c0.2,0.4,0.4,0.8,0.4,1.2l0,0.1l0.5,0.1c0.3,0.1,0.5,0.1,0.5,0.2c0.1,0.1,0.2,0.2,0.2,0.3c0,0.1-1.3,5-1.4,5.1C9.8,9.4,9.7,9.4,9.6,9.4c-0.1,0-0.4-0.1-1.1-0.3l-1-0.3l-0.3,1.3c-0.2,0.7-0.4,1.3-0.4,1.3c0,0.1-0.1,0.2-0.2,0.2c-0.1,0-0.2,0-0.5-0.1l-0.4-0.1l-0.1,0.4l-0.1,0.4l-0.4,0.8C4.9,13.5,4.7,13.9,4.6,13.9C4.6,13.9,4.6,13.9,4.6,13.9L4.6,13.9z',
-scale: 4,
-anchor: new google.maps.Point(11, 22),
-fillOpacity: 1,
-fillColor: '#0C233E',
-strokeOpacity: 0
-},
-map: map
-});
+	var infowindow = new google.maps.InfoWindow();
+	loc = new google.maps.LatLng(artists[i][4], artists[i][5]);
+	marker = new google.maps.Marker({
+		position: loc,
+		icon: {
+		path: 'M4.6,13.9c0,0,0-0.4,0-0.9l0-0.9l0.1-0.4l0.1-0.4l-0.3-0.1c-0.2,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.2-0.2-0.3 c0,0,0.2-0.7,0.4-1.4l0.3-1.3L4.3,8C3.9,7.9,3.8,7.9,3.7,7.8C3.6,7.7,3.6,7.5,3.6,7.4C3.7,7.2,3.9,7.1,4,7.1c0,0,1.2,0.3,2.7,0.7 l2.6,0.7l0.6-2l0.6-2L9.8,4.3L9.3,4.2L9.2,4.6L9.1,4.9L9.4,5l0.2,0.1L9.3,6.4L8.9,7.7L8.1,7.5L7.4,7.3L7.7,6l0.4-1.3l0.3,0.1 l0.3,0.1l0.1-0.4l0.1-0.4L8,3.8C7.5,3.7,7.1,3.6,7.1,3.6C7.1,3.6,7,3.8,7,4L6.9,4.3l0.3,0.1l0.3,0.1L7,5.8L6.7,7.1L5.9,6.9L5.1,6.7l0.4-1.3L5.8,4l0.3,0.1c0.2,0,0.3,0.1,0.3,0.1c0,0,0.2-0.7,0.2-0.7c0,0-0.2-0.1-0.5-0.1C5.9,3.3,5.7,3.2,5.7,3.2C5.6,3.1,5.5,3,5.5,2.9c0-0.2,0.1-0.4,0.3-0.4c0.1,0,0.3,0,1.8,0.4c0.9,0.2,1.7,0.4,1.7,0.4c0,0,0-0.1,0-0.2C9.1,2.9,8.9,2.5,8.8,2.3C8.3,1.8,7.9,1.5,7.2,1.5C7,1.5,6.8,1.3,6.8,1c0-0.1,0.1-0.2,0.2-0.3c0.2-0.1,0.9,0,1.4,0.2c0.5,0.3,1,0.7,1.3,1.2c0.2,0.4,0.4,0.8,0.4,1.2l0,0.1l0.5,0.1c0.3,0.1,0.5,0.1,0.5,0.2c0.1,0.1,0.2,0.2,0.2,0.3c0,0.1-1.3,5-1.4,5.1C9.8,9.4,9.7,9.4,9.6,9.4c-0.1,0-0.4-0.1-1.1-0.3l-1-0.3l-0.3,1.3c-0.2,0.7-0.4,1.3-0.4,1.3c0,0.1-0.1,0.2-0.2,0.2c-0.1,0-0.2,0-0.5-0.1l-0.4-0.1l-0.1,0.4l-0.1,0.4l-0.4,0.8C4.9,13.5,4.7,13.9,4.6,13.9C4.6,13.9,4.6,13.9,4.6,13.9L4.6,13.9z',
+		scale: 4,
+		anchor: new google.maps.Point(11, 22),
+		fillOpacity: 1,
+		fillColor: '#0C233E',
+		strokeOpacity: 0
+		},
+		map: map
+		});
 
-gmarkers.push(marker);
-bounds.extend(loc);
-}
+	gmarkers.push(marker);
+	bounds.extend(loc);
+	google.maps.event.addListener(marker, 'click', (function (marker, i) {
+return function () { 
+	console.log('ici');
 
-google.maps.event.addListener(marker, 'click', (function (marker, i) {
-return function () { /*for(var z=0; z< gmarkers.length;z++) {
-					gmarkers[z].setAnimation(null);
-				}
-				if(marker.getAnimation() != null) {
-					marker.setAnimation(null);
-				} else {
-					marker.setAnimation(google.maps.Animation.BOUNCE);
-				}*/
-
-infowindow.setContent('<div>' + '<img src="' + artists[i][3] + '" alt="" style="max-width:100%;height:auto;display:block;">' + '<h3 style="font-size:18px!important;margin-top:1rem;" class="titillium text-color-1-important">' + artists[i][1] + ' <small class="text-muted">- ' + artists[i][2] + '</small></h3>' + '<p style="font-size:16px">' + artists[i][5] + '</p>' + '</div>');
+infowindow.setContent('<div>' + '<img src="' + artists[i][3] + '" alt="" style="max-width:100%;height:auto;display:block;">' + '<h3 style="font-size:18px!important;margin-top:1rem;" class="titillium text-color-1-important">' + artists[i][1] + ' <small class="text-muted">- ' + artists[i][2] + '</small></h3>' + '</div>');
 infowindow.open(map, marker);
-}
-})(marker, i));
+}})(marker, i));
+} // end for
+
+
+
 
 map.fitBounds(bounds);
 map.panToBounds(bounds);
 
-var listener = google.maps.event.addListener(map, "idle", function () { // map.setZoom(15);
+var listener = google.maps.event.addListener(map, "idle", function () { 
 map.setZoom(13);
 google.maps.event.removeListener(listener);
-});
-};
+}); 
+}; 
 var script = document.createElement('script');
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap';
 script.async = true;
 document.head.appendChild(script);
 	</script>
-
-
-	<!-- // script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEtrPBjS33-5S-SbBfnfuiIlaHA6BWUKg&callback=initMap-->
 
 {% endblock %}
