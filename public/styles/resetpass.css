@@ -16,7 +16,9 @@
 .confirm{
     margin-left:71px;
 }
-
+.btn-confirm{
+    background: linear-gradient(90deg, rgb(94, 117, 122) 35%, rgb(169, 184, 185) 100%);
+}
 @media (max-width: 429px) {
     .reset-content {
         height: calc(100vh - 271.25px);
