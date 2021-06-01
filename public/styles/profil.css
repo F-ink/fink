@@ -5,14 +5,17 @@
     height: 100%;
     width: 100%;
     margin-top: 5%;
+    box-shadow: -1px 1px 35px -1px rgba(12, 35, 62, 0.68);
+    -webkit-box-shadow: -1px 1px 35px -1px rgba(12, 35, 62, 0.68);
+    -moz-box-shadow: -1px 1px 35px -1px rgba(12, 35, 62, 0.68);
 }
 
-#accueil-profil .carte-artiste:hover {
+/* #accueil-profil .carte-artiste:hover {
     box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
     -webkit-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
     -moz-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
     transition-duration: 1s;
-}
+} */
 
 /* .carte-artiste h2{
     position: absolute;
@@ -29,7 +32,7 @@
     height: 230px;
     width: 100%;
     border-radius: 15px 15px 0 0;
-    background-image: url(../img/bgcouv.svg);
+    background-image: url(../img/bgcouv2.svg);
     background-color: #ffffff;
     background-position: center;
     background-size: 120%;
@@ -172,3 +175,85 @@
 .help {
     padding: 2% 0;
 }
+
+.question {
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    font-size: 40px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    background: rgb(150,183,189);
+    background: radial-gradient(circle, rgba(150,183,189,1) 7%, rgba(88,132,136,0.9471989479385504) 99%, rgba(64,81,82,1) 100%); 
+}
+.question:hover{
+    box-shadow: -1px 1px 25px -1px rgba(12, 35, 62, 0.336);
+    -webkit-box-shadow: -1px 1px 25px -1px rgba(12, 35, 62, 0.445);
+    -moz-box-shadow: -1px 1px 25px -1px rgba(12, 35, 62, 0.411);
+    transition-duration: 1s;
+}
+.question a{
+    color: white;
+}
+
+.question a:hover{
+    color: white;
+    font-weight: 600;
+}
+
+/* BUTTONS */
+.update-bouton {
+    border-radius: 30px;
+    background: rgb(150, 183, 189);
+    background: radial-gradient(circle, rgba(150, 183, 189, 1) 7%, rgba(88, 132, 136, 0.9471989479385504) 99%, rgba(64, 81, 82, 1) 100%);
+
+}
+
+.update-bouton .btn {
+    color: white;
+    font-weight: 500;
+}
+
+.update-bouton:hover {
+    box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.336);
+    -webkit-box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.445);
+    -moz-box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.411);
+    transition-duration: 1s;
+}
+
+.update-bouton .btn:hover {
+    font-weight: 500;
+    color: white;
+    overflow: hidden;
+}
+
+/* END */
+
+/* PHOTO BOUTON */
+
+/* BUTTONS */
+button.photo-bouton {
+    border-radius: 10px;
+    background: rgb(150,183,189);
+    background: radial-gradient(circle, rgba(150,183,189,1) 0%, rgba(88,132,136,0.9471989479385504) 2%, rgba(64, 81, 82, 0.705) 93%); 
+    color: white;
+    width: 100%;
+
+}
+button.photo-bouton .btn{
+    color: white;
+}
+button.photo-bouton:hover {
+    box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.336);
+    -webkit-box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.445);
+    -moz-box-shadow: -1px 1px 15px -1px rgba(12, 35, 62, 0.411);
+    transition-duration: 1s;
+    color: white;
+ 
+    
+
+}
+
+/* END */
