@@ -34,9 +34,9 @@
     width: 200px;
 }
 
-#nav span , .userbutton span{
+/* #nav span , .userbutton span{
     transform: translate(10px, 5px);
-}
+} */
 
 .userbutton p{
     text-align: right;
@@ -229,4 +229,30 @@ margin: 0;
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+
+
+/* MEDIA QUERIES */ 
+
+/* // Small devices (landscape phones, less than 750px) */
+@media (max-width: 750px) {
+    #nav button, .userbutton button  {
+        background: none;
+    }
+    #nav li span{
+        display: none;
+    }
+    #nav li:last-of-type{
+        position: absolute;
+        top: 85%;
+    }
+    #nav li:last-of-type button{
+        padding: 10px;
+    }
+    .my-modal-content{
+        width: 21rem;
+        background-image: none;
+    }
 }
