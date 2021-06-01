@@ -71,8 +71,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'registrationForm' => $form->createView(),
             'styles' => $styles,
-            'artistes' => $artistes,
-            'address' => $address
+            'artistes' => $artistes
             // 'artist_style' =>$artist_style
         ]);
     }
@@ -125,6 +124,7 @@ class HomeController extends AbstractController
             'DetailArtist' => $DetailArtist,
             'artistes' => $artistes,
             'styles' => $styles,
+            'address' => $address,
             'pictures' =>$pictures,
             'artistsNear' => $artistsNear,
             'instagram'=>$instagram,
