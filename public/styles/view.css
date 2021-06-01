@@ -105,7 +105,7 @@ padding-left: 3rem; */
 }
 
 .thestyles{
-    margin-left: 5%;
+    margin-left: 6%;
 }
 .thestyles p {
     padding-left: 1rem;
@@ -129,6 +129,7 @@ padding-left: 3rem; */
     word-wrap: break-word;
     padding-right: 2rem;
     margin-left: 6%;
+    margin-top: 2rem;
 }
 
 .city p {
