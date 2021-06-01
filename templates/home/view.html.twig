@@ -171,7 +171,7 @@ myInput.focus()
 
 	<div>
 		<div class="Cartes d-flex flex-wrap justify-content-around">
-			<section>
+			<section class="d-flex justify-content-around w-75">
 
 				{% for artiste in artistsNear %}
 					<a
@@ -202,8 +202,9 @@ myInput.focus()
 							</div>
 						</div>
 					</a>
+					{% endfor %}
 				</div>
-			{% endfor %}
+			
 		</section>
 	</main>
 	<div class="modal" tabindex="-1" id="modal-contact">
