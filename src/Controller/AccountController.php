@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class AccountController extends AccountBaseController
 {
     /**
-     * @IsGranted("ROLE_ARTIST")
+     * @IsGranted("ROLE_ARTIST",  message="Pour accéder à cette fonctionnalité, veuillez cliquer sur le lien que vous avez reçu par mail!")
      * @Route("/account/update/", name="update_",  methods = {"GET", "POST"})
      * 
      */
