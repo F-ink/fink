@@ -19,7 +19,7 @@ select {
     height: 100%;
     width: 100%;
     margin-top: 5%;
-    padding-bottom: 3% ;
+    padding-bottom: 3%;
 }
 
 #update-profil .carte-artiste:hover {
@@ -35,6 +35,13 @@ select {
     height: 230px;
     width: 100%;
     border-radius: 15px 15px 0 0;
+    background-image: url(../img/bgcouv.svg);
+    background-color: #ffffff;
+    background-position: center;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    font-size: 2px;
+    color: white;
 }
 
 .profil-couverture img {
@@ -83,6 +90,15 @@ select {
     position: absolute;
     top: -75px;
     right: 45%;
+    background-image: url(../img/profil.png);
+    text-align: center;
+    font-size: 1px;
+    background-color: #f1f1f1;
+    line-height: 60px;
+    color: #657275;
+    background-position: center;
+    background-size: 100px;
+    background-repeat: no-repeat;
 }
 
 .profil-picture img {
@@ -107,37 +123,42 @@ select {
     border-radius: 5px;
     text-align: center;
     font-weight: 600;
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgba(230, 236, 239, 1) 3%, rgb(206, 212, 219) 71%);
     border: none;
 }
-.pickup-pseudo input::placeholder{
+
+.pickup-pseudo input::placeholder {
     font-weight: 300;
     font-size: 10px;
 }
 
 /* END */
 /* DESCRIPTION */
-.description textarea::placeholder{
+.description textarea::placeholder {
     font-weight: 300;
     font-size: 15px;
     color: #0C233E;
     padding: 0;
     margin: 0;
 }
-.description{
+
+.description {
     text-align: center;
     margin-top: 2%;
 }
-.description textarea{
+
+.description textarea {
     width: 50%;
     height: 100px;
     border-radius: 10px;
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);;
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgba(230, 236, 239, 1) 3%, rgb(206, 212, 219) 71%);
+    ;
     border: none;
     padding: 1% 2%;
 }
+
 /* .description textarea:hover{
     box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
@@ -153,28 +174,35 @@ select {
     border-radius: 10px;
 } */
 
-.remove-style{
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);  
+.remove-style {
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgba(230, 236, 239, 1) 3%, rgb(206, 212, 219) 71%);
     padding: 1% 2%;
     border-radius: 10px;
     align-items: center;
     margin-bottom: 2%;
 }
-.remove-style p{
+
+.remove-style p {
     margin-bottom: 0;
     font-weight: 600;
 }
-.pickup-styles{
+
+.pickup-styles {
     margin-top: 2%;
 }
-.add-style{
+
+.add-style {
     flex-wrap: wrap;
 }
-.pickup-styles p, .pickup-styles input, .pickup-styles label{
+
+.pickup-styles p,
+.pickup-styles input,
+.pickup-styles label {
     margin-right: 10px;
 }
-.pickup-styles p{
+
+.pickup-styles p {
     font-weight: 600;
 }
 
@@ -183,22 +211,25 @@ select {
     border-color: #6687b7;
 }
 
-.add-style{
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);  
+.add-style {
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgba(230, 236, 239, 1) 3%, rgb(206, 212, 219) 71%);
     padding: 1% 2%;
     border-radius: 10px;
     align-items: center;
 }
-.add-style p{
+
+.add-style p {
     margin-bottom: 0;
     font-weight: 600;
 }
+
 .pickup-styles .add-style .form-check-input:checked {
     background-color: #6687b7;
     border-color: #6687b7;
 }
-.pour-center-flemme{
+
+.pour-center-flemme {
     width: 50%;
 }
 
@@ -207,7 +238,7 @@ select {
 
 
 /* CARTE DE VISITE */
-.info-contact{
+.info-contact {
     align-items: center;
     width: 50%;
     /* border: 1px solid rgba(12, 35, 62, 0.68); */
@@ -215,52 +246,59 @@ select {
     border-radius: 10px;
     text-align: right;
     padding-right: 10%;
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgba(230,236,239,1) 3%, rgb(206, 212, 219) 71%);   
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgba(230, 236, 239, 1) 3%, rgb(206, 212, 219) 71%);
 }
+
 /* .info-contact:hover{
     box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
 } */
-.info-contact div{
+.info-contact div {
     margin-bottom: 2%;
 }
-.infos-maj{
+
+.infos-maj {
     margin-top: 2%;
 }
-.info-contact input{
+
+.info-contact input {
     border-radius: 30px;
     padding-left: 10px;
 }
-.info-contact label{
+
+.info-contact label {
     font-weight: 600;
 }
+
 /* END */
 
 
 /* Button submit */
-.update-bouton{
+.update-bouton {
     display: flex;
     justify-content: center;
     margin-top: 5%;
     color: white;
 }
-.update-bouton input{
+
+.update-bouton input {
     border-radius: 30px;
     border: none;
-    background: rgb(230,236,239);
-    background: radial-gradient(circle, rgb(180, 196, 178) 3%, rgb(127, 139, 127) 71%);   
+    background: rgb(230, 236, 239);
+    background: radial-gradient(circle, rgb(180, 196, 178) 3%, rgb(127, 139, 127) 71%);
     padding: 5px 2%;
     color: white;
 }
 
 
-.update-bouton input:hover{
+.update-bouton input:hover {
     box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 3px 10px 0px rgba(0, 0, 0, 0.75);
 }
+
 /* END */
 
 
@@ -271,8 +309,9 @@ select {
     .style-modif {
         justify-content: space-around;
     }
+
     .info-contact input {
         width: 100%;
     }
-    
+
 }

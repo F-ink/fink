@@ -13,13 +13,14 @@
     -moz-box-shadow: -1px 1px 45px -1px rgba(12, 35, 62, 0.68);
     transition-duration: 1s;
 }
+
 /* .carte-artiste h2{
     position: absolute;
     top: 10px;
     left: 10px;
 } */
 
-.ss-titre{
+.ss-titre {
     font-size: 22px;
     font-weight: 300;
 }
@@ -28,6 +29,13 @@
     height: 230px;
     width: 100%;
     border-radius: 15px 15px 0 0;
+    background-image: url(../img/bgcouv.svg);
+    background-color: #ffffff;
+    background-position: center;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    font-size: 2px;
+    color: white;
 }
 
 .profil-couverture img {
@@ -53,6 +61,16 @@
     position: absolute;
     top: -75px;
     right: 45%;
+    background-image: url(../img/profil.png);
+    text-align: center;
+    font-size: 1px;
+    background-color: #f1f1f1;
+    line-height: 60px;
+    color: #657275;
+    background-position: center;
+    background-size: 100px;
+    background-repeat: no-repeat;
+
 }
 
 .profil-picture img {
@@ -63,20 +81,24 @@
     border-radius: 50%;
     display: block;
     object-fit: cover;
+    /* background-image: url(../img/profil.png); */
 }
-.pseudo-clic{
+
+.pseudo-clic {
     padding-top: 3%;
 }
 
-.city{
+.city {
     margin-left: 9%;
     width: 250px;
 }
-.description{
+
+.description {
     width: 100%;
     padding: 2% 5%;
 }
-.description p{
+
+.description p {
     border: 2px solid black;
     border-radius: 10px;
     padding: 2%;
@@ -85,7 +107,7 @@
     color: #404F57;
 }
 
-.style-name p{
+.style-name p {
     background-color: #9BA7B3;
     color: white;
     border-radius: 55px;
@@ -93,34 +115,40 @@
     font-size: 12px;
     text-align: center;
     align-self: center;
-    white-space:nowrap;
+    white-space: nowrap;
     margin-right: 2%;
     margin-bottom: 3%;
     cursor: default;
 }
-.work{
+
+.work {
     padding: 0 5%;
     position: relative;
     width: 100%;
 }
-.work h4{
+
+.work h4 {
     margin-bottom: 0;
 }
-.sous-titre{
+
+.sous-titre {
     font-size: 15px;
     font-style: italic;
 }
-.photos{
+
+.photos {
     padding: 2% 0;
 }
-.photo{
+
+.photo {
     border-radius: 10px;
     border: 2px solid;
     height: 250px;
     width: 250px;
     margin: 0 2% 2% 0;
 }
-.photo img{
+
+.photo img {
     height: 100%;
     width: 100%;
     max-width: 100%;
@@ -129,15 +157,18 @@
     border-radius: 10px;
     object-fit: cover;
 }
-.info-plus{
+
+.info-plus {
     padding: 0 5%;
     margin-top: 3%;
     background-color: #9BA7B3;
     color: white;
 }
-.info-plus h4{
+
+.info-plus h4 {
     color: white;
 }
-.help{
+
+.help {
     padding: 2% 0;
 }
