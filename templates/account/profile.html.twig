@@ -65,7 +65,8 @@
 						</div>
 					</div>
 					<div class="update-bouton">
-						<a href="{{ path('update_') }}" class="btn btn-warning ">
+						<a href="{{ path('update_') }}" class="btn ">
+							<i class="fas fa-user-edit"></i>
 							Modifier/Completer mon profil
 						</a>
 					</div>
@@ -94,7 +95,9 @@
 					<div class="d-flex">
 						{{ form_start(form) }}
 						{{ form_widget(form) }}
-						<button class="btn btn-success" type="submit" name="submit">Ajouter à mon profil</button>
+						<button class="btn photo-bouton" type="submit" name="submit">
+						<i class="fas fa-check"></i>
+						Ajouter ces photos</button>
 						{{ form_end(form) }}
 					</div>
 				</div>
@@ -111,8 +114,8 @@
 				</div>
 			</div> #}
 			<div class="help">
-				<div class="col-12 d-flex justify-content-center">
-					<a href="mailto:finkt@outlook.fr" class="btn btn-primary ">Besoin d'aide?</a>
+				<div class="question">
+					<a href="mailto:finkt@outlook.fr" ><i class="fas fa-question"></i></a>
 				</div>
 			</div>
 		</div>{# end carte artiste #}
