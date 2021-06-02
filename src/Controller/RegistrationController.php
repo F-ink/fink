@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
                 // On attribue le destinataire
                 ->To($user->getEmail())
                 // On crée le texte avec la vue
-                ->subject('Fink: il est d\'activer votre compte!')
+                ->subject('Fink: il est temps d\'activer votre compte!')
 
                 ->html(
                     $this->renderView(
