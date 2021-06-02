@@ -100,7 +100,7 @@
 								<img
 								src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="250">
 								{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
-								<a class="btn btn-secondary "href="{{ path('artist_delete_image', {id: picture.id})}}" data-delete data-token="{{ csrf_token('delete' ~ picture.id )}}">Supprimer</a>
+								<a class="delete-photo "href="{{ path('artist_delete_image', {id: picture.id})}}" data-delete data-token="{{ csrf_token('delete' ~ picture.id )}}"> <i class="fas fa-times"></i> </a>
 							</div>
 
 						{% endfor %}
