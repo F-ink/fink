@@ -34,9 +34,9 @@
     width: 200px;
 }
 
-/* #nav span , .userbutton span{
+#nav span , .userbutton span{
     transform: translate(10px, 5px);
-} */
+}
 
 .userbutton p{
     text-align: right;
