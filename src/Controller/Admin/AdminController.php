@@ -97,6 +97,17 @@ class AdminController extends AbstractController
 
                 $artist->setProfilePicture($file);
 
+            $coverPicture = $form->get('coverPicture')->getData();
+
+            $file = md5(uniqid()) . '.' . $coverPicture->guessExtension();
+
+            $coverPicture->move(
+                $this->getParameter('cover_directory'),
+                $file
+            );
+
+                $artist->setCoverPicture($file);
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($artist);
                 $em->flush();
@@ -132,7 +143,7 @@ class AdminController extends AbstractController
                 $artist->setCity($_POST['city']);
                 $artist->setAddress($_POST['address']);
                 $artist->setProfilePicture($_POST['profilePicture']);
-                $artist->setProfilePicture($_POST['coverPicture']);
+                $artist->setCoverPicture($_POST['coverPicture']);
                 $artist->setDescription($_POST['description']);
                 $artist->setInstagram($_POST['instagram']);
                 $artist->setSiret($_POST['siret']);
