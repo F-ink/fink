@@ -169,7 +169,12 @@ class AccountController extends AccountBaseController
         if ($form->isSubmitted() && $form->isValid()) {
             // On récupère les images transmises
             $images = $form->get('pictures')->getData();
+           //si le nombre  de fichiers est supérieur a 6
+            if(count($images) > 6){
+                $this->addFlash('danger', 'Désolé, 6 images max ! Devenez premium et profitez');
+                $this->redirectToRoute('profil_');
 
+            } else{
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau nom de fichier
@@ -194,6 +199,7 @@ class AccountController extends AccountBaseController
 
             return $this->redirectToRoute('profil_');
         }
+    }
 
         return $this->render('account/profile.html.twig', [
             'artist' => $artist,
@@ -201,5 +207,29 @@ class AccountController extends AccountBaseController
             'form' => $form->createView(),
         ]);
     }
-    
+    /**
+ * @Route("/supprime/image/{id}", name="artist_delete_image", methods={"DELETE"})
+ */
+public function deleteImage(Picture $picture, Request $request){
+    $data = json_decode($request->getContent(), true);
+
+    // On vérifie si le token est valide
+    if($this->isCsrfTokenValid('delete'.$picture->getId(), $data['_token'])){
+        // On récupère le nom de l'image
+        $nom = $picture->getName();
+        // On supprime le fichier
+        unlink($this->getParameter('pictures_directory').'/'.$nom);
+
+        // On supprime l'entrée de la base
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($picture);
+        $em->flush();
+
+        // On répond en json
+        return new JsonResponse(['success' => 1]);
+    }else{
+        return new JsonResponse(['error' => 'Token Invalide'], 400);
+    }
+}
+
 }
