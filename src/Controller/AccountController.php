@@ -201,5 +201,29 @@ class AccountController extends AccountBaseController
             'form' => $form->createView(),
         ]);
     }
-    
+    /**
+ * @Route("/supprime/image/{id}", name="artist_delete_image", methods={"DELETE"})
+ */
+public function deleteImage(Picture $picture, Request $request){
+    $data = json_decode($request->getContent(), true);
+
+    // On vérifie si le token est valide
+    if($this->isCsrfTokenValid('delete'.$picture->getId(), $data['_token'])){
+        // On récupère le nom de l'image
+        $nom = $picture->getName();
+        // On supprime le fichier
+        unlink($this->getParameter('pictures_directory').'/'.$nom);
+
+        // On supprime l'entrée de la base
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($picture);
+        $em->flush();
+
+        // On répond en json
+        return new JsonResponse(['success' => 1]);
+    }else{
+        return new JsonResponse(['error' => 'Token Invalide'], 400);
+    }
+}
+
 }

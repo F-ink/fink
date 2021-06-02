@@ -9,10 +9,11 @@
 {% endblock %}
 {% block javascripts %}
 	<script src="{{ asset('js/gotop.js') }}" defer></script>
+    <script src="{{ asset('js/images.js') }}" defer ></script>
 {% endblock %}
 
 
-{% block title %}FINK | Mon profil 
+{% block title %}FINK | Mon profil
 {% endblock %}
 
 {% block body %}
@@ -33,7 +34,11 @@
 				artiste
 			</span>
 			tatoueur</h3>
-		<h4 class="ss-titre text-center">Ajoutez <span> vos photos </span> sur cette page</h4>
+		<h4 class="ss-titre text-center">Ajoutez
+			<span>
+				vos photos
+			</span>
+			sur cette page</h4>
 		<div class="carte-artiste">
 			<div class="profil-couverture">
 				<img src={{ asset('/cover_picture/' ~ artist.CoverPicture) }} class="card-img-top" alt="Photo de couverture">
@@ -86,42 +91,49 @@
 				<div class="realisations">
 					<div class="photos d-flex flex-wrap">
 						{% for picture in artist.pictures %}
-						<div class="photo">
-							<img src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="250">
-						</div>
-							
+							<div class="photo">
+								<img
+								src="{{ asset('/multi_uploads/'~picture.name) }}" alt="catalogue" width="250">
+								{# On ajoute un lien permettant de supprimer une image (sera géré en Ajax) #}
+								<a class="btn btn-secondary "href="{{ path('artist_delete_image', {id: picture.id})}}" data-delete data-token="{{ csrf_token('delete' ~ picture.id )}}">Supprimer</a>
+							</div>
+
 						{% endfor %}
 					</div>
 					<div class="d-flex">
 						{{ form_start(form) }}
 						{{ form_widget(form) }}
 						<button class="btn photo-bouton" type="submit" name="submit">
-						<i class="fas fa-check"></i>
-						Ajouter ces photos</button>
+							<i class="fas fa-check"></i>
+							Ajouter ces photos</button>
 						{{ form_end(form) }}
 					</div>
 				</div>
 			</div>
 			{# VOULEZ VOUS QUE LE NOM SOIT AFFICHE, WHALA SERT A RIEN #}
 			{# <div class="info-plus">
-				<h4>informations complémentaires : </h4>
-				<div class="visible">
-					<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
-					<div class="form-check form-switch d-flex">
-						<input class="form-check-input" type="checkbox" name="hide" id="flexSwitchCheckChecked" checked>
-						<label class="form-check-label" for="flexSwitchCheckChecked"></label>
-					</div>
-				</div>
-			</div> #}
+							<h4>informations complémentaires : </h4>
+							<div class="visible">
+								<p>Souhaitez-vous que votre Nom et prenoms soient visibles aux visiteurs?</p>
+								<div class="form-check form-switch d-flex">
+									<input class="form-check-input" type="checkbox" name="hide" id="flexSwitchCheckChecked" checked>
+									<label class="form-check-label" for="flexSwitchCheckChecked"></label>
+								</div>
+							</div>
+						</div> #}
 			<div class="help">
 				<div class="question">
-					<a href="mailto:finkt@outlook.fr" ><i class="fas fa-question"></i></a>
+					<a href="mailto:finkt@outlook.fr">
+						<i class="fas fa-question"></i>
+					</a>
 				</div>
 			</div>
-		</div>{# end carte artiste #}
-	</div> 
+		</div>
+		{# end carte artiste #}
+	</div>
 
-{# ici le footer #}
-{% block footer %}
-	{% include 'main/footer.html.twig' %}
-{% endblock footer %}{% endblock %}
+	{# ici le footer #}
+	{% block footer %}
+		{% include 'main/footer.html.twig' %}
+	{% endblock footer %}
+{% endblock %}
