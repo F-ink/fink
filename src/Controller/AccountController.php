@@ -169,7 +169,12 @@ class AccountController extends AccountBaseController
         if ($form->isSubmitted() && $form->isValid()) {
             // On récupère les images transmises
             $images = $form->get('pictures')->getData();
+           //si le nombre  de fichiers est supérieur a 6
+            if(count($images) > 6){
+                $this->addFlash('danger', 'Désolé, 6 images max ! Devenez premium et profitez');
+                $this->redirectToRoute('profil_');
 
+            } else{
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau nom de fichier
@@ -194,6 +199,7 @@ class AccountController extends AccountBaseController
 
             return $this->redirectToRoute('profil_');
         }
+    }
 
         return $this->render('account/profile.html.twig', [
             'artist' => $artist,
