@@ -15,37 +15,42 @@
 <form class="m-3" action="" method="POST">
 	<div class="container formAdmin">
 		<div class="mb-3">
-			<input class="form-control" type="text" name="email" value="{{ artist.email }}">
+			<input class="form-control" type="text" name="email" value="{{ artist.email }}" placeholder="Email">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="lastname" value="{{ artist.lastname }}">
+			<input class="form-control" type="text" name="lastname" value="{{ artist.lastname }}" placeholder="Nom de famille">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="firstname" value="{{ artist.firstname }}">
+			<input class="form-control" type="text" name="firstname" value="{{ artist.firstname }}" placeholder="Prénom">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="pseudo" value="{{ artist.pseudo }}">
+			<input class="form-control" type="text" name="pseudo" value="{{ artist.pseudo }}" placeholder="Pseudo">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="tattooshop" value="{{ artist.tattooShop }}">
+			<input class="form-control" type="text" name="tattooshop" value="{{ artist.tattooShop }}" placeholder="Nom du salon">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="address" value="{{ artist.address }}">
+			<input class="form-control" type="text" name="city" value="{{ artist.city }}" placeholder="Ville">
 		</div>
 		<div class="mb-3">
+			<input class="form-control" type="text" name="address" value="{{ artist.address }}" placeholder="Adresse">
+		</div>
+		<div class="mb-3">
+			<label for="profilePicture">Photo de profil</label>
 			<input class="form-control" type="file" name="profilePicture" value="{{ artist.profilePicture }}">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="file" name="coverPicture" value="{{ artist.profilePicture }}">
+		<label for="coverPicture">Photo de couverture</label>
+			<input class="form-control" type="file" name="coverPicture" value="{{ artist.coverPicture }}">
 		</div>
 		<div class="mb-3">
-			<textarea class="form-control" type="text" name="description" value="">{{ artist.description }}</textarea>
+			<textarea class="form-control" type="text" name="description" value="" placeholder="Description...">{{ artist.description }}</textarea>
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="instagram" value="{{ artist.instagram }}">
+			<input class="form-control" type="text" name="instagram" value="{{ artist.instagram }}" placeholder="Instagram">
 		</div>
 		<div class="mb-3">
-			<input class="form-control" type="text" name="siret" value="{{ artist.siret }}">
+			<input class="form-control" type="text" name="siret" value="{{ artist.siret }}" placeholder="Siret">
 		</div>
 
 		{# <select class="search-bar" id="styles" name="styles[]" multiple="multiple" placeholder="Style(s)">

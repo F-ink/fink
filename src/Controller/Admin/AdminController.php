@@ -67,7 +67,24 @@ class AdminController extends AbstractController
                     $artist,
                     $form->get('password')->getData()
                 )
+                
             );
+
+            $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
+            $geoResult = $geocoder->geocode($form->get('address')->getData() . ' ' . $form->get('city')->getData());
+            if ($geoResult && $geoResult['total_results'] > 0) {
+                $first = $geoResult['results'][0];
+                // dd($first);
+
+                $geopoints = [
+                    'lng' => $first['geometry']['lng'],
+                    'lat' => $first['geometry']['lat'],
+                ];
+
+                $artist->setLat($geopoints['lat']);
+                $artist->setLng($geopoints['lng']);
+                // dd($geopoints);
+            }
                 
             $profilePicture = $form->get('profilePicture')->getData();
 
@@ -112,14 +129,30 @@ class AdminController extends AbstractController
                 $artist->setFirstname($_POST['firstname']);
                 $artist->setPseudo($_POST['pseudo']);
                 $artist->setTattooShop($_POST['tattooshop']);
+                $artist->setCity($_POST['city']);
                 $artist->setAddress($_POST['address']);
                 $artist->setProfilePicture($_POST['profilePicture']);
                 $artist->setProfilePicture($_POST['coverPicture']);
                 $artist->setDescription($_POST['description']);
                 $artist->setInstagram($_POST['instagram']);
                 $artist->setSiret($_POST['siret']);
-                // $artist->addStyle($_POST['style']); 
-
+                // $artist->addStyle($_POST['style']);
+                
+                $geocoder = new \OpenCage\Geocoder\Geocoder('89c46309bda04d75a85786956180d2cb');
+                $geoResult = $geocoder->geocode($_POST['address'] . ' ' . $_POST['city']);
+                if ($geoResult && $geoResult['total_results'] > 0) {
+                    $first = $geoResult['results'][0];
+                    // dd($first);
+    
+                    $geopoints = [
+                        'lng' => $first['geometry']['lng'],
+                        'lat' => $first['geometry']['lat'],
+                    ];
+    
+                    $artist->setLat($geopoints['lat']);
+                    $artist->setLng($geopoints['lng']);
+                    // dd($geopoints);
+                }
                 $entityManager->flush();
 
                 return $this->redirectToRoute('admin_');

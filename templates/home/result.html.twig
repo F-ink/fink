@@ -93,11 +93,13 @@
 			var bounds = new google.maps.LatLngBounds();
 			var map = new google.maps.Map(document.getElementById('map'), {zoom: 4});
 
-		var marker,
-		i;
+		
 		for (i = 0; i < artists.length; i++) {
 			var infowindow = new google.maps.InfoWindow({maxWidth: 300});
+			var marker,
+			i;
 			loc = new google.maps.LatLng(artists[i][4], artists[i][5]);
+			console.log(loc);
 			marker = new google.maps.Marker({
 			position: loc,
 			icon: {
